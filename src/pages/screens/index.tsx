@@ -1,4 +1,4 @@
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import {
   Layout,
   Menu,
@@ -9,16 +9,16 @@ import {
   Switch,
 } from "antd";
 import {
-InfoOutlined,
+  InfoOutlined,
   GlobalOutlined,
   MonitorOutlined,
-    StockOutlined,
-    ExclamationOutlined
+  StockOutlined,
+  ExclamationOutlined,
 } from "@ant-design/icons";
 import styled from "@emotion/styled";
 import { useState } from "react";
 import { SiderTheme } from "antd/lib/layout/Sider";
-document.title='项目首页'
+document.title = "项目首页";
 const { SubMenu } = Menu;
 const { Header, Sider } = Layout;
 
@@ -55,14 +55,14 @@ export const Screen = () => {
           </HeaderRight>
         </HeaderCss>
         <Layout>
-                  <Sider width={304} style={{height:"100vh"}}>
+          <Sider width={304} style={{ height: "100vh" }}>
             <Menu
               mode="inline"
               defaultSelectedKeys={["1"]}
-              style={{ height: "100%", borderRight: 0}}
-                          theme={theme}
-                                      >
-              <SubMenu key="sub1" icon={<InfoOutlined />} title="水纹信息" >
+              style={{ height: "100%", borderRight: 0 }}
+              theme={theme}
+            >
+              <SubMenu key="sub1" icon={<InfoOutlined />} title="水纹信息">
                 <Menu.Item key="1">降水量</Menu.Item>
                 <Menu.Item key="2">蒸发量</Menu.Item>
               </SubMenu>
@@ -71,11 +71,7 @@ export const Screen = () => {
                 <Menu.Item key="6">水文地质信息</Menu.Item>
                 <Menu.Item key="7">隧洞及支洞</Menu.Item>
               </SubMenu>
-              <SubMenu
-                key="sub3"
-                icon={<StockOutlined />}
-                title="监测信息"
-              >
+              <SubMenu key="sub3" icon={<StockOutlined />} title="监测信息">
                 <Menu.Item key="9">监测井</Menu.Item>
                 <Menu.Item key="10">突涌水点</Menu.Item>
                 <Menu.Item key="11">区域水位</Menu.Item>
@@ -99,7 +95,7 @@ export const Screen = () => {
                     <Radio.Button value="b">CNN</Radio.Button>
                   </Radio.Group>
                 </Menu.Item>
-                <Menu.Item key="13" >计算</Menu.Item>
+                <Menu.Item key="13">计算</Menu.Item>
                 <Menu.Item key="14">预警结果</Menu.Item>
               </SubMenu>
             </Menu>
@@ -118,11 +114,8 @@ const HeaderCss = styled(Header)`
   justify-content: space-between;
   font-size: 20px;
 `;
-const HeaderLeft = styled.div`
-  
-`;
+const HeaderLeft = styled.div``;
 const HeaderRight = styled.div`
   font-size: 16px;
   text-align: middle;
 `;
-

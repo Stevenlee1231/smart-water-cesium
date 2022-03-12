@@ -4,14 +4,11 @@ import { RegisterScreen } from "./register";
 import { Button, Card, Divider, Typography } from "antd";
 import styled from "@emotion/styled";
 
-
 export const UnauthenticatedApp = () => {
   const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState<Error | null>(null);
-   
 
-  
-    return (
+  return (
     <Container>
       <ShadowCard>
         <Title>{isRegister ? "请注册" : "请登录"}</Title>
@@ -20,23 +17,15 @@ export const UnauthenticatedApp = () => {
         ) : (
           ""
         )}
-        {isRegister ? (
-          <RegisterScreen />
-        ) : (
-          <LoginScreen  />
-        )}
+        {isRegister ? <RegisterScreen /> : <LoginScreen />}
         <Divider />
-        <LongButton type={"link"} onClick={() => setIsRegister(!isRegister)}>
+        <LongButton type="link" onClick={() => setIsRegister(!isRegister)}>
           {isRegister ? "已经有账号了?直接登录" : "注册"}
         </LongButton>
       </ShadowCard>
     </Container>
   );
 };
-
-
-
-
 
 export const LongButton = styled(Button)`
   width: 100%;
@@ -46,10 +35,6 @@ const Title = styled.h2`
   margin-bottom: 2.4rem;
   color: rgb(94, 108, 132);
 `;
-
-
-
-
 
 const ShadowCard = styled(Card)`
   width: 40rem;
@@ -65,5 +50,5 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding-top:5rem ;
+  padding-top: 5rem;
 `;
