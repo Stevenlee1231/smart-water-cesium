@@ -1,7 +1,7 @@
 import { Form, Input } from "antd";
 import { LongButton } from ".";
 
-document.title = "请登录或注册";
+
 
 export const LoginScreen = () => {
   const handleSubmit = () => {
@@ -12,13 +12,13 @@ export const LoginScreen = () => {
     <Form onFinish={handleSubmit}>
       <Form.Item
         name={"username"}
-        rules={[{ required: true, message: "请输入用户名" }]}
+        rules={[{ required: true, message: "请输入用户名" }]} style={{textAlign:"left"}}
       >
         <Input type="text" id={"username"} placeholder={"用户名"} />
       </Form.Item>
       <Form.Item
         name={"password"}
-        rules={[{ required: true, message: "请输入密码" }]}
+        rules={[{ required: true, message: "请输入密码" }]} style={{textAlign:"left"}}
       >
         <Input type="password" id={"password"} placeholder={"密码"} />
       </Form.Item>

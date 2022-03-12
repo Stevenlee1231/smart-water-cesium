@@ -1,4 +1,4 @@
-import { Input, Form, Button } from "antd";
+import { Input, Form} from "antd";
 import { LongButton } from ".";
 
 export const RegisterScreen = () => {
@@ -7,18 +7,21 @@ export const RegisterScreen = () => {
       <Form.Item
         name={"username"}
         rules={[{ required: true, message: "请输入用户名" }]}
+        style={{ textAlign: "left" }}
       >
         <Input type="text" id={"username"} placeholder={"用户名"} />
       </Form.Item>
       <Form.Item
         name={"password"}
         rules={[{ required: true, message: "请输入密码" }]}
+        style={{ textAlign: "left" }}
       >
         <Input type="password" id={"password"} placeholder={"密码"} />
       </Form.Item>
       <Form.Item
         name={"cpassword"}
         rules={[{ required: true, message: "请确认密码" }]}
+        style={{ textAlign: "left" }}
       >
         <Input type="password" id={"password"} placeholder={"请确认密码"} />
       </Form.Item>

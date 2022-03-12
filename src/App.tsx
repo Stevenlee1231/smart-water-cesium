@@ -15,7 +15,7 @@ function App() {
       <Route path={"index"} element={<Screen />} />
       <Route index element={<UnauthenticatedApp />} />
     </Routes>
-  </Router>;
+  </Router>
       
     </div>
     

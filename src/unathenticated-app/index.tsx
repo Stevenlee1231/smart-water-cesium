@@ -3,8 +3,11 @@ import { LoginScreen } from "./login";
 import { RegisterScreen } from "./register";
 import { Button, Card, Divider, Typography } from "antd";
 import styled from "@emotion/styled";
+import { useDocumentTitle } from "../utils";
+
 
 export const UnauthenticatedApp = () => {
+  useDocumentTitle("请登录或注册")
   const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 

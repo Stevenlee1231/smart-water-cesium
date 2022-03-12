@@ -16,14 +16,18 @@ import {
   ExclamationOutlined,
 } from "@ant-design/icons";
 import styled from "@emotion/styled";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SiderTheme } from "antd/lib/layout/Sider";
-import { resetRoute } from "../utils";
-document.title = "项目首页";
+import { resetRoute, useDocumentTitle } from "../utils";
+import { Content } from "antd/lib/layout/layout";
+import * as echarts from "echarts";
+import { EChartsOption } from "echarts";
+
 const { SubMenu } = Menu;
 const { Header, Sider } = Layout;
 
 export const Screen = () => {
+  useDocumentTitle("项目首页");
   //设置头部主题
   const [hColor, setHClolor] = useState("skyblue");
   //设置菜单主题
@@ -32,6 +36,118 @@ export const Screen = () => {
     setTheme(value ? "dark" : "light");
     setHClolor(value ? "" : "skyblue");
   };
+
+  const showEcharts = (textAndName: string) =>
+    setTimeout(() => {
+      var chartDom = document.getElementById("content")!;
+      var myChart = echarts.init(chartDom);
+      var option: EChartsOption;
+
+      myChart.setOption(
+        (option = {
+          title: {
+            text: textAndName,
+            left: "1%",
+          },
+          tooltip: {
+            trigger: "axis",
+          },
+          grid: {
+            left: "5%",
+            right: "15%",
+            bottom: "10%",
+          },
+          xAxis: {
+            data: [2001, 2002, 2003, 2004, 2005],
+          },
+          yAxis: {},
+          toolbox: {
+            right: 10,
+            feature: {
+              dataZoom: {
+                yAxisIndex: "none",
+              },
+              restore: {},
+              saveAsImage: {},
+            },
+          },
+          dataZoom: [
+            {
+              startValue: "2014-06-01",
+            },
+            {
+              type: "inside",
+            },
+          ],
+          visualMap: {
+            top: 50,
+            right: 10,
+            pieces: [
+              {
+                gt: 0,
+                lte: 50,
+                color: "#93CE07",
+              },
+              {
+                gt: 50,
+                lte: 100,
+                color: "#FBDB0F",
+              },
+              {
+                gt: 100,
+                lte: 150,
+                color: "#FC7D02",
+              },
+              {
+                gt: 150,
+                lte: 200,
+                color: "#FD0100",
+              },
+              {
+                gt: 200,
+                lte: 300,
+                color: "#AA069F",
+              },
+              {
+                gt: 300,
+                color: "#AC3B2A",
+              },
+            ],
+            outOfRange: {
+              color: "#999",
+            },
+          },
+          series: {
+            name: textAndName,
+            type: "line",
+            data: [1, 2, 3, 4, 5],
+            markLine: {
+              silent: true,
+              lineStyle: {
+                color: "#333",
+              },
+              data: [
+                {
+                  yAxis: 50,
+                },
+                {
+                  yAxis: 100,
+                },
+                {
+                  yAxis: 150,
+                },
+                {
+                  yAxis: 200,
+                },
+                {
+                  yAxis: 300,
+                },
+              ],
+            },
+          },
+        })
+      );
+    }, 1);
 
   return (
     <Container>
@@ -73,7 +189,7 @@ export const Screen = () => {
           </HeaderRight>
         </HeaderCss>
         <Layout>
-          <Sider width={304} style={{ height: "100vh" }}>
+          <Sider width={280} style={{ height: "100vh" }}>
             <Menu
               mode="inline"
               defaultSelectedKeys={["1"]}
@@ -81,8 +197,12 @@ export const Screen = () => {
               theme={theme}
             >
               <SubMenu key="sub1" icon={<InfoOutlined />} title="水纹信息">
-                <Menu.Item key="1">降水量</Menu.Item>
-                <Menu.Item key="2">蒸发量</Menu.Item>
+                <Menu.Item key="1" onClick={() => showEcharts("降水量")}>
+                  降水量
+                </Menu.Item>
+                <Menu.Item key="2" onClick={() => showEcharts("蒸发量")}>
+                  蒸发量
+                </Menu.Item>
               </SubMenu>
               <SubMenu key="sub2" icon={<GlobalOutlined />} title="区域信息">
                 <Menu.Item key="5">地层信息</Menu.Item>
@@ -96,12 +216,12 @@ export const Screen = () => {
               </SubMenu>
               <SubMenu key="sub4" icon={<MonitorOutlined />} title="预测">
                 <SubMenu key="sub41" title="GMS模型预测">
-                  <Menu.Item key="411">香炉山隧洞模型 7</Menu.Item>
-                  <Menu.Item key="412">香炉山六号隧洞模型 8</Menu.Item>
+                  <Menu.Item key="411">香炉山隧洞模型 </Menu.Item>
+                  <Menu.Item key="412">香炉山六号隧洞模型 </Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub42" title="深度学习模型预测">
-                  <Menu.Item key="421">香炉山隧洞模型 7</Menu.Item>
-                  <Menu.Item key="422">香炉山六号隧洞模型 8</Menu.Item>
+                  <Menu.Item key="421">香炉山隧洞模型 </Menu.Item>
+                  <Menu.Item key="422">香炉山六号隧洞模型 </Menu.Item>
                 </SubMenu>
               </SubMenu>
 
@@ -118,6 +238,9 @@ export const Screen = () => {
               </SubMenu>
             </Menu>
           </Sider>
+          <Content>
+            <div id="content" style={{ height: "100%", width: "100%" }}></div>
+          </Content>
         </Layout>
       </Layout>
     </Container>
