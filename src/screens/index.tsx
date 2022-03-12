@@ -20,8 +20,6 @@ import { useState } from "react";
 import { SiderTheme } from "antd/lib/layout/Sider";
 import { resetRoute, useDocumentTitle } from "../utils";
 import { Content } from "antd/lib/layout/layout";
-import * as echarts from "echarts";
-import { EChartsOption } from "echarts";
 
 const { SubMenu } = Menu;
 const { Header, Sider } = Layout;
@@ -36,118 +34,6 @@ export const Screen = () => {
     setTheme(value ? "dark" : "light");
     setHClolor(value ? "" : "skyblue");
   };
-
-  const showEcharts = (textAndName: string) =>
-    setTimeout(() => {
-      var chartDom = document.getElementById("content")!;
-      var myChart = echarts.init(chartDom);
-      var option: EChartsOption;
-
-      myChart.setOption(
-        (option = {
-          title: {
-            text: textAndName,
-            left: "1%",
-          },
-          tooltip: {
-            trigger: "axis",
-          },
-          grid: {
-            left: "5%",
-            right: "15%",
-            bottom: "10%",
-          },
-          xAxis: {
-            data: [2001, 2002, 2003, 2004, 2005],
-          },
-          yAxis: {},
-          toolbox: {
-            right: 10,
-            feature: {
-              dataZoom: {
-                yAxisIndex: "none",
-              },
-              restore: {},
-              saveAsImage: {},
-            },
-          },
-          dataZoom: [
-            {
-              startValue: "2014-06-01",
-            },
-            {
-              type: "inside",
-            },
-          ],
-          visualMap: {
-            top: 50,
-            right: 10,
-            pieces: [
-              {
-                gt: 0,
-                lte: 50,
-                color: "#93CE07",
-              },
-              {
-                gt: 50,
-                lte: 100,
-                color: "#FBDB0F",
-              },
-              {
-                gt: 100,
-                lte: 150,
-                color: "#FC7D02",
-              },
-              {
-                gt: 150,
-                lte: 200,
-                color: "#FD0100",
-              },
-              {
-                gt: 200,
-                lte: 300,
-                color: "#AA069F",
-              },
-              {
-                gt: 300,
-                color: "#AC3B2A",
-              },
-            ],
-            outOfRange: {
-              color: "#999",
-            },
-          },
-          series: {
-            name: textAndName,
-            type: "line",
-            data: [1, 2, 3, 4, 5],
-            markLine: {
-              silent: true,
-              lineStyle: {
-                color: "#333",
-              },
-              data: [
-                {
-                  yAxis: 50,
-                },
-                {
-                  yAxis: 100,
-                },
-                {
-                  yAxis: 150,
-                },
-                {
-                  yAxis: 200,
-                },
-                {
-                  yAxis: 300,
-                },
-              ],
-            },
-          },
-        })
-      );
-    }, 1);
 
   return (
     <Container>
@@ -197,12 +83,8 @@ export const Screen = () => {
               theme={theme}
             >
               <SubMenu key="sub1" icon={<InfoOutlined />} title="水纹信息">
-                <Menu.Item key="1" onClick={() => showEcharts("降水量")}>
-                  降水量
-                </Menu.Item>
-                <Menu.Item key="2" onClick={() => showEcharts("蒸发量")}>
-                  蒸发量
-                </Menu.Item>
+                <Menu.Item key="1">降水量</Menu.Item>
+                <Menu.Item key="2">蒸发量</Menu.Item>
               </SubMenu>
               <SubMenu key="sub2" icon={<GlobalOutlined />} title="区域信息">
                 <Menu.Item key="5">地层信息</Menu.Item>
