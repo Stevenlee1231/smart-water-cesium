@@ -19,7 +19,7 @@ export const UnauthenticatedApp = () => {
         )}
         {isRegister ? <RegisterScreen /> : <LoginScreen />}
         <Divider />
-        <LongButton type="link" onClick={() => setIsRegister(!isRegister)}>
+        <LongButton type={"link"} onClick={() => setIsRegister(!isRegister)}>
           {isRegister ? "已经有账号了?直接登录" : "注册"}
         </LongButton>
       </ShadowCard>

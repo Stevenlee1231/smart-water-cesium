@@ -1,4 +1,5 @@
-import "antd/dist/antd.min.css";
+import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 import {
   Layout,
   Menu,
@@ -16,39 +17,64 @@ import {
   ExclamationOutlined,
 } from "@ant-design/icons";
 import styled from "@emotion/styled";
-import { useState } from "react";
 import { SiderTheme } from "antd/lib/layout/Sider";
+import { theme_store } from "../../store/theme";
+import { resetRoute } from "../../utils";
+import "antd/dist/antd.css";
+
 document.title = "项目首页";
 const { SubMenu } = Menu;
 const { Header, Sider } = Layout;
 
 export const Screen = () => {
-  const [theme, setTheme] = useState<SiderTheme>("light");
+  //设置头部主题
+  // const [hColor, setHClolor] = useState("skyblue");
+  //设置菜单主题
+  const [theme, setTheme] = useRecoilState<SiderTheme>(theme_store);
   const changeTheme = (value: boolean) => {
     setTheme(value ? "dark" : "light");
   };
 
   return (
-    <div>
+    <Container>
       <Layout>
-        <HeaderCss>
+        <HeaderCss
+          style={
+            theme == "light"
+              ? { background: "skyblue" }
+              : { background: "#111d2c" }
+          }
+        >
           <HeaderLeft>
-            <Typography.Text>
+            <Typography.Text style={{ color: "white" }}>
               隧洞突涌水(泥)综合预测及安全预警平台
             </Typography.Text>
           </HeaderLeft>
           <HeaderRight>
-            <Switch onChange={changeTheme} size={"small"} /> 切换主题
+            <Switch
+              onChange={changeTheme}
+              size={"small"}
+              style={{ color: "white" }}
+            />{" "}
+            <Typography.Text style={{ color: "white" }}>
+              切换主题
+            </Typography.Text>
             <Dropdown
               overlay={
                 <Menu>
                   <Menu.Item key={"logout"}>
-                    <Button type={"link"}>登出</Button>
+                    <Button type={"link"} onClick={resetRoute}>
+                      登出
+                    </Button>
                   </Menu.Item>
                 </Menu>
               }
             >
-              <Button type={"link"} onClick={(e) => e.preventDefault()}>
+              <Button
+                type={"link"}
+                onClick={(e) => e.preventDefault()}
+                style={{ color: "white" }}
+              >
                 Hi, name
               </Button>
             </Dropdown>
@@ -102,19 +128,23 @@ export const Screen = () => {
           </Sider>
         </Layout>
       </Layout>
-    </div>
+    </Container>
   );
 };
+const Container = styled.div`
+  min-width: 700px;
+`;
 
 const HeaderCss = styled(Header)`
-  background-color: skyblue !important;
   display: flex;
   height: 7rem;
   text-align: center;
   justify-content: space-between;
   font-size: 20px;
 `;
-const HeaderLeft = styled.div``;
+const HeaderLeft = styled.div`
+  color: white;
+`;
 const HeaderRight = styled.div`
   font-size: 16px;
   text-align: middle;

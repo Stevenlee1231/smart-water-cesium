@@ -4,8 +4,12 @@ import { LongButton } from ".";
 document.title = "请登录或注册";
 
 export const LoginScreen = () => {
+  const handleSubmit = () => {
+    window.location.href = "http://localhost:3000/index";
+  };
+
   return (
-    <Form>
+    <Form onFinish={handleSubmit}>
       <Form.Item
         name={"username"}
         rules={[{ required: true, message: "请输入用户名" }]}

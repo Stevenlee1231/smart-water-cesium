@@ -1,7 +1,7 @@
-import { Input, Form, Button} from "antd";
+import { Input, Form, Button } from "antd";
 import { LongButton } from ".";
 
-export const RegisterScreen = ()=>{
+export const RegisterScreen = () => {
   return (
     <Form>
       <Form.Item
@@ -23,7 +23,7 @@ export const RegisterScreen = ()=>{
         <Input type="password" id={"password"} placeholder={"请确认密码"} />
       </Form.Item>
       <Form.Item>
-        < LongButton  type={"primary"} htmlType={"submit"}>
+        <LongButton type={"primary"} htmlType={"submit"}>
           注册
         </LongButton>
       </Form.Item>
