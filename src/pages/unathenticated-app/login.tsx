@@ -1,7 +1,7 @@
 import { Form, Input } from "antd";
 import { LongButton } from ".";
 
-document.title = "请登录或注册";
+
 
 export const LoginScreen = () => {
   const handleSubmit = () => {

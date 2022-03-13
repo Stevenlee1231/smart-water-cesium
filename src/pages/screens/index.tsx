@@ -21,10 +21,10 @@ import {
 import styled from "@emotion/styled";
 import { SiderTheme } from "antd/lib/layout/Sider";
 import { theme_store } from "../../store/theme";
-import { resetRoute } from "../../utils";
+import { resetRoute, useDocumentTitle } from "../../utils";
 import "antd/dist/antd.css";
 
-document.title = "项目首页";
+
 const { SubMenu } = Menu;
 const { Header, Sider } = Layout;
 const showEcharts = (textAndName: string) =>
@@ -140,6 +140,7 @@ const showEcharts = (textAndName: string) =>
   }, 1);
 
 export const Screen = () => {
+  useDocumentTitle("项目首页")
   //设置头部主题
   // const [hColor, setHClolor] = useState("skyblue");
   //设置菜单主题
