@@ -4,7 +4,11 @@ interface chart {
   width: number;
   height: number;
   dom: any;
-  // theme:
+  theme: string;
+  xData: [];
+  yData: [];
 }
-const Chart = () => {};
+const Chart = (props: chart) => {
+  const { width, height, dom, theme, xData, yData } = props;
+};
 export default Chart;
