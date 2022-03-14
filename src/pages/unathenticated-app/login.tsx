@@ -1,7 +1,9 @@
-import { Form, Input } from "antd";
-import { LongButton } from ".";
-
-
+import { Button, Form, Input } from "antd";
+import {
+  UserOutlined,
+  EyeTwoTone,
+  EyeInvisibleOutlined,
+} from "@ant-design/icons";
 
 export const LoginScreen = () => {
   const handleSubmit = () => {
@@ -12,21 +14,41 @@ export const LoginScreen = () => {
     <Form onFinish={handleSubmit}>
       <Form.Item
         name={"username"}
-        rules={[{ required: true, message: "请输入用户名" }]}
+        rules={[{ required: true, message: "Please enter your username" }]}
       >
-        <Input type="text" id={"username"} placeholder={"用户名"} />
+        <Input
+          type="text"
+          id={"username"}
+          placeholder="Enter your username"
+          suffix={<UserOutlined className="site-form-item-icon" />}
+        />
       </Form.Item>
       <Form.Item
         name={"password"}
-        rules={[{ required: true, message: "请输入密码" }]}
+        rules={[{ required: true, message: "Please enter your password" }]}
       >
-        <Input type="password" id={"password"} placeholder={"密码"} />
+        <Input.Password
+          id={"password"}
+          placeholder="Enter your password"
+          iconRender={(visible) =>
+            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+          }
+        />
       </Form.Item>
-      <Form.Item>
-        <LongButton htmlType={"submit"} type={"primary"}>
-          登录
-        </LongButton>
+      <Form.Item style={{ paddingTop: "15px" }}>
+        <Button
+          type="primary"
+          style={{
+            marginRight: "20px",
+            width: "100%",
+            borderRadius: "1.25rem",
+          }}
+          htmlType={"submit"}
+        >
+          Login
+        </Button>
       </Form.Item>
+      <Form.Item></Form.Item>
     </Form>
   );
 };

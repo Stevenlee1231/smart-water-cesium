@@ -1,31 +1,56 @@
 import { Input, Form, Button } from "antd";
-import { LongButton } from ".";
+import {
+  UserOutlined,
+  EyeTwoTone,
+  EyeInvisibleOutlined,
+} from "@ant-design/icons";
 
 export const RegisterScreen = () => {
   return (
     <Form>
       <Form.Item
         name={"username"}
-        rules={[{ required: true, message: "请输入用户名" }]}
+        rules={[{ required: true, message: "Please your username" }]}
       >
-        <Input type="text" id={"username"} placeholder={"用户名"} />
+        <Input
+          type="text"
+          id={"username"}
+          placeholder="Enter your username"
+          suffix={<UserOutlined className="site-form-item-icon" />}
+        />
       </Form.Item>
       <Form.Item
         name={"password"}
-        rules={[{ required: true, message: "请输入密码" }]}
+        rules={[{ required: true, message: "Please enter your password" }]}
       >
-        <Input type="password" id={"password"} placeholder={"密码"} />
+        <Input.Password
+          id={"password"}
+          placeholder="Enter your password"
+          iconRender={(visible) =>
+            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+          }
+        />
       </Form.Item>
       <Form.Item
-        name={"cpassword"}
-        rules={[{ required: true, message: "请确认密码" }]}
+        name={"password"}
+        rules={[{ required: true, message: "Please enter your password" }]}
       >
-        <Input type="password" id={"password"} placeholder={"请确认密码"} />
+        <Input.Password
+          id={"password"}
+          placeholder="Confirm your password"
+          iconRender={(visible) =>
+            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+          }
+        />
       </Form.Item>
       <Form.Item>
-        <LongButton type={"primary"} htmlType={"submit"}>
-          注册
-        </LongButton>
+        <Button
+          type="primary"
+          htmlType={"submit"}
+          style={{ borderRadius: "1.25rem", width: "100%" }}
+        >
+          Sign up
+        </Button>
       </Form.Item>
     </Form>
   );
