@@ -3,7 +3,7 @@ import { LoginScreen } from "./login";
 import { RegisterScreen } from "./register";
 import { Button, Card, Carousel, Divider, Form, Typography } from "antd";
 import styled from "@emotion/styled";
-import { useDocumentTitle } from "../../utils";
+import { useDocumentTitle } from "../../utils/customHooks";
 import { ReactComponent as SVGLogo1 } from "../../assets/山脉.svg";
 import { ReactComponent as SVGLogo2 } from "../../assets/帐篷，露营，旅行.svg";
 import { ReactComponent as SVGLogo3 } from "../../assets/水.svg";
