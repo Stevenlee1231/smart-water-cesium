@@ -140,9 +140,7 @@ export const Screen = () => {
                 style={{ width: "100%", height: "100%" }}
                 className="content-container"
               >
-                <Routes>
-                  <Route path="rainfall" element={<Rainfall />}></Route>
-                </Routes>
+               
               </div>
             </Content>
           </Layout>

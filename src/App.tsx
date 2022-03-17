@@ -12,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<UnauthenticatedApp />} />
           <Route path="/" element={<Screen />} />
+          <Route path="rainfall" element={<Rainfall />}></Route>
           <Route index element={<UnauthenticatedApp />} />
         </Routes>
       </Router>
