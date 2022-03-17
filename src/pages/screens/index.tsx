@@ -17,24 +17,24 @@ import {
 } from "@ant-design/icons";
 import styled from "@emotion/styled";
 import { SiderTheme } from "antd/lib/layout/Sider";
+import { useNavigate, Routes, Outlet, Route } from "react-router";
 import { theme_store } from "../../store/theme";
 import { resetRoute } from "../../utils/router";
-import { useDocumentTitle } from "../../utils/customHooks";
+import { useDocumentTitle, useWidtheight } from "../../utils/customHooks";
 import "antd/dist/antd.css";
+import { useEffect } from "react";
+import Rainfall from "../rainfall/rainfall";
 
 const { SubMenu } = Menu;
-const { Header, Sider } = Layout;
+const { Header, Sider, Content } = Layout;
 
 export const Screen = () => {
   useDocumentTitle("项目首页");
-  //设置头部主题
-  // const [hColor, setHClolor] = useState("skyblue");
-  //设置菜单主题
   const [theme, setTheme] = useRecoilState<SiderTheme | string>(theme_store);
+  const [eleRef, eleMsg] = useWidtheight<HTMLDivElement>();
   const changeTheme = (value: boolean) => {
     setTheme(value ? "dark" : "light");
   };
-
   return (
     <Container>
       <Layout>
@@ -126,6 +126,26 @@ export const Screen = () => {
               </SubMenu>
             </Menu>
           </Sider>
+          <Layout>
+            <Content
+              className="site-layout-background"
+              style={{
+                padding: 24,
+                margin: 0,
+                minHeight: 280,
+              }}
+            >
+              <div
+                ref={eleRef}
+                style={{ width: "100%", height: "100%" }}
+                className="content-container"
+              >
+                <Routes>
+                  <Route path="rainfall" element={<Rainfall />}></Route>
+                </Routes>
+              </div>
+            </Content>
+          </Layout>
         </Layout>
       </Layout>
     </Container>

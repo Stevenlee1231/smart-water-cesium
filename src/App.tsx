@@ -3,14 +3,15 @@ import { Route, Routes } from "react-router";
 import { BrowserRouter as Router } from "react-router-dom";
 import { UnauthenticatedApp } from "./pages/unathenticated-app";
 import { Screen } from "./pages/screens";
+import Rainfall from "./pages/rainfall/rainfall";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path={"login"} element={<UnauthenticatedApp />} />
-          <Route path={"index"} element={<Screen />} />
+          <Route path="/login" element={<UnauthenticatedApp />} />
+          <Route path="/" element={<Screen />} />
           <Route index element={<UnauthenticatedApp />} />
         </Routes>
       </Router>

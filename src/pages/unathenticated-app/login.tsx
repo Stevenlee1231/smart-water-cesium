@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import { Button, Form, Input } from "antd";
 import {
   UserOutlined,
@@ -6,8 +7,9 @@ import {
 } from "@ant-design/icons";
 
 export const LoginScreen = () => {
+  const navigate = useNavigate();
   const handleSubmit = () => {
-    window.location.href = "http://localhost:3000/index";
+    navigate("/rainfall");
   };
 
   return (
