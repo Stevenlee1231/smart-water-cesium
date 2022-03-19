@@ -161,22 +161,26 @@ const Chart = (props: chart) => {
     },
   };
   useEffect(() => {
-    let chart = echarts.init(
+    let chart: echarts.ECharts;
+    console.log(props);
+    chart = echarts.init(
       document.getElementById("chart-container") as HTMLElement,
-      theme
-      // {
-      //   width: undefined,
-      //   height: undefined,
-      // }
+      theme,
+      {
+        width: undefined,
+        height: undefined,
+      }
     );
     chart.setOption(option);
     window.addEventListener("resize", (e: any) => {
       chart.resize();
     });
     return () => {
+      chart.clear();
+      chart.dispose();
       window.removeEventListener("resize", () => {});
     };
-  }, []);
+  }, [props]);
   return (
     <div style={{ width: "100%", height: "100%" }} id="chart-container"></div>
   );

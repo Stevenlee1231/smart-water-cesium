@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
+import { useOutletContext } from "react-router";
 import { SiderTheme } from "antd/lib/layout/Sider";
 import Chart from "../../components/Chart";
 import { theme_store } from "../../store/theme";
 import { getRainfall } from "../../api/chart";
 function Rainfall() {
+  const eleMsg = useOutletContext<any>();
+  useEffect(() => {
+    console.log(eleMsg);
+  }, [eleMsg]);
   const [data, setData] = useState({
     xAxis: [],
     series: [],
@@ -31,17 +36,20 @@ function Rainfall() {
   //   console.log(data);
   // }, [data]);
   return (
-    <div style={{ width: "100%", height: "100%" }}>
-      {data.series != [] && data.xAxis != [] && (
-        <Chart
-          title="降水量/mm"
-          theme={theme}
-          // @ts-ignore
-          xAxis={data.xAxis}
-          // @ts-ignore
-          series={data.series}
-        ></Chart>
-      )}
+    <div style={{ width: `${eleMsg.width}px`, height: `${eleMsg.height}px` }}>
+      {data.series != [] &&
+        data.xAxis != [] &&
+        eleMsg.width != 0 &&
+        eleMsg.height != 0 && (
+          <Chart
+            title="降水量/mm"
+            theme={theme}
+            // @ts-ignore
+            xAxis={data.xAxis}
+            // @ts-ignore
+            series={data.series}
+          ></Chart>
+        )}
     </div>
   );
 }

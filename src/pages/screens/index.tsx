@@ -140,7 +140,7 @@ export const Screen = () => {
                 style={{ width: "100%", height: "100%" }}
                 className="content-container"
               >
-               
+                <Outlet context={eleMsg}></Outlet>
               </div>
             </Content>
           </Layout>
