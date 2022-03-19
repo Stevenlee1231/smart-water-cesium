@@ -17,13 +17,12 @@ import {
 } from "@ant-design/icons";
 import styled from "@emotion/styled";
 import { SiderTheme } from "antd/lib/layout/Sider";
-import { useNavigate, Routes, Outlet, Route } from "react-router";
+import { Outlet } from "react-router";
 import { theme_store } from "../../store/theme";
 import { resetRoute } from "../../utils/router";
 import { useDocumentTitle, useWidtheight } from "../../utils/customHooks";
 import "antd/dist/antd.css";
-import { useEffect } from "react";
-import Rainfall from "../rainfall/rainfall";
+import { Link } from "react-router-dom";
 
 const { SubMenu } = Menu;
 const { Header, Sider, Content } = Layout;
@@ -35,6 +34,7 @@ export const Screen = () => {
   const changeTheme = (value: boolean) => {
     setTheme(value ? "dark" : "light");
   };
+
   return (
     <Container>
       <Layout>
@@ -89,8 +89,12 @@ export const Screen = () => {
               theme={theme as SiderTheme}
             >
               <SubMenu key="sub1" icon={<FireOutlined />} title="水文信息">
-                <Menu.Item key="1">降水量</Menu.Item>
-                <Menu.Item key="2">蒸发量</Menu.Item>
+                <Menu.Item key="1">
+                  <Link to={"rainfall"}>降水量</Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Link to={"evaporationcapacity"}>蒸发量</Link>
+                </Menu.Item>
               </SubMenu>
               <SubMenu key="sub2" icon={<GlobalOutlined />} title="区域信息">
                 <Menu.Item key="5">地层信息</Menu.Item>
@@ -104,12 +108,12 @@ export const Screen = () => {
               </SubMenu>
               <SubMenu key="sub4" icon={<MonitorOutlined />} title="预测">
                 <SubMenu key="sub41" title="GMS模型预测">
-                  <Menu.Item key="411">香炉山隧洞模型 7</Menu.Item>
-                  <Menu.Item key="412">香炉山六号隧洞模型 8</Menu.Item>
+                  <Menu.Item key="411">香炉山隧洞模型 </Menu.Item>
+                  <Menu.Item key="412">香炉山六号隧洞模型 </Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub42" title="深度学习模型预测">
-                  <Menu.Item key="421">香炉山隧洞模型 7</Menu.Item>
-                  <Menu.Item key="422">香炉山六号隧洞模型 8</Menu.Item>
+                  <Menu.Item key="421">香炉山隧洞模型 </Menu.Item>
+                  <Menu.Item key="422">香炉山六号隧洞模型 </Menu.Item>
                 </SubMenu>
               </SubMenu>
 
@@ -130,9 +134,12 @@ export const Screen = () => {
             <Content
               className="site-layout-background"
               style={{
-                padding: 24,
+                padding: 22,
                 margin: 0,
                 minHeight: 280,
+                width: "100%",
+                height: "100%",
+                backgroundColor: theme === "light" ? "" : "#100c2a",
               }}
             >
               <div

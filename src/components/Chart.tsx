@@ -33,9 +33,9 @@ interface chart {
   theme: string;
   // data: {} | [];
   //声明X轴，
-  xAxis: undefined;
+  xAxis: string[];
   //声明提示框数据series
-  series: undefined;
+  series: string[];
   //声明Y轴
   // yAxis: {} | [];
 }
@@ -84,6 +84,7 @@ const Chart = (props: chart) => {
     },
     xAxis: {
       data: xAxis,
+      
     },
     yAxis: {},
     toolbox: {

@@ -3,7 +3,8 @@ import { Route, Routes } from "react-router";
 import { BrowserRouter as Router } from "react-router-dom";
 import { UnauthenticatedApp } from "./pages/unathenticated-app";
 import { Screen } from "./pages/screens";
-import Rainfall from "./pages/rainfall/rainfall";
+import {Rainfall} from "./pages/rainfall/rainfall";
+import  {Evaporationcapacity}  from "./pages/evaporationcapacity/evaporationcapacity";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/login" element={<UnauthenticatedApp />} />
           <Route path="/" element={<Screen />}>
             <Route path="rainfall" element={<Rainfall />}></Route>
+            <Route path="evaporationcapacity" element={<Evaporationcapacity />}></Route>
           </Route>
           <Route index element={<UnauthenticatedApp />} />
         </Routes>
