@@ -33,7 +33,7 @@ export const SiderScreen = ({ theme }: { theme: SiderTheme | string }) => {
           </SubMenu>
           <SubMenu key="sub2" icon={<GlobalOutlined />} title="区域信息">
             <Menu.Item key="5">地层信息</Menu.Item>
-            <Menu.Item key="6">水文地质信息</Menu.Item>
+            <Menu.Item key="6"><Link to={"earth"}>水文地质信息</Link></Menu.Item>
             <Menu.Item key="7">隧洞及支洞</Menu.Item>
           </SubMenu>
           <SubMenu key="sub3" icon={<StockOutlined />} title="监测信息">

@@ -6,7 +6,7 @@ import { theme_store } from "../../store/theme";
 import { useGetData } from "../../utils/data";
 export const Rainfall = () => {
   const eleMsg = useOutletContext<any>();
-  const [theme, setTheme] = useRecoilState<SiderTheme | string>(theme_store);
+  const [theme] = useRecoilState<SiderTheme | string>(theme_store);
   const { series, xAxis } = useGetData("allwaterlevels", "XLP4ZK2", true);
   return (
     <div style={{ width: `${eleMsg.width}px`, height: `${eleMsg.height}px` }}>

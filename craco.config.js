@@ -3,7 +3,7 @@ const CracoLessPlugin = require('craco-less');
 module.exports = {
   plugins: [
     {
-      plugin: CracoLessPlugin,
+      plugin: require("craco-cesium")(),
       options: {
         lessLoaderOptions: {
           lessOptions: {

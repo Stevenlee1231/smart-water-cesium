@@ -10,7 +10,7 @@ export const ContentScreen = ({ theme }: { theme: SiderTheme | string }) => {
       <Content
         className="site-layout-background"
         style={{
-          padding: 22,
+          padding:22,
           margin: 0,
           minHeight: 280,
           width: "100%",
@@ -20,7 +20,7 @@ export const ContentScreen = ({ theme }: { theme: SiderTheme | string }) => {
       >
         <div
           ref={eleRef}
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "100%"}}
           className="content-container"
         >
           <Outlet context={eleMsg}></Outlet>
