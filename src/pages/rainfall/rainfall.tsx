@@ -10,7 +10,7 @@ export const Rainfall = () => {
   const { series, xAxis } = useGetData("allwaterlevels", "XLP4ZK2", true);
   return (
     <div style={{ width: `${eleMsg.width}px`, height: `${eleMsg.height}px` }}>
-      {series != [] && xAxis != [] && eleMsg.width != 0 && eleMsg.height != 0 && (
+      {series !== [] && xAxis !== [] && eleMsg.width !== 0 && eleMsg.height !== 0 && (
         <Chart
           title="降水量/mm"
           theme={theme}
