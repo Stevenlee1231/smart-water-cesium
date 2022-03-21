@@ -15,7 +15,7 @@ export const ContentScreen = ({ theme }: { theme: SiderTheme | string }) => {
           minHeight: 280,
           width: "100%",
           height: "100%",
-          backgroundColor: theme === "light" ? "" : "#100c2a",
+          backgroundColor: theme === "light" ? "" : "#161d40",
         }}
       >
         <div

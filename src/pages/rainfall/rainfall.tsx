@@ -1,7 +1,8 @@
+
 import { useRecoilState } from "recoil";
 import { useOutletContext } from "react-router";
 import { SiderTheme } from "antd/lib/layout/Sider";
-import Chart from "../../components/Chart";
+import Chart from "../../components/Chart/Chart";
 import { theme_store } from "../../store/theme";
 import { useGetData } from "../../utils/data";
 export const Rainfall = () => {

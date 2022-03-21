@@ -163,7 +163,6 @@ const Chart = (props: chart) => {
   };
   useEffect(() => {
     let chart: echarts.ECharts;
-    console.log(props);
     chart = echarts.init(
       document.getElementById("chart-container") as HTMLElement,
       theme,
