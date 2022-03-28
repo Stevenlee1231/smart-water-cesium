@@ -1,6 +1,6 @@
-import { useEffect } from "react"
-import { Ion } from "cesium"
-import { Viewer,CameraFlyTo,Entity,PointGraphics} from "resium"
+
+import { Ion, Transforms } from "cesium"
+import { Viewer,CameraFlyTo,Entity,PointGraphics, PolylineCollection} from "resium"
 import { Cartesian3} from "cesium"
 import Line from "../../components/Line/Line"
 import suidongData from "../../assets/datas/suidong.json"
@@ -16,10 +16,12 @@ export const EarthScreen = () => {
   return(
     <div style={{width:"100%",height:"100%"}}>
         <Viewer timeline={false} animation={false}  >    
-        <Entity position={position}>
+        {/* <Entity position={position}>
         <PointGraphics pixelSize={10} />
-      </Entity>
-            {/* <Line positions={lineData}></Line> */}
+        </Entity> */}
+        <PolylineCollection>
+          <Line positions={lineData}></Line>
+          </PolylineCollection>
             <CameraFlyTo duration={0} destination={Cartesian3.fromDegrees(100.075,26.602, 15000.0)}></CameraFlyTo>
         </Viewer>
     </div>

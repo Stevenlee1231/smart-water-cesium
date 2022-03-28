@@ -13,7 +13,7 @@ import { ContentScreen } from "./content";
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
-export const SiderScreen = ({ theme }: { theme: SiderTheme | string }) => {
+export const SiderScreen = ({ theme,visible,setVisible }: { theme: SiderTheme | string,visible:boolean,setVisible:(visible:boolean)=>void }) => {
   return (
     <Layout>
       <Sider width={304} style={{ height: "100vh" }}>
@@ -60,7 +60,7 @@ export const SiderScreen = ({ theme }: { theme: SiderTheme | string }) => {
                 <Radio.Button value="b">CNN</Radio.Button>
               </Radio.Group>
             </Menu.Item>
-            <Menu.Item key="13">计算</Menu.Item>
+            <Menu.Item key="13"><Link to={"caculate"}>计算</Link></Menu.Item>
             <Menu.Item key="14">预警结果</Menu.Item>
           </SubMenu>
         </Menu>

@@ -6,7 +6,7 @@ const { Content } = Layout;
 export const ContentScreen = ({ theme }: { theme: SiderTheme | string }) => {
   const [eleRef, eleMsg] = useWidtheight<HTMLDivElement>();
   return (
-    <Layout>
+    <Layout >
       <Content
         className="site-layout-background"
         style={{
@@ -16,6 +16,7 @@ export const ContentScreen = ({ theme }: { theme: SiderTheme | string }) => {
           width: "100%",
           height: "100%",
           backgroundColor: theme === "light" ? "" : "#161d40",
+        
         }}
       >
         <div

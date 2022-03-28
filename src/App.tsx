@@ -6,6 +6,7 @@ import { Screen } from "./pages/screens";
 import {Rainfall} from "./pages/rainfall/rainfall";
 import  {Evaporationcapacity}  from "./pages/evaporationcapacity/evaporationcapacity";
 import { EarthScreen } from "./pages/earth/earth";
+import { CalulateScreen } from "./pages/caculate/calulate";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="rainfall" element={<Rainfall />}></Route>
             <Route path="evaporationcapacity" element={<Evaporationcapacity />}></Route>
             <Route path="earth" element={<EarthScreen />}></Route>
+            <Route path="caculate" element={<CalulateScreen/>}></Route>
           </Route>
           <Route index element={<UnauthenticatedApp />} />
         </Routes>
