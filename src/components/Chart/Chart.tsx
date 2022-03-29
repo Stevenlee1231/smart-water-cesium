@@ -84,7 +84,6 @@ const Chart = (props: chart) => {
     },
     xAxis: {
       data: xAxis,
-      
     },
     yAxis: {},
     toolbox: {
