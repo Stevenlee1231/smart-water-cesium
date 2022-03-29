@@ -10,12 +10,12 @@ import {
 interface point {
   size: number;
   position: Array<any>;
-  location:Array<string>
+  location: Array<string>;
 }
 
 const Point = (props: point) => {
-  const { size, position ,location} = props;
- 
+  const { size, position, location } = props;
+
   return (
     <div>
       {position.map((point, i) => {
@@ -38,7 +38,6 @@ const Point = (props: point) => {
                 show: true,
               }}
               key={i}
-                    
             >
               <PointGraphics pixelSize={size}></PointGraphics>
             </Entity>

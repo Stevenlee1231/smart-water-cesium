@@ -11,9 +11,12 @@ import { Cartesian3 } from "cesium";
 import { useOutletContext } from "react-router";
 import Caculate from "../../components/Caculate/Caculate";
 import Line from "../../components/Line/Line";
+//隧洞数据
 import suidongData from "../../assets/datas/suidong.json";
-import pointData1 from "../../assets/datas/obswell.json";
-import pointData2 from "../../assets/datas/zhidong.json";
+//监测井数据
+import tunnel from "../../assets/datas/obswell.json";
+//支洞数据
+import branchHole from "../../assets/datas/zhidong.json";
 import Point from "../../components/Point/Point";
 Ion.defaultAccessToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2OTU2ZDE3Yi04ZDliLTRjZDAtYWYyOC01ZTk1OWFjOGNiZTUiLCJpZCI6NDQ3NjgsImlhdCI6MTYyNzk2Mjk1MX0.FrqhJD70CQLH9QsnePyuU0gmevojlEmGgF8swsUQue4";
@@ -23,19 +26,19 @@ export const EarthScreen = () => {
   const lineData = suidongData.geometries[0].coordinates.map((value) => {
     return Cartesian3.fromDegrees(value[0], value[1], 0);
   });
-  const points1 = pointData1.geometries.map((obj) => {
+  const tunnels = tunnel.geometries.map((obj) => {
     return Cartesian3.fromDegrees(obj.coordinates[0], obj.coordinates[1], 0);
   });
 
-  const points2 = pointData2.geometries.map((obj) => {
+  const branchHoles = branchHole.geometries.map((obj) => {
     return Cartesian3.fromDegrees(
       obj.coordinates[0][0],
       obj.coordinates[0][1],
       0
     );
   });
-
-  const location1 = [
+  //tunnel_label
+  const tunnelLabel = [
     "XL2K7",
     "XL2K12",
     "XL2K25",
@@ -58,16 +61,20 @@ export const EarthScreen = () => {
     <div style={{ width: "100%", height: "100%" }}>
       <Viewer timeline={false} animation={false} infoBox={false}>
         {/* 监测井 */}
-        {/* <Point
-          size={10}
-          position={points1}
-          location={location1}
-         
-        /> */}
-        {/* 隧道 */}
-        <Point location={location2} size={10} position={points2} />
-        <Line positions={lineData}></Line>
-
+        {earthVisible["monitoring"] && (
+          <Point size={30} position={tunnels} location={tunnelLabel} />
+        )}
+        {/* 隧道及支洞 */}
+        {earthVisible["tunnel"] && (
+          <>
+            {/* <Point location={location2} size={10} position={branchHoles} /> */}
+            <Line positions={lineData}></Line>
+          </>
+        )}
+        <CameraFlyTo
+          duration={0}
+          destination={Cartesian3.fromDegrees(100.075, 26.602, 15000.0)}
+        ></CameraFlyTo>
         {/* <ImageryLayer
           imageryProvider={
             new UrlTemplateImageryProvider({
@@ -76,7 +83,7 @@ export const EarthScreen = () => {
           }
           alpha={1}
         /> */}
-         {/* <ImageryLayer
+        {/* <ImageryLayer
           imageryProvider={
             new UrlTemplateImageryProvider({
               url: "http://103.118.40.123:9999/yun/tif/wuku/{z}/{x}/{y}.png",
@@ -84,7 +91,7 @@ export const EarthScreen = () => {
           }
           alpha={1}
         /> */}
-         {/* <ImageryLayer
+        {/* <ImageryLayer
           imageryProvider={
             new UrlTemplateImageryProvider({
               url: "http://103.118.40.123:9999/yun/tif/wulku/{z}/{x}/{y}.png",
@@ -92,7 +99,7 @@ export const EarthScreen = () => {
           }
           alpha={1}
         /> */}
-         {/* <ImageryLayer
+        {/* <ImageryLayer
           imageryProvider={
             new UrlTemplateImageryProvider({
               url: "http://103.118.40.123:9999/yun/tif/wulfeng/{z}/{x}/{y}.png",
@@ -101,11 +108,6 @@ export const EarthScreen = () => {
           alpha={1}
         /> */}
 
-
-        <CameraFlyTo
-          duration={0}
-          destination={Cartesian3.fromDegrees(100.075, 26.602, 15000.0)}
-        ></CameraFlyTo>
         {/* 计算页面 */}
         <Caculate
           visible={earthVisible["count"]}
