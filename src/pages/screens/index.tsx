@@ -7,7 +7,7 @@ import { useDocumentTitle } from "../../utils/customHooks";
 import "antd/dist/antd.css";
 import { HeaderScreen } from "./header";
 import { SiderScreen } from "./sider";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Screen = () => {
   useDocumentTitle("项目首页");
@@ -16,16 +16,50 @@ export const Screen = () => {
   const changeTheme = (value: boolean) => {
     setTheme(value ? "dark" : "light");
   };
-  const [visible,setVisible]=useState(false)
+  //控制地图上显示的东西  并不使用router控制
+  const [earthVisible, setEarthVisible] = useState({
+    //水文地质信息
+    hydrology: false,
+    //隧洞及支洞
+    tunnel: false,
+    //监测井
+    monitoring: false,
+    //突涌水
+    gushing: false,
+    //区域水位
+    regionalWater: false,
+    //GMS香炉山
+    GMSMountain: false,
+    //GMS香炉山六号
+    GMSMountainSix: false,
+    //深度学习香炉山
+    mountain: false,
+    //深度学习香炉山六号
+    mountainSix: false,
+    //计算
+    count: false,
+    //预警结果
+    result: false,
+  });
+  useEffect(() => {
+    console.log(earthVisible);
+  }, [earthVisible]);
+  //控制sider显示没用
+  const [visible, setVisible] = useState(false);
   return (
     <Container>
       <Layout>
         <HeaderScreen theme={theme} changeTheme={changeTheme} />
         <Layout>
-          <SiderScreen theme={theme} visible={visible} setVisible={setVisible}/>
+          <SiderScreen
+            theme={theme}
+            visible={visible}
+            setVisible={setVisible}
+            callback={setEarthVisible}
+            earthVisible={earthVisible}
+          />
         </Layout>
       </Layout>
-
     </Container>
   );
 };

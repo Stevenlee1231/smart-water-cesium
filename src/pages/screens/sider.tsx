@@ -13,13 +13,46 @@ import { ContentScreen } from "./content";
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
-export const SiderScreen = ({ theme,visible,setVisible }: { theme: SiderTheme | string,visible:boolean,setVisible:(visible:boolean)=>void }) => {
+const initEarthVisible = {
+  hydrology: false,
+  tunnel: false,
+  monitoring: false,
+  gushing: false,
+  regionalWater: false,
+  GMSMountain: false,
+  GMSMountainSix: false,
+  mountain: false,
+  mountainSix: false,
+  count: false,
+  result: false,
+};
+export const SiderScreen = ({
+  theme,
+  visible,
+  setVisible,
+  callback,
+  earthVisible,
+}: {
+  theme: SiderTheme | string;
+  visible: boolean;
+  setVisible: (visible: boolean) => void;
+  callback: any;
+  earthVisible: any;
+}) => {
+  const handleSelect = (e: any) => {
+    callback((prev: any) => {
+      if (prev[e.key]) return prev;
+      return { ...initEarthVisible, [e.key]: true };
+    });
+  };
   return (
     <Layout>
       <Sider width={304} style={{ height: "100vh" }}>
         <Menu
           mode="inline"
-          defaultSelectedKeys={window.location.pathname==='/rainfall'?['1']:['2']}
+          defaultSelectedKeys={
+            window.location.pathname === "/rainfall" ? ["1"] : ["2"]
+          }
           style={{ height: "100%", borderRight: 0 }}
           theme={theme as SiderTheme}
         >
@@ -33,25 +66,42 @@ export const SiderScreen = ({ theme,visible,setVisible }: { theme: SiderTheme | 
           </SubMenu>
           <SubMenu key="sub2" icon={<GlobalOutlined />} title="区域信息">
             <Menu.Item key="5">地层信息</Menu.Item>
-            <Menu.Item key="6"><Link to={"earth"}>水文地质信息</Link></Menu.Item>
-            <Menu.Item key="7">隧洞及支洞</Menu.Item>
+            <Menu.Item key="hydrology" onClick={handleSelect}>
+              <Link to={"earth"}>水文地质信息</Link>
+            </Menu.Item>
+            <Menu.Item key="tunnel" onClick={handleSelect}>
+              <Link to={"earth"}>隧洞及支洞</Link>
+            </Menu.Item>
           </SubMenu>
           <SubMenu key="sub3" icon={<StockOutlined />} title="监测信息">
-            <Menu.Item key="9">监测井</Menu.Item>
-            <Menu.Item key="10">突涌水点</Menu.Item>
-            <Menu.Item key="11">区域水位</Menu.Item>
+            <Menu.Item key="monitoring" onClick={handleSelect}>
+              <Link to={"earth"}>监测井</Link>
+            </Menu.Item>
+            <Menu.Item key="gushing" onClick={handleSelect}>
+              <Link to={"earth"}>突涌水点</Link>
+            </Menu.Item>
+            <Menu.Item key="regionalWater" onClick={handleSelect}>
+              <Link to={"earth"}>区域水位</Link>
+            </Menu.Item>
           </SubMenu>
           <SubMenu key="sub4" icon={<MonitorOutlined />} title="预测">
             <SubMenu key="sub41" title="GMS模型预测">
-              <Menu.Item key="411">香炉山隧洞模型 </Menu.Item>
-              <Menu.Item key="412">香炉山六号隧洞模型 </Menu.Item>
+              <Menu.Item key="GMSMountain" onClick={handleSelect}>
+                <Link to={"earth"}>香炉山隧洞模型 </Link>
+              </Menu.Item>
+              <Menu.Item key="GMSMountainSix" onClick={handleSelect}>
+                <Link to={"earth"}>香炉山六号隧洞模型 </Link>
+              </Menu.Item>
             </SubMenu>
             <SubMenu key="sub42" title="深度学习模型预测">
-              <Menu.Item key="421">香炉山隧洞模型 </Menu.Item>
-              <Menu.Item key="422">香炉山六号隧洞模型 </Menu.Item>
+              <Menu.Item key="mountain" onClick={handleSelect}>
+                <Link to={"earth"}>香炉山隧洞模型 </Link>
+              </Menu.Item>
+              <Menu.Item key="mountainSix" onClick={handleSelect}>
+                <Link to={"earth"}>香炉山六号隧洞模型 </Link>
+              </Menu.Item>
             </SubMenu>
           </SubMenu>
-
           <SubMenu key="sub5" icon={<ExclamationOutlined />} title="预警">
             <Menu.Item key="12">
               算法选择：
@@ -60,12 +110,20 @@ export const SiderScreen = ({ theme,visible,setVisible }: { theme: SiderTheme | 
                 <Radio.Button value="b">CNN</Radio.Button>
               </Radio.Group>
             </Menu.Item>
-            <Menu.Item key="13"><Link to={"caculate"}>计算</Link></Menu.Item>
-            <Menu.Item key="14">预警结果</Menu.Item>
+            <Menu.Item key="count" onClick={handleSelect}>
+              <Link to={"earth"}>计算</Link>
+            </Menu.Item>
+            <Menu.Item key="result" onClick={handleSelect}>
+              <Link to={"earth"}>预警结果</Link>
+            </Menu.Item>
           </SubMenu>
         </Menu>
       </Sider>
-      <ContentScreen theme={theme} />
+      <ContentScreen
+        theme={theme}
+        callback={callback}
+        earthVisible={earthVisible}
+      />
     </Layout>
   );
 };

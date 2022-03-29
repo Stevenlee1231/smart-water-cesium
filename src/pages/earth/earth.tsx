@@ -7,17 +7,24 @@ import {
   PolylineCollection,
 } from "resium";
 import { Cartesian3 } from "cesium";
+import { useOutletContext } from "react-router";
+import Caculate from "../../components/Caculate/Caculate";
 import Line from "../../components/Line/Line";
 import suidongData from "../../assets/datas/suidong.json";
 import pointData from "../../assets/datas/obswell.json";
+import { useEffect } from "react";
 Ion.defaultAccessToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2OTU2ZDE3Yi04ZDliLTRjZDAtYWYyOC01ZTk1OWFjOGNiZTUiLCJpZCI6NDQ3NjgsImlhdCI6MTYyNzk2Mjk1MX0.FrqhJD70CQLH9QsnePyuU0gmevojlEmGgF8swsUQue4";
 
 export const EarthScreen = () => {
+  const { earthVisible, callback } = useOutletContext<any>();
   const lineData = suidongData.geometries[0].coordinates.map((value) => {
     return Cartesian3.fromDegrees(value[0], value[1], 0);
   });
   const position = Cartesian3.fromDegrees(100.075, 26.602, 100);
+  useEffect(() => {
+    console.log(earthVisible);
+  }, []);
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <Viewer timeline={false} animation={false}>
@@ -31,6 +38,19 @@ export const EarthScreen = () => {
           duration={0}
           destination={Cartesian3.fromDegrees(100.075, 26.602, 15000.0)}
         ></CameraFlyTo>
+        <Caculate
+          visible={earthVisible["count"]}
+          showDrawer={() => {
+            callback((prev: any) => {
+              return { ...prev, count: true };
+            });
+          }}
+          onClose={() => {
+            callback((prev: any) => {
+              return { ...prev, count: false };
+            });
+          }}
+        ></Caculate>
       </Viewer>
     </div>
   );
