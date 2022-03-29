@@ -1,4 +1,5 @@
 import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { URLSearchParamsInit, useSearchParams } from "react-router-dom";
 
 export const useDocumentTitle = (title: string) => {
   useEffect(() => {
@@ -37,3 +38,6 @@ export const useWidtheight = <T>(): [
   }, [ref.current, screenWidth]);
   return [ref, value];
 };
+
+
+

@@ -1,22 +1,50 @@
-import { Entity, PointGraphics } from "resium";
-import { Cartesian3, Color } from "cesium";
+import { Billboard, BillboardCollection, Entity, PointGraphics } from "resium";
+import {
+  Cartesian2,
+  Cartesian3,
+  Color,
+  HorizontalOrigin,
+  LabelStyle,
+  VerticalOrigin,
+} from "cesium";
 interface point {
   size: number;
-  position: Array<number>;
-  ishow: boolean;
-  color: any;
+  position: Array<any>;
+  location:Array<string>
 }
+
 const Point = (props: point) => {
-  const { size, position, ishow, color } = props;
-  const pointPosition = Cartesian3.fromDegrees(position[0], position[1], 0);
+  const { size, position ,location} = props;
+ 
   return (
-    <div
-      style={ishow ? { display: "block" } : { display: "none" }}
-      className="point-wrap"
-    >
-      <Entity position={pointPosition}>
-        <PointGraphics color={color} pixelSize={size}></PointGraphics>
-      </Entity>
+    <div>
+      {position.map((point, i) => {
+        return (
+          <>
+            <Entity
+              position={point}
+              label={{
+                text: location[i],
+                font: "14pt sans-serif",
+                fillColor: Color.BLACK,
+                backgroundColor: Color.GREEN,
+                showBackground: true,
+                outlineColor: Color.WHITE,
+                outlineWidth: 10,
+                scale: 1.0,
+                style: LabelStyle.FILL_AND_OUTLINE,
+                horizontalOrigin: HorizontalOrigin.LEFT,
+                pixelOffset: new Cartesian2(10, 0),
+                show: true,
+              }}
+              key={i}
+                    
+            >
+              <PointGraphics pixelSize={size}></PointGraphics>
+            </Entity>
+          </>
+        );
+      })}
     </div>
   );
 };

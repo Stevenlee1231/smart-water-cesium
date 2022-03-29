@@ -122,6 +122,234 @@ function Caculate(props: caculate) {
               </Form.Item>
             </Col>
           </Row>
+          <Row gutter={16}>
+            <Col span={8}>
+              <Form.Item
+                name="owner"
+                label="Owner"
+                rules={[{ required: true, message: "Please select an owner" }]}
+              >
+                <Select placeholder="Please select an owner">
+                  <Option value="xiao">Xiaoxiao Fu</Option>
+                  <Option value="mao">Maomao Zhou</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item
+                name="type"
+                label="Type"
+                rules={[{ required: true, message: "Please choose the type" }]}
+              >
+                <Select placeholder="Please choose the type">
+                  <Option value="private">Private</Option>
+                  <Option value="public">Public</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item
+                name="type"
+                label="Type"
+                rules={[{ required: true, message: "Please choose the type" }]}
+              >
+                <Select placeholder="Please choose the type">
+                  <Option value="private">Private</Option>
+                  <Option value="public">Public</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={16}>
+            <Col span={8}>
+              <Form.Item
+                name="owner"
+                label="Owner"
+                rules={[{ required: true, message: "Please select an owner" }]}
+              >
+                <Select placeholder="Please select an owner">
+                  <Option value="xiao">Xiaoxiao Fu</Option>
+                  <Option value="mao">Maomao Zhou</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item
+                name="type"
+                label="Type"
+                rules={[{ required: true, message: "Please choose the type" }]}
+              >
+                <Select placeholder="Please choose the type">
+                  <Option value="private">Private</Option>
+                  <Option value="public">Public</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item
+                name="type"
+                label="Type"
+                rules={[{ required: true, message: "Please choose the type" }]}
+              >
+                <Select placeholder="Please choose the type">
+                  <Option value="private">Private</Option>
+                  <Option value="public">Public</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={16}>
+            <Col span={8}>
+              <Form.Item
+                name="owner"
+                label="Owner"
+                rules={[{ required: true, message: "Please select an owner" }]}
+              >
+                <Select placeholder="Please select an owner">
+                  <Option value="xiao">Xiaoxiao Fu</Option>
+                  <Option value="mao">Maomao Zhou</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item
+                name="type"
+                label="Type"
+                rules={[{ required: true, message: "Please choose the type" }]}
+              >
+                <Select placeholder="Please choose the type">
+                  <Option value="private">Private</Option>
+                  <Option value="public">Public</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item
+                name="type"
+                label="Type"
+                rules={[{ required: true, message: "Please choose the type" }]}
+              >
+                <Select placeholder="Please choose the type">
+                  <Option value="private">Private</Option>
+                  <Option value="public">Public</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={16}>
+            <Col span={8}>
+              <Form.Item
+                name="owner"
+                label="Owner"
+                rules={[{ required: true, message: "Please select an owner" }]}
+              >
+                <Select placeholder="Please select an owner">
+                  <Option value="xiao">Xiaoxiao Fu</Option>
+                  <Option value="mao">Maomao Zhou</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item
+                name="type"
+                label="Type"
+                rules={[{ required: true, message: "Please choose the type" }]}
+              >
+                <Select placeholder="Please choose the type">
+                  <Option value="private">Private</Option>
+                  <Option value="public">Public</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item
+                name="type"
+                label="Type"
+                rules={[{ required: true, message: "Please choose the type" }]}
+              >
+                <Select placeholder="Please choose the type">
+                  <Option value="private">Private</Option>
+                  <Option value="public">Public</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={16}>
+            <Col span={8}>
+              <Form.Item
+                name="owner"
+                label="Owner"
+                rules={[{ required: true, message: "Please select an owner" }]}
+              >
+                <Select placeholder="Please select an owner">
+                  <Option value="xiao">Xiaoxiao Fu</Option>
+                  <Option value="mao">Maomao Zhou</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item
+                name="type"
+                label="Type"
+                rules={[{ required: true, message: "Please choose the type" }]}
+              >
+                <Select placeholder="Please choose the type">
+                  <Option value="private">Private</Option>
+                  <Option value="public">Public</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item
+                name="type"
+                label="Type"
+                rules={[{ required: true, message: "Please choose the type" }]}
+              >
+                <Select placeholder="Please choose the type">
+                  <Option value="private">Private</Option>
+                  <Option value="public">Public</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={16}>
+            <Col span={8}>
+              <Form.Item
+                name="owner"
+                label="Owner"
+                rules={[{ required: true, message: "Please select an owner" }]}
+              >
+                <Select placeholder="Please select an owner">
+                  <Option value="xiao">Xiaoxiao Fu</Option>
+                  <Option value="mao">Maomao Zhou</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item
+                name="type"
+                label="Type"
+                rules={[{ required: true, message: "Please choose the type" }]}
+              >
+                <Select placeholder="Please choose the type">
+                  <Option value="private">Private</Option>
+                  <Option value="public">Public</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item
+                name="type"
+                label="Type"
+                rules={[{ required: true, message: "Please choose the type" }]}
+              >
+                <Select placeholder="Please choose the type">
+                  <Option value="private">Private</Option>
+                  <Option value="public">Public</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+          </Row>
         </Form>
       </Drawer>
     </>
