@@ -1,22 +1,22 @@
-import React from "react";
 import { Resource, UrlTemplateImageryProvider } from "cesium";
 import { ImageryLayer } from "resium";
 interface loadtif {
   url: string | Resource;
-  alpha: number;
+  visible:boolean
 }
 function Loadtif(props: loadtif) {
-  const { url, alpha } = props;
+  const { url, visible } = props;
+  console.log(url,"xxx")
   return (
     <>
       <ImageryLayer
         imageryProvider={
           new UrlTemplateImageryProvider({
-            //@ts-ignore
-            url: { url },
+            
+            url:url.toString() ,
           })
         }
-        alpha={alpha}
+        alpha={visible?1:0}
       />{" "}
     </>
   );

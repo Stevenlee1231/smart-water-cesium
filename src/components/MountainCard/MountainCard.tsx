@@ -1,9 +1,14 @@
 import { Tabs, Radio } from "antd";
 import { useEffect, useState } from "react";
+import {
+  developmet_mountain,
+  production_mountain,
+} from "../../assets/datas/mountain_tif";
+import Loadtif from "../Loadtif/Loadtif";
 import "./MountainCard.scss";
 const { TabPane } = Tabs;
 const mountain_visible_init = {
-  model_area: true,
+  model_area: false,
   //Simulatewaterlevel 模拟水位swl简写
   //丰水期
   SWLF: false,
@@ -39,53 +44,63 @@ interface mountainCard {
   mode: string;
 }
 const MountainCard = (props: mountainCard) => {
-  const [mountainVisibleInit, setMountainVisibleInit] = useState(
-    mountain_visible_init
+  const [mountainVisible, setMountainVisible] = useState(
+  {  ...mountain_visible_init,model_area:true}
   );
-  const handleRadio=(e:any)=>{
-    const key=e.target.value
-    setMountainVisibleInit((prev)=>{
-      return {...prev,[key]:true}
-    })
-  }
-  useEffect(()=>{
-    console.log(mountainVisibleInit)
-  },[mountainVisibleInit])
+  const handleRadio = (e: any) => {
+    const key = e.target.value;
+    setMountainVisible((prev) => {
+      return { ...mountain_visible_init, [key]: true };
+    });
+  };
+  useEffect(() => {
+    console.log(mountainVisible);
+  }, [mountainVisible]);
   return (
-    <div className="mountain-card-wrap">
-      <Tabs
-        defaultActiveKey="model_area"
-        onChange={(e) => {
-          if(e=="model_area"){
-            setMountainVisibleInit(mountain_visible_init)
-          }else{
-            setMountainVisibleInit((prev)=>{
-              return {...prev,model_area:false}
-            })
-          }
-        }}
-      >
-        <TabPane tab="模型范围" key="model_area">
-          显示模型范围
-        </TabPane>
-        <TabPane tab="模拟水位" key="2">
-          <Radio.Group
-            options={SWL_options}
-            optionType="button"
-            buttonStyle="solid"
-            onChange={handleRadio}
-          />
-        </TabPane>
-        <TabPane tab="水均衡" key="3">
-          <Radio.Group
-            options={WB_options}
-            optionType="button"
-            buttonStyle="solid"
-            onChange={handleRadio}
-          />
-        </TabPane>
-      </Tabs>
-    </div>
+    <>
+      <div className="mountain-card-wrap">
+        <Tabs
+          defaultActiveKey="model_area"
+          onChange={(e) => {
+            if (e == "model_area") {
+              setMountainVisible(mountain_visible_init);
+            } else {
+              setMountainVisible((prev) => {
+                return { ...prev, model_area: false };
+              });
+            }
+          }}
+        >
+          <TabPane tab="模型范围" key="model_area">
+            显示模型范围
+          </TabPane>
+          <TabPane tab="模拟水位" key="2">
+            <Radio.Group
+              options={SWL_options}
+              optionType="button"
+              buttonStyle="solid"
+              onChange={handleRadio}
+            />
+          </TabPane>
+          <TabPane tab="水均衡" key="3">
+            <Radio.Group
+              options={WB_options}
+              optionType="button"
+              buttonStyle="solid"
+              onChange={handleRadio}
+            />
+          </TabPane>
+        </Tabs>
+      </div>
+      {
+        <>
+          <Loadtif url={developmet_mountain.SWLF} visible={mountainVisible.SWLF}></Loadtif>
+          <Loadtif url={developmet_mountain.SWLK} visible={mountainVisible.SWLK}></Loadtif>
+          <Loadtif url={developmet_mountain.SWLLF} visible={mountainVisible.SWLLF}></Loadtif>
+          <Loadtif url={developmet_mountain.SWLLK} visible={mountainVisible.SWLLK}></Loadtif>
+        </>
+      }
+    </>
   );
 };
 export default MountainCard;
