@@ -75,14 +75,14 @@ export const EarthScreen = () => {
           duration={0}
           destination={Cartesian3.fromDegrees(100.075, 26.602, 15000.0)}
         ></CameraFlyTo>
-        {/* <ImageryLayer
+        <ImageryLayer
           imageryProvider={
             new UrlTemplateImageryProvider({
-              url: "http://103.118.40.123:9999/yun/tif/wulfeng/{z}/{x}/{y}.png",
+              url: "/api/yun/tif/wulfeng/{z}/{x}/{y}.png",
             })
           }
           alpha={1}
-        /> */}
+        />
         {/* <ImageryLayer
           imageryProvider={
             new UrlTemplateImageryProvider({
