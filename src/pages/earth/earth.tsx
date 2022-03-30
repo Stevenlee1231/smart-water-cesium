@@ -9,6 +9,7 @@ import {
 } from "resium";
 import { Cartesian3 } from "cesium";
 import { useOutletContext } from "react-router";
+import MountainCard from "../../components/MountainCard/MountainCard";
 import Caculate from "../../components/Caculate/Caculate";
 import Line from "../../components/Line/Line";
 //隧洞数据
@@ -18,18 +19,20 @@ import tunnel from "../../assets/datas/obswell.json";
 //支洞数据
 import branchHole from "../../assets/datas/zhidong.json";
 import Point from "../../components/Point/Point";
+import { useState } from "react";
 Ion.defaultAccessToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2OTU2ZDE3Yi04ZDliLTRjZDAtYWYyOC01ZTk1OWFjOGNiZTUiLCJpZCI6NDQ3NjgsImlhdCI6MTYyNzk2Mjk1MX0.FrqhJD70CQLH9QsnePyuU0gmevojlEmGgF8swsUQue4";
-
 export const EarthScreen = () => {
   const { earthVisible, callback } = useOutletContext<any>();
   const lineData = suidongData.geometries[0].coordinates.map((value) => {
     return Cartesian3.fromDegrees(value[0], value[1], 0);
   });
+
   const tunnels = tunnel.geometries.map((obj) => {
     return Cartesian3.fromDegrees(obj.coordinates[0], obj.coordinates[1], 0);
   });
 
+  //支洞
   const branchHoles = branchHole.geometries.map((obj) => {
     return Cartesian3.fromDegrees(
       obj.coordinates[0][0],
@@ -60,6 +63,10 @@ export const EarthScreen = () => {
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <Viewer timeline={false} animation={false} infoBox={false}>
+        <CameraFlyTo
+          duration={0}
+          destination={Cartesian3.fromDegrees(100.075, 26.602, 15000.0)}
+        ></CameraFlyTo>
         {/* 监测井 */}
         {earthVisible["monitoring"] && (
           <Point size={30} position={tunnels} location={tunnelLabel} />
@@ -71,43 +78,11 @@ export const EarthScreen = () => {
             <Line positions={lineData}></Line>
           </>
         )}
-        <CameraFlyTo
-          duration={0}
-          destination={Cartesian3.fromDegrees(100.075, 26.602, 15000.0)}
-        ></CameraFlyTo>
-        <ImageryLayer
-          imageryProvider={
-            new UrlTemplateImageryProvider({
-              url: "/api/yun/tif/wulfeng/{z}/{x}/{y}.png",
-            })
-          }
-          alpha={1}
-        />
-        {/* <ImageryLayer
-          imageryProvider={
-            new UrlTemplateImageryProvider({
-              url: "http://103.118.40.123:9999/yun/tif/wuku/{z}/{x}/{y}.png",
-            })
-          }
-          alpha={1}
-        /> */}
-        {/* <ImageryLayer
-          imageryProvider={
-            new UrlTemplateImageryProvider({
-              url: "http://103.118.40.123:9999/yun/tif/wulku/{z}/{x}/{y}.png",
-            })
-          }
-          alpha={1}
-        /> */}
-        {/* <ImageryLayer
-          imageryProvider={
-            new UrlTemplateImageryProvider({
-              url: "http://103.118.40.123:9999/yun/tif/wulfeng/{z}/{x}/{y}.png",
-            })
-          }
-          alpha={1}
-        /> */}
-
+        
+        {earthVisible["GMSMountain"]&&<MountainCard mode={"GMSMOUNTAIN"}></MountainCard>}
+        {earthVisible["GMSMountainSix"]&&<MountainCard mode={"GMSMOUNTAINSIX"}></MountainCard>}
+        {earthVisible["mountain"]&&<MountainCard mode={"MOUNTAIN"}></MountainCard>}
+        {earthVisible["mountainSix"]&&<MountainCard mode={"MOUNTAINSIX"}></MountainCard>}
         {/* 计算页面 */}
         <Caculate
           visible={earthVisible["count"]}
