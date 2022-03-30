@@ -697,7 +697,7 @@ function Caculate(props: caculate) {
           </Row>
         </Form>
       </Drawer>
-      {console.log(id)}
+      
     </>
   );
 }
