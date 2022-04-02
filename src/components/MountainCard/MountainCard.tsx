@@ -1,9 +1,8 @@
 import { Tabs, Radio } from "antd";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Color } from "cesium";
 import {
-  developmet_mountain,
-  production_mountain,
+  developmet_mountain
 } from "../../assets/datas/mountain_tif";
 import model_area_data from "../../assets/datas/model_area.json";
 import Loadtif from "../Loadtif/Loadtif";
@@ -97,10 +96,11 @@ const MountainCard = (props: mountainCard) => {
         <>
           {mountainVisible.model_area && (
             <Polygon
-              hierarchy={model_area_data.geometries[0].coordinates}
+              hierarchy={model_area_data.geometries[0].coordinates[0]}
               material={Color.RED}
             ></Polygon>
           )}
+
           <Loadtif
             url={developmet_mountain.SWLF}
             visible={mountainVisible.SWLF}

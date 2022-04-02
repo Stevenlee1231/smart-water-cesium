@@ -1,16 +1,24 @@
 import { Color, Cartesian3 } from "cesium";
-import React from "react";
 import { PolygonGraphics, Entity } from "resium";
 interface polygon {
-  hierarchy: Array<any>;
+  hierarchy: Array<number[]>;
   material: Color;
 }
 function Polygon(props: polygon) {
   const { hierarchy, material } = props;
+  let positions: Array<number> = [];
+  hierarchy.map((i) => {
+    positions.push(i[0]);
+    positions.push(i[1]);
+  });
+
   return (
     <Entity>
       <PolygonGraphics
-        hierarchy={Cartesian3.fromDegreesArray(hierarchy) as any}
+        hierarchy={{
+          positions: Cartesian3.fromDegreesArray(positions),
+          holes: [],
+        }}
         material={material}
         outline
         outlineColor={Color.WHITESMOKE}

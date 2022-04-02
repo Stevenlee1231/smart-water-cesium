@@ -5,7 +5,7 @@ import Model from './Model';
 export const FormationScreen = () => {
     return (
         <Canvas
-           camera={{ position: [0, 0, 12.25], fov: 15}}
+           camera={{ position: [0, 0, 12.25], fov: 75}}
            style={{
               backgroundColor: '#111a21',
               width: '100%',
