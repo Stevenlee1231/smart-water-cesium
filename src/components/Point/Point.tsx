@@ -22,22 +22,22 @@ const Point = (props: point) => {
         return (
           <>
             <Entity
+              key={i}
               position={point}
               label={{
                 text: location[i],
                 font: "14pt sans-serif",
-                fillColor: Color.BLACK,
+                fillColor: Color.RED,
                 backgroundColor: Color.GREEN,
                 showBackground: true,
-                outlineColor: Color.WHITE,
+                outlineColor: Color.ORANGERED,
                 outlineWidth: 10,
                 scale: 1.0,
                 style: LabelStyle.FILL_AND_OUTLINE,
                 horizontalOrigin: HorizontalOrigin.LEFT,
-                pixelOffset: new Cartesian2(10, 0),
+                pixelOffset: new Cartesian2(20, 0),
                 show: true,
               }}
-              key={i}
             >
               <PointGraphics pixelSize={size}></PointGraphics>
             </Entity>

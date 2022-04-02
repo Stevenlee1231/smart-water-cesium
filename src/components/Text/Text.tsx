@@ -6,18 +6,22 @@ interface text {
   position: Array<any>;
   color: Color;
   text: string;
+  key?: any;
 }
 
 function Text(props: text) {
-  const { position, color, text } = props;
+  const { position, color, text, key } = props;
   return (
-    <LabelCollection>
-      <Label
-        fillColor={Color.ORANGE}
-        position={new Cartesian3(0.0, 0.0, 0.0)}
-        text="Cesium"
-      />
-    </LabelCollection>
+    <Label
+      disableDepthTestDistance={Number.POSITIVE_INFINITY}
+      key={key}
+      fillColor={color}
+      position={Cartesian3.fromDegrees(position[0], position[1], 0)}
+      text={text}
+      scale={0.6}
+      showBackground
+      backgroundColor={Color.WHITE}
+    />
   );
 }
 

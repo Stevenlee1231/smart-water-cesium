@@ -1,10 +1,13 @@
 import { Tabs, Radio } from "antd";
 import { useEffect, useState } from "react";
+import { Color } from "cesium";
 import {
   developmet_mountain,
   production_mountain,
 } from "../../assets/datas/mountain_tif";
+import model_area_data from "../../assets/datas/model_area.json";
 import Loadtif from "../Loadtif/Loadtif";
+import Polygon from "../Polygon/Polygon";
 import "./MountainCard.scss";
 const { TabPane } = Tabs;
 const mountain_visible_init = {
@@ -44,18 +47,16 @@ interface mountainCard {
   mode: string;
 }
 const MountainCard = (props: mountainCard) => {
-  const [mountainVisible, setMountainVisible] = useState(
-  {  ...mountain_visible_init,model_area:true}
-  );
+  const [mountainVisible, setMountainVisible] = useState({
+    ...mountain_visible_init,
+    model_area: true,
+  });
   const handleRadio = (e: any) => {
     const key = e.target.value;
     setMountainVisible((prev) => {
       return { ...mountain_visible_init, [key]: true };
     });
   };
-  useEffect(() => {
-    console.log(mountainVisible);
-  }, [mountainVisible]);
   return (
     <>
       <div className="mountain-card-wrap">
@@ -94,10 +95,28 @@ const MountainCard = (props: mountainCard) => {
       </div>
       {
         <>
-          <Loadtif url={developmet_mountain.SWLF} visible={mountainVisible.SWLF}></Loadtif>
-          <Loadtif url={developmet_mountain.SWLK} visible={mountainVisible.SWLK}></Loadtif>
-          <Loadtif url={developmet_mountain.SWLLF} visible={mountainVisible.SWLLF}></Loadtif>
-          <Loadtif url={developmet_mountain.SWLLK} visible={mountainVisible.SWLLK}></Loadtif>
+          {mountainVisible.model_area && (
+            <Polygon
+              hierarchy={model_area_data.geometries[0].coordinates}
+              material={Color.RED}
+            ></Polygon>
+          )}
+          <Loadtif
+            url={developmet_mountain.SWLF}
+            visible={mountainVisible.SWLF}
+          ></Loadtif>
+          <Loadtif
+            url={developmet_mountain.SWLK}
+            visible={mountainVisible.SWLK}
+          ></Loadtif>
+          <Loadtif
+            url={developmet_mountain.SWLLF}
+            visible={mountainVisible.SWLLF}
+          ></Loadtif>
+          <Loadtif
+            url={developmet_mountain.SWLLK}
+            visible={mountainVisible.SWLLK}
+          ></Loadtif>
         </>
       }
     </>

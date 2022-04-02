@@ -203,10 +203,7 @@ interface caculate {
 function Caculate(props: caculate) {
   const { visible, onClose } = props;
   const [id, setId] = useState(0);
-
-  console.log(datas[id][0].water_inflow);
   const [form] = useForm();
-
   return (
     <>
       <Drawer
@@ -697,7 +694,6 @@ function Caculate(props: caculate) {
           </Row>
         </Form>
       </Drawer>
-      
     </>
   );
 }

@@ -1,18 +1,5 @@
-import {
-  Color,
-  Ion,
-  Material,
-  Transforms,
-  UrlTemplateImageryProvider,
-} from "cesium";
-import {
-  Viewer,
-  CameraFlyTo,
-  Entity,
-  PointGraphics,
-  PolylineCollection,
-  ImageryLayer,
-} from "resium";
+import { Color, Ion, Material } from "cesium";
+import { Viewer, CameraFlyTo, LabelCollection } from "resium";
 import { Cartesian3 } from "cesium";
 import { useOutletContext } from "react-router";
 import MountainCard from "../../components/MountainCard/MountainCard";
@@ -47,7 +34,11 @@ export const EarthScreen = () => {
   });
   let branchLabelPositions: Array<any> = [];
   branchHole.geometries.map((value) => {
-    branchLabelPositions.push(value.coordinates.pop());
+    let temp: Array<any> = [];
+    value.coordinates.slice(-1)[0].map((value) => {
+      return temp.push(value + 0.0000000000005);
+    });
+    branchLabelPositions.push(temp);
   });
   //tunnel_label
   const tunnelLabel = [
@@ -78,16 +69,17 @@ export const EarthScreen = () => {
         ></CameraFlyTo>
         {/* 监测井 */}
         {earthVisible["monitoring"] && (
-          <Point size={30} position={tunnels} location={tunnelLabel} />
+          <Point size={25} position={tunnels} location={tunnelLabel} />
         )}
         {/* 隧道及支洞 */}
         {earthVisible["tunnel"] && (
           <>
             {/* <Point location={location2} size={10} position={branchHoles} /> */}
             {branchHoles &&
-              branchHoles.map((value) => {
+              branchHoles.map((value, index) => {
                 return (
                   <Line
+                    key={index}
                     material={Material.fromType("Color", {
                       color: new Color(0, 255, 0, 1),
                     })}
@@ -96,16 +88,18 @@ export const EarthScreen = () => {
                   ></Line>
                 );
               })}
-            {/* {branchLabelPositions &&
-              branchLabelPositions.map((value, index) => {
-                return (
-                  <Text
-                    position={value}
-                    text={branchLabel[index]}
-                    color={Color.GREEN}
-                  ></Text>
-                );
-              })} */}
+            <LabelCollection>
+              {branchLabelPositions &&
+                branchLabelPositions.map((value, index) => {
+                  return (
+                    <Text
+                      position={value}
+                      text={branchLabel[index]}
+                      color={Color.BLUE}
+                    ></Text>
+                  );
+                })}
+            </LabelCollection>
             <Line
               material={Material.fromType("Color", {
                 color: new Color(255, 0, 0, 1),

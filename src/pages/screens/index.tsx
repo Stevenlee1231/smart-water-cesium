@@ -41,9 +41,6 @@ export const Screen = () => {
     //预警结果
     result: false,
   });
-  useEffect(() => {
-    console.log(earthVisible);
-  }, [earthVisible]);
   //控制sider显示没用
   const [visible, setVisible] = useState(false);
   return (

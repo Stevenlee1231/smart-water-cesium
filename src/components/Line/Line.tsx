@@ -4,6 +4,7 @@ interface line {
   positions: Array<any>;
   material: Material;
   width: number;
+  key?: any;
 }
 
 const Line = (props: line) => {
