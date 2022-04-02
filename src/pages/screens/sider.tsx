@@ -66,7 +66,7 @@ export const SiderScreen = ({
             </Menu.Item>
           </SubMenu>
           <SubMenu key="sub2" icon={<GlobalOutlined />} title="区域信息">
-            <Menu.Item key="5">地层信息</Menu.Item>
+            <Menu.Item key="5"><Link to={"formation"}>地层信息</Link></Menu.Item>
             <Menu.Item key="hydrology" onClick={handleSelect}>
               <Link to={"earth"}>水文地质信息</Link>
             </Menu.Item>
