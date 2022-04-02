@@ -85,7 +85,9 @@ const Chart = (props: chart) => {
     xAxis: {
       data: xAxis,
     },
-    yAxis: {},
+    yAxis: {
+      scale: true,
+    },
     toolbox: {
       right: 10,
       feature: {
