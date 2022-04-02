@@ -42,11 +42,10 @@ export const SiderScreen = ({
   const handleSelect = (e: any) => {
     callback((prev: any) => {
       if (prev[e.key]) return prev;
-      return { ...initEarthVisible, [e.key]: true};
+      return { ...initEarthVisible, [e.key]: true };
     });
   };
-  
-  
+
   return (
     <Layout>
       <Sider width={304} style={{ height: "100vh" }}>
@@ -88,7 +87,7 @@ export const SiderScreen = ({
           </SubMenu>
           <SubMenu key="sub4" icon={<MonitorOutlined />} title="预测">
             <SubMenu key="sub41" title="GMS模型预测">
-              <Menu.Item key="GMSMountain" onClick={handleSelect} >
+              <Menu.Item key="GMSMountain" onClick={handleSelect}>
                 <Link to={"earth"}>香炉山隧洞模型 </Link>
               </Menu.Item>
               <Menu.Item key="GMSMountainSix" onClick={handleSelect}>

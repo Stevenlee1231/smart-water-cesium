@@ -2,19 +2,18 @@ import { Polyline, PolylineCollection } from "resium";
 import { Material, Color } from "cesium";
 interface line {
   positions: Array<any>;
+  material: Material;
+  width: number;
 }
 
 const Line = (props: line) => {
-  const { positions } = props;
-  const material = Material.fromType("Color", {
-    color: new Color(255, 0, 0, 1),
-  });
-    return (
-      
-    <PolylineCollection >
+  const { positions, material, width } = props;
+
+  return (
+    <PolylineCollection>
       <Polyline
         show={true}
-        width={10}
+        width={width}
         material={material}
         positions={positions}
       ></Polyline>

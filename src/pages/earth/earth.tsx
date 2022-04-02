@@ -1,4 +1,10 @@
-import { Ion, Transforms, UrlTemplateImageryProvider } from "cesium";
+import {
+  Color,
+  Ion,
+  Material,
+  Transforms,
+  UrlTemplateImageryProvider,
+} from "cesium";
 import {
   Viewer,
   CameraFlyTo,
@@ -12,6 +18,7 @@ import { useOutletContext } from "react-router";
 import MountainCard from "../../components/MountainCard/MountainCard";
 import Caculate from "../../components/Caculate/Caculate";
 import Line from "../../components/Line/Line";
+import Text from "../../components/Text/Text";
 //隧洞数据
 import suidongData from "../../assets/datas/suidong.json";
 //监测井数据
@@ -34,11 +41,13 @@ export const EarthScreen = () => {
 
   //支洞
   const branchHoles = branchHole.geometries.map((obj) => {
-    return Cartesian3.fromDegrees(
-      obj.coordinates[0][0],
-      obj.coordinates[0][1],
-      0
-    );
+    return obj.coordinates.map((value) => {
+      return Cartesian3.fromDegrees(value[0], value[1], 0);
+    });
+  });
+  let branchLabelPositions: Array<any> = [];
+  branchHole.geometries.map((value) => {
+    branchLabelPositions.push(value.coordinates.pop());
   });
   //tunnel_label
   const tunnelLabel = [
@@ -49,7 +58,7 @@ export const EarthScreen = () => {
     "XLP3-12K3",
     "XLP4-2K2",
   ];
-  const location2 = [
+  const branchLabel = [
     "1#施工支洞",
     "2#施工支洞",
     "1-1施工支洞",
@@ -75,14 +84,50 @@ export const EarthScreen = () => {
         {earthVisible["tunnel"] && (
           <>
             {/* <Point location={location2} size={10} position={branchHoles} /> */}
-            <Line positions={lineData}></Line>
+            {branchHoles &&
+              branchHoles.map((value) => {
+                return (
+                  <Line
+                    material={Material.fromType("Color", {
+                      color: new Color(0, 255, 0, 1),
+                    })}
+                    positions={value}
+                    width={3}
+                  ></Line>
+                );
+              })}
+            {/* {branchLabelPositions &&
+              branchLabelPositions.map((value, index) => {
+                return (
+                  <Text
+                    position={value}
+                    text={branchLabel[index]}
+                    color={Color.GREEN}
+                  ></Text>
+                );
+              })} */}
+            <Line
+              material={Material.fromType("Color", {
+                color: new Color(255, 0, 0, 1),
+              })}
+              positions={lineData}
+              width={7}
+            ></Line>
           </>
         )}
-        
-        {earthVisible["GMSMountain"]&&<MountainCard mode={"GMSMOUNTAIN"}></MountainCard>}
-        {earthVisible["GMSMountainSix"]&&<MountainCard mode={"GMSMOUNTAINSIX"}></MountainCard>}
-        {earthVisible["mountain"]&&<MountainCard mode={"MOUNTAIN"}></MountainCard>}
-        {earthVisible["mountainSix"]&&<MountainCard mode={"MOUNTAINSIX"}></MountainCard>}
+
+        {earthVisible["GMSMountain"] && (
+          <MountainCard mode={"GMSMOUNTAIN"}></MountainCard>
+        )}
+        {earthVisible["GMSMountainSix"] && (
+          <MountainCard mode={"GMSMOUNTAINSIX"}></MountainCard>
+        )}
+        {earthVisible["mountain"] && (
+          <MountainCard mode={"MOUNTAIN"}></MountainCard>
+        )}
+        {earthVisible["mountainSix"] && (
+          <MountainCard mode={"MOUNTAINSIX"}></MountainCard>
+        )}
         {/* 计算页面 */}
         <Caculate
           visible={earthVisible["count"]}
