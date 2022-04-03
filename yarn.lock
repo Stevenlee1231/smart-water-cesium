@@ -2205,6 +2205,11 @@
   dependencies:
     "@types/jest" "*"
 
+"@types/three@^0.139.0":
+  "integrity" "sha512-4V/jZhyq7Mv05coUzxL3bz8AuBOSi/1F0RY7ujisHTV0Amy/fnYJ+s7TSJ1/hXjZukSkpuFRgV+wvWUEMbsMbQ=="
+  "resolved" "https://registry.npmmirror.com/@types/three/-/three-0.139.0.tgz"
+  "version" "0.139.0"
+
 "@types/trusted-types@^2.0.2":
   "integrity" "sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg=="
   "resolved" "https://registry.npmmirror.com/@types/trusted-types/-/trusted-types-2.0.2.tgz"
