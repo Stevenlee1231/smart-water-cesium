@@ -1,9 +1,7 @@
 import { Tabs, Radio } from "antd";
 import { useState } from "react";
 import { Color } from "cesium";
-import {
-  developmet_mountain
-} from "../../assets/datas/mountain_tif";
+import { developmet_mountain } from "../../assets/datas/mountain_tif";
 import model_area_data from "../../assets/datas/model_area.json";
 import Loadtif from "../Loadtif/Loadtif";
 import Polygon from "../Polygon/Polygon";
@@ -96,8 +94,10 @@ const MountainCard = (props: mountainCard) => {
         <>
           {mountainVisible.model_area && (
             <Polygon
-              hierarchy={model_area_data.geometries[0].coordinates[0]}
+              data={model_area_data}
               material={Color.RED}
+              stroke={Color.RED}
+              strokeWidth={5}
             ></Polygon>
           )}
 

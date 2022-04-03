@@ -142,23 +142,23 @@ const Chart = (props: chart) => {
         lineStyle: {
           color: "#333",
         },
-        data: [
-          {
-            yAxis: 50,
-          },
-          {
-            yAxis: 100,
-          },
-          {
-            yAxis: 150,
-          },
-          {
-            yAxis: 200,
-          },
-          {
-            yAxis: 300,
-          },
-        ],
+        // data: [
+        //   {
+        //     yAxis: 50,
+        //   },
+        //   {
+        //     yAxis: 100,
+        //   },
+        //   {
+        //     yAxis: 150,
+        //   },
+        //   {
+        //     yAxis: 200,
+        //   },
+        //   {
+        //     yAxis: 300,
+        //   },
+        // ],
       },
     },
   };

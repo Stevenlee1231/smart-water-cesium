@@ -12,10 +12,22 @@ import suidongData from "../../assets/datas/suidong.json";
 import tunnel from "../../assets/datas/obswell.json";
 //支洞数据
 import branchHole from "../../assets/datas/zhidong.json";
+import waterLevel from "../../assets/datas/water_level0706.json";
+import waterLevelColor from "../../assets/datas/water_level_color";
 import Point from "../../components/Point/Point";
 import { useState } from "react";
+import Polygon from "../../components/Polygon/Polygon";
 Ion.defaultAccessToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2OTU2ZDE3Yi04ZDliLTRjZDAtYWYyOC01ZTk1OWFjOGNiZTUiLCJpZCI6NDQ3NjgsImlhdCI6MTYyNzk2Mjk1MX0.FrqhJD70CQLH9QsnePyuU0gmevojlEmGgF8swsUQue4";
+let templateGeoJson = {
+  type: "GeometryCollection",
+  geometries: [
+    {
+      type: "Polygon",
+      coordinates: null as any,
+    },
+  ],
+};
 export const EarthScreen = () => {
   const { earthVisible, callback } = useOutletContext<any>();
   const lineData = suidongData.geometries[0].coordinates.map((value) => {
@@ -109,7 +121,25 @@ export const EarthScreen = () => {
             ></Line>
           </>
         )}
-
+        {earthVisible["regionalWater"] &&
+          waterLevel.geometries.map((value, index) => {
+            // tempGeoJson.geometries[0].coordinates = null;
+            // console.log("pre", tempGeoJson);
+            // // console.log(waterLevelColor[index]);
+            // // tempGeoJson.geometries[0].coordinates[0].push(value.coordinates[0])
+            // tempGeoJson.geometries[0].coordinates = value.coordinates;
+            // console.log("tempGeoJson", tempGeoJson);
+            let tempGeoJson = JSON.parse(JSON.stringify(templateGeoJson));
+            tempGeoJson.geometries[0].coordinates = value.coordinates;
+            return (
+              <Polygon
+                data={tempGeoJson}
+                material={Color.fromCssColorString(waterLevelColor[index])}
+                stroke={Color.fromCssColorString(waterLevelColor[index])}
+                strokeWidth={5}
+              ></Polygon>
+            );
+          })}
         {earthVisible["GMSMountain"] && (
           <MountainCard mode={"GMSMOUNTAIN"}></MountainCard>
         )}

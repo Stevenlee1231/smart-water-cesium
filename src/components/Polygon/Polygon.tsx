@@ -1,29 +1,23 @@
-import { Color, Cartesian3 } from "cesium";
-import { PolygonGraphics, Entity } from "resium";
+import { Spin } from "antd";
+import { Color } from "cesium";
+import { useState } from "react";
+import { GeoJsonDataSource } from "resium";
 interface polygon {
-  hierarchy: Array<number[]>;
   material: Color;
+  data: object;
+  stroke: Color;
+  strokeWidth: number;
 }
 function Polygon(props: polygon) {
-  const { hierarchy, material } = props;
-  let positions: Array<number> = [];
-  hierarchy.map((i) => {
-    positions.push(i[0]);
-    positions.push(i[1]);
-  });
+  const { data, stroke, strokeWidth, material } = props;
 
   return (
-    <Entity>
-      <PolygonGraphics
-        hierarchy={{
-          positions: Cartesian3.fromDegreesArray(positions),
-          holes: [],
-        }}
-        material={material}
-        outline
-        outlineColor={Color.WHITESMOKE}
-      ></PolygonGraphics>
-    </Entity>
+    <GeoJsonDataSource
+      data={data}
+      stroke={stroke}
+      strokeWidth={strokeWidth}
+      fill={material.withAlpha(0.1)}
+    ></GeoJsonDataSource>
   );
 }
 

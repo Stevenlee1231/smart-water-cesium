@@ -35,3 +35,4 @@ const waterLevelColor = [
   "#ff4600",
   "#ff0000",
 ];
+export default waterLevelColor;
