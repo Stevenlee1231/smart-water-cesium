@@ -1,7 +1,10 @@
 import { Tabs, Radio } from "antd";
 import { useState } from "react";
 import { Color } from "cesium";
-import { developmet_mountain } from "../../assets/datas/mountain_tif";
+import {
+  developmet_mountain,
+  mountains,
+} from "../../assets/datas/mountain_tif";
 import model_area_data from "../../assets/datas/model_area.json";
 import Loadtif from "../Loadtif/Loadtif";
 import Polygon from "../Polygon/Polygon";
@@ -54,6 +57,10 @@ const MountainCard = (props: mountainCard) => {
       return { ...mountain_visible_init, [key]: true };
     });
   };
+  const BASE_URL =
+    process.env.NODE_ENV === "development"
+      ? "/api"
+      : "http://103.118.40.123:9999";
   return (
     <>
       <div className="mountain-card-wrap">
@@ -102,19 +109,19 @@ const MountainCard = (props: mountainCard) => {
           )}
 
           <Loadtif
-            url={developmet_mountain.SWLF}
+            url={`${BASE_URL}${mountains.SWLF}`}
             visible={mountainVisible.SWLF}
           ></Loadtif>
           <Loadtif
-            url={developmet_mountain.SWLK}
+            url={`${BASE_URL}${mountains.SWLK}`}
             visible={mountainVisible.SWLK}
           ></Loadtif>
           <Loadtif
-            url={developmet_mountain.SWLLF}
+            url={`${BASE_URL}${mountains.SWLLF}`}
             visible={mountainVisible.SWLLF}
           ></Loadtif>
           <Loadtif
-            url={developmet_mountain.SWLLK}
+            url={`${BASE_URL}${mountains.SWLLK}`}
             visible={mountainVisible.SWLLK}
           ></Loadtif>
         </>

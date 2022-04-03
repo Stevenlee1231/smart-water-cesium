@@ -131,6 +131,7 @@ export const EarthScreen = () => {
             // console.log("tempGeoJson", tempGeoJson);
             let tempGeoJson = JSON.parse(JSON.stringify(templateGeoJson));
             tempGeoJson.geometries[0].coordinates = value.coordinates;
+
             return (
               <Polygon
                 data={tempGeoJson}
@@ -141,7 +142,19 @@ export const EarthScreen = () => {
             );
           })}
         {earthVisible["GMSMountain"] && (
-          <MountainCard mode={"GMSMOUNTAIN"}></MountainCard>
+          <>
+            <MountainCard mode={"GMSMOUNTAIN"}></MountainCard>
+            <CameraFlyTo
+              duration={0}
+              destination={
+                {
+                  x: -1035477.0099878273,
+                  y: 5712028.233173981,
+                  z: 2888111.1876860037,
+                } as Cartesian3
+              }
+            ></CameraFlyTo>
+          </>
         )}
         {earthVisible["GMSMountainSix"] && (
           <MountainCard mode={"GMSMOUNTAINSIX"}></MountainCard>
