@@ -1,6 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import { UnauthenticatedApp } from "./pages/unathenticated-app";
 import { Screen } from "./pages/screens";
 import { Rainfall } from "./pages/rainfall/rainfall";
@@ -21,7 +21,7 @@ function App() {
               element={<Evaporationcapacity />}
             ></Route>
             <Route path="earth" element={<EarthScreen />}></Route>
-            <Route path="formation" element={<FormationScreen/>}></Route>
+            <Route path="formation" element={<FormationScreen />}></Route>
           </Route>
           <Route index element={<UnauthenticatedApp />} />
         </Routes>
