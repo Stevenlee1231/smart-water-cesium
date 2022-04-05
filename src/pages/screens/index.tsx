@@ -7,7 +7,7 @@ import { useDocumentTitle } from "../../utils/customHooks";
 import "antd/dist/antd.css";
 import { HeaderScreen } from "./header";
 import { SiderScreen } from "./sider";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export const Screen = () => {
   useDocumentTitle("项目首页");
