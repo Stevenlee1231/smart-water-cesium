@@ -5,7 +5,6 @@ import Line from "../Line/Line";
 import Text from "../Text/Text";
 import branchHole from "../../assets/datas/zhidong.json";
 import suidongData from "../../assets/datas/suidong.json";
-import styled from "@emotion/styled";
 export interface CardProps {
   mode: string;
   setearthContentVisibel: any;
@@ -45,7 +44,7 @@ export const TunnelCard = ({
 }: CardProps) => {
   return (
     <>
-      <Container>
+      <div style={{ position: "absolute", top: "180px", right: "25px" }}>
         <Card title={"隧道及支洞"} bordered={false}>
           开关：
           <Switch
@@ -94,12 +93,7 @@ export const TunnelCard = ({
             ></Line>
           </>
         )}
-      </Container>
+      </div>
     </>
   );
 };
-export const Container = styled.div`
-  position: "absolute";
-  top: "180px";
-  right: "25px";
-`;
