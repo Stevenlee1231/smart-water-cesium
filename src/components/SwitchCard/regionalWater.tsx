@@ -1,7 +1,7 @@
 import { Card, Switch } from "antd";
 import { Color } from "cesium";
 import Polygon from "../Polygon/Polygon";
-import { CardProps, Container } from "./tunnel";
+import { CardProps } from "./tunnel";
 import waterLevel from "../../assets/datas/water_level0706.json";
 import waterLevelColor from "../../assets/datas/water_level_color";
 let templateGeoJson = {
@@ -20,7 +20,7 @@ export const RegionalWater = ({
 }: CardProps) => {
   return (
     <>
-      <Container>
+      <div style={{ position: "absolute", top: "180px", right: "25px" }}>
         <Card title={"监测井"} bordered={false}>
           开关：
           <Switch
@@ -46,7 +46,7 @@ export const RegionalWater = ({
               ></Polygon>
             );
           })}
-      </Container>
+      </div>
     </>
   );
 };

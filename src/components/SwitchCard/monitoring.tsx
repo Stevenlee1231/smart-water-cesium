@@ -1,5 +1,5 @@
 import { Card, Switch } from "antd";
-import { CardProps, Container } from "./tunnel";
+import { CardProps } from "./tunnel";
 import Point from "../Point/Point";
 import { Cartesian3 } from "cesium";
 import tunnel from "../../assets/datas/obswell.json";
@@ -21,7 +21,7 @@ export const MonitoringCard = ({
 }: CardProps) => {
   return (
     <>
-      <Container>
+      <div style={{ position: "absolute", top: "180px", right: "25px" }}>
         <Card title={"区域水位"} bordered={false}>
           开关：
           <Switch
@@ -36,7 +36,7 @@ export const MonitoringCard = ({
         {earthContentVisibel[mode] && (
           <Point size={25} position={tunnels} location={tunnelLabel} />
         )}
-      </Container>
+      </div>
     </>
   );
 };
