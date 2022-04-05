@@ -2,7 +2,6 @@ import { Tabs, Radio } from "antd";
 import { useState } from "react";
 import { Color } from "cesium";
 import {
-  developmet_mountain,
   mountains,
 } from "../../assets/datas/mountain_tif";
 import model_area_data from "../../assets/datas/model_area.json";
@@ -99,6 +98,7 @@ const MountainCard = (props: mountainCard) => {
       </div>
       {
         <>
+          {/* 模型范围 */}
           {mountainVisible.model_area && (
             <Polygon
               data={model_area_data}

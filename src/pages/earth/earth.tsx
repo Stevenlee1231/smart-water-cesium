@@ -15,8 +15,9 @@ import branchHole from "../../assets/datas/zhidong.json";
 import waterLevel from "../../assets/datas/water_level0706.json";
 import waterLevelColor from "../../assets/datas/water_level_color";
 import Point from "../../components/Point/Point";
-import { useState } from "react";
 import Polygon from "../../components/Polygon/Polygon";
+import { SwitchCard } from "../../components/SwitchCard/SwitchCard";
+import { useState } from "react";
 Ion.defaultAccessToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2OTU2ZDE3Yi04ZDliLTRjZDAtYWYyOC01ZTk1OWFjOGNiZTUiLCJpZCI6NDQ3NjgsImlhdCI6MTYyNzk2Mjk1MX0.FrqhJD70CQLH9QsnePyuU0gmevojlEmGgF8swsUQue4";
 let templateGeoJson = {
@@ -29,6 +30,13 @@ let templateGeoJson = {
   ],
 };
 export const EarthScreen = () => {
+  // 开关状态
+  const [earthContentVisibel, setearthContentVisibel] = useState({
+    tunnelContent: false,
+    monitoringContent: false,
+    regionalWaterContent: false,
+  });
+  // useOutletContext
   const { earthVisible, callback } = useOutletContext<any>();
   const lineData = suidongData.geometries[0].coordinates.map((value) => {
     return Cartesian3.fromDegrees(value[0], value[1], 0);
@@ -81,12 +89,32 @@ export const EarthScreen = () => {
         ></CameraFlyTo>
         {/* 监测井 */}
         {earthVisible["monitoring"] && (
+          <>
+            <SwitchCard
+              mode={"monitoringContent"}
+              setearthContentVisibel={setearthContentVisibel}
+              earthContentVisibel={earthContentVisibel}
+              title={"监测井"}
+            />
+          </>
+        )}
+        {earthContentVisibel["monitoringContent"] && (
           <Point size={25} position={tunnels} location={tunnelLabel} />
         )}
+
         {/* 隧道及支洞 */}
         {earthVisible["tunnel"] && (
           <>
-            {/* <Point location={location2} size={10} position={branchHoles} /> */}
+            <SwitchCard
+              mode={"tunnelContent"}
+              setearthContentVisibel={setearthContentVisibel}
+              earthContentVisibel={earthContentVisibel}
+              title={"隧道及支洞"}
+            />
+          </>
+        )}
+        {earthContentVisibel["tunnelContent"] && (
+          <>
             {branchHoles &&
               branchHoles.map((value, index) => {
                 return (
@@ -112,6 +140,7 @@ export const EarthScreen = () => {
                   );
                 })}
             </LabelCollection>
+
             <Line
               material={Material.fromType("Color", {
                 color: new Color(255, 0, 0, 1),
@@ -121,14 +150,19 @@ export const EarthScreen = () => {
             ></Line>
           </>
         )}
-        {earthVisible["regionalWater"] &&
+        {earthVisible["regionalWater"] && (
+          <>
+            <SwitchCard
+              mode={"regionalWaterContent"}
+              setearthContentVisibel={setearthContentVisibel}
+              earthContentVisibel={earthContentVisibel}
+              title={"区域水位"}
+            />
+          </>
+        )}
+
+        {earthContentVisibel["regionalWaterContent"] &&
           waterLevel.geometries.map((value, index) => {
-            // tempGeoJson.geometries[0].coordinates = null;
-            // console.log("pre", tempGeoJson);
-            // // console.log(waterLevelColor[index]);
-            // // tempGeoJson.geometries[0].coordinates[0].push(value.coordinates[0])
-            // tempGeoJson.geometries[0].coordinates = value.coordinates;
-            // console.log("tempGeoJson", tempGeoJson);
             let tempGeoJson = JSON.parse(JSON.stringify(templateGeoJson));
             tempGeoJson.geometries[0].coordinates = value.coordinates;
 

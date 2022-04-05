@@ -8,12 +8,12 @@ import {
 import { Menu, Radio } from "antd";
 import Layout from "antd/lib/layout";
 import { SiderTheme } from "antd/lib/layout/Sider";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ContentScreen } from "./content";
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
-const initEarthVisible = {
+export const initEarthVisible = {
   hydrology: false,
   tunnel: false,
   monitoring: false,
@@ -28,8 +28,6 @@ const initEarthVisible = {
 };
 export const SiderScreen = ({
   theme,
-  visible,
-  setVisible,
   callback,
   earthVisible,
 }: {

@@ -1,11 +1,9 @@
-import { Billboard, BillboardCollection, Entity, PointGraphics } from "resium";
+import { Entity, PointGraphics } from "resium";
 import {
   Cartesian2,
-  Cartesian3,
   Color,
   HorizontalOrigin,
   LabelStyle,
-  VerticalOrigin,
 } from "cesium";
 interface point {
   size: number;
