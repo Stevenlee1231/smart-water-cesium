@@ -22,7 +22,7 @@ export const Screen = () => {
     hydrology: false,
     //隧洞及支洞
     tunnel: false,
-    tunnelContent:false,
+
     //监测井
     monitoring: false,
     //突涌水
