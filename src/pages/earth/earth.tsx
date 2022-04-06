@@ -30,11 +30,12 @@ export const EarthScreen = () => {
         {/* 监测井 */}
         {earthVisible["monitoring"] && (
           <>
-            {/* <MonitoringCard
+            <MonitoringCard
               mode={"monitoringContent"}
               setearthContentVisibel={setearthContentVisibel}
               earthContentVisibel={earthContentVisibel}
-            /> */}
+              visible={false}
+            />
           </>
         )}
 
@@ -49,15 +50,13 @@ export const EarthScreen = () => {
             />
           </>
         )}
-        {earthVisible["regionalWater"] && (
-          <>
-            {/* <RegionalWaterCard
-              mode={"regionalWaterContent"}
-              setearthContentVisibel={setearthContentVisibel}
-              earthContentVisibel={earthContentVisibel}
-            /> */}
-          </>
-        )}
+
+        <RegionalWaterCard
+          mode={"regionalWaterContent"}
+          setearthContentVisibel={setearthContentVisibel}
+          earthContentVisibel={earthContentVisibel}
+          visible={earthVisible["regionalWater"]}
+        />
 
         {earthVisible["GMSMountain"] && (
           <>
