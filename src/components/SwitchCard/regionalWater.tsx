@@ -32,6 +32,7 @@ export const RegionalWaterCard = ({
             checked={earthContentVisibel[mode]}
           />
         </Card>
+        <div style={{visibility:"hidden"}}>
         {earthContentVisibel[mode] &&
           waterLevel.geometries.map((value, index) => {
             let tempGeoJson = JSON.parse(JSON.stringify(templateGeoJson));
@@ -46,6 +47,7 @@ export const RegionalWaterCard = ({
               ></Polygon>
             );
           })}
+        </div>
       </div>
     </>
   );

@@ -5,10 +5,12 @@ import Line from "../Line/Line";
 import Text from "../Text/Text";
 import branchHole from "../../assets/datas/zhidong.json";
 import suidongData from "../../assets/datas/suidong.json";
+import { useState } from "react";
 export interface CardProps {
   mode: string;
   setearthContentVisibel: any;
   earthContentVisibel: any;
+  visible:boolean
 }
 const lineData = suidongData.geometries[0].coordinates.map((value) => {
   return Cartesian3.fromDegrees(value[0], value[1], 0);
@@ -41,7 +43,9 @@ export const TunnelCard = ({
   setearthContentVisibel,
   mode,
   earthContentVisibel,
+  visible
 }: CardProps) => {
+  const [visibility,setVisibility]=useState(visible)
   return (
     <>
       <div style={{ position: "absolute", top: "180px", right: "25px" }}>
@@ -49,14 +53,12 @@ export const TunnelCard = ({
           开关：
           <Switch
             onChange={(checked) => {
-              setearthContentVisibel((prev: any) => {
-                return { ...prev, [mode]: checked };
-              });
+              setVisibility(checked)
             }}
-            checked={earthContentVisibel[mode]}
+            checked={visibility}
           />
         </Card>
-        {earthContentVisibel[mode] && (
+        {visibility && (
           <>
             {branchHoles &&
               branchHoles.map((value: any[], index: any) => {
