@@ -12,12 +12,6 @@ Ion.defaultAccessToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2OTU2ZDE3Yi04ZDliLTRjZDAtYWYyOC01ZTk1OWFjOGNiZTUiLCJpZCI6NDQ3NjgsImlhdCI6MTYyNzk2Mjk1MX0.FrqhJD70CQLH9QsnePyuU0gmevojlEmGgF8swsUQue4";
 
 export const EarthScreen = () => {
-  // 开关状态
-  const [earthContentVisibel, setearthContentVisibel] = useState({
-    tunnelContent: false,
-    monitoringContent: false,
-    regionalWaterContent: false,
-  });
   // useOutletContext
   const { earthVisible, callback } = useOutletContext<any>();
   return (
@@ -30,33 +24,18 @@ export const EarthScreen = () => {
         {/* 监测井 */}
         {earthVisible["monitoring"] && (
           <>
-            <MonitoringCard
-              mode={"monitoringContent"}
-              setearthContentVisibel={setearthContentVisibel}
-              earthContentVisibel={earthContentVisibel}
-              visible={false}
-            />
+            <MonitoringCard visible={false} />
           </>
         )}
 
         {/* 隧道及支洞 */}
         {earthVisible["tunnel"] && (
           <>
-            <TunnelCard
-              mode={"tunnelContent"}
-              setearthContentVisibel={setearthContentVisibel}
-              earthContentVisibel={earthContentVisibel}
-              visible={earthVisible["tunnel"]}
-            />
+            <TunnelCard visible={earthVisible["tunnel"]} />
           </>
         )}
 
-        <RegionalWaterCard
-          mode={"regionalWaterContent"}
-          setearthContentVisibel={setearthContentVisibel}
-          earthContentVisibel={earthContentVisibel}
-          visible={earthVisible["regionalWater"]}
-        />
+        <RegionalWaterCard visible={earthVisible["regionalWater"]} />
 
         {earthVisible["GMSMountain"] && (
           <>

@@ -14,23 +14,28 @@ let templateGeoJson = {
     },
   ],
 };
-export const RegionalWaterCard = ({
- visible
-}: CardProps) => {
-  const [regionalWaterVisible,setRegionalWaterVisible]=useState(false)
+export const RegionalWaterCard = ({ visible }: CardProps) => {
+  const [regionalWaterVisible, setRegionalWaterVisible] = useState(false);
+
   return (
     <>
-      <div style={{ position: "absolute", top: "180px", right: "25px",visibility:visible?"visible":"hidden" }}>
+      <div
+        style={{
+          position: "absolute",
+          top: "180px",
+          right: "25px",
+          visibility: visible ? "visible" : "hidden",
+        }}
+      >
         <Card title={"区域水位"} bordered={false}>
           开关：
           <Switch
             onChange={(checked) => {
-              setRegionalWaterVisible(checked)
+              setRegionalWaterVisible(checked);
             }}
             checked={regionalWaterVisible}
           />
         </Card>
-  
         {regionalWaterVisible &&
           waterLevel.geometries.map((value, index) => {
             let tempGeoJson = JSON.parse(JSON.stringify(templateGeoJson));
@@ -45,7 +50,6 @@ export const RegionalWaterCard = ({
               ></Polygon>
             );
           })}
-        
       </div>
     </>
   );

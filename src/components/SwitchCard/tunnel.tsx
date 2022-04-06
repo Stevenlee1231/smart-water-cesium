@@ -7,9 +7,6 @@ import branchHole from "../../assets/datas/zhidong.json";
 import suidongData from "../../assets/datas/suidong.json";
 import { useState } from "react";
 export interface CardProps {
-  mode: string;
-  setearthContentVisibel: any;
-  earthContentVisibel: any;
   visible:boolean
 }
 const lineData = suidongData.geometries[0].coordinates.map((value) => {
@@ -40,9 +37,6 @@ branchHole.geometries.map((value) => {
   branchLabelPositions.push(temp);
 });
 export const TunnelCard = ({
-  setearthContentVisibel,
-  mode,
-  earthContentVisibel,
   visible
 }: CardProps) => {
   const [visibility,setVisibility]=useState(visible)

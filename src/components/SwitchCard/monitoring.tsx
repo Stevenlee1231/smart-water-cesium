@@ -3,6 +3,7 @@ import { CardProps } from "./tunnel";
 import Point from "../Point/Point";
 import { Cartesian3 } from "cesium";
 import tunnel from "../../assets/datas/obswell.json";
+import { useState } from "react";
 const tunnelLabel = [
   "XL2K7",
   "XL2K12",
@@ -15,10 +16,9 @@ const tunnels = tunnel.geometries.map((obj) => {
   return Cartesian3.fromDegrees(obj.coordinates[0], obj.coordinates[1], 0);
 });
 export const MonitoringCard = ({
-  setearthContentVisibel,
-  mode,
-  earthContentVisibel,
+  visible
 }: CardProps) => {
+  const [visibility,setVisibility]=useState(visible)
   return (
     <>
       <div style={{ position: "absolute", top: "180px", right: "25px" }}>
@@ -26,14 +26,12 @@ export const MonitoringCard = ({
           开关：
           <Switch
             onChange={(checked) => {
-              setearthContentVisibel((prev: any) => {
-                return { ...prev, [mode]: checked };
-              });
+              setVisibility(checked)
             }}
-            checked={earthContentVisibel[mode]}
+            checked={visibility}
           />
         </Card>
-        {earthContentVisibel[mode] && (
+        {visibility && (
           <Point size={25} position={tunnels} location={tunnelLabel} />
         )}
       </div>
