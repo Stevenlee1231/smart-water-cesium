@@ -7,7 +7,7 @@ import Caculate from "../../components/Caculate/Caculate";
 import { useState } from "react";
 import { TunnelCard } from "../../components/SwitchCard/tunnel";
 import { MonitoringCard } from "../../components/SwitchCard/monitoring";
-import { RegionalWater } from "../../components/SwitchCard/regionalWater";
+import { RegionalWaterCard } from "../../components/SwitchCard/regionalWater";
 Ion.defaultAccessToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2OTU2ZDE3Yi04ZDliLTRjZDAtYWYyOC01ZTk1OWFjOGNiZTUiLCJpZCI6NDQ3NjgsImlhdCI6MTYyNzk2Mjk1MX0.FrqhJD70CQLH9QsnePyuU0gmevojlEmGgF8swsUQue4";
 
@@ -50,7 +50,7 @@ export const EarthScreen = () => {
         )}
         {earthVisible["regionalWater"] && (
           <>
-            <RegionalWater
+            <RegionalWaterCard
               mode={"regionalWaterContent"}
               setearthContentVisibel={setearthContentVisibel}
               earthContentVisibel={earthContentVisibel}

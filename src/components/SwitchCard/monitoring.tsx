@@ -22,7 +22,7 @@ export const MonitoringCard = ({
   return (
     <>
       <div style={{ position: "absolute", top: "180px", right: "25px" }}>
-        <Card title={"区域水位"} bordered={false}>
+        <Card title={"监测井"} bordered={false}>
           开关：
           <Switch
             onChange={(checked) => {
