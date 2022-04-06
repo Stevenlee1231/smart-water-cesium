@@ -22,19 +22,13 @@ export const EarthScreen = () => {
           destination={Cartesian3.fromDegrees(100.075, 26.602, 15000.0)}
         ></CameraFlyTo>
         {/* 监测井 */}
-        {earthVisible["monitoring"] && (
-          <>
-            <MonitoringCard visible={false} />
-          </>
-        )}
+
+        <MonitoringCard visible={earthVisible["monitoring"]} />
 
         {/* 隧道及支洞 */}
-        {earthVisible["tunnel"] && (
-          <>
-            <TunnelCard visible={earthVisible["tunnel"]} />
-          </>
-        )}
 
+        <TunnelCard visible={earthVisible["tunnel"]} />
+        {/* 区域水位 */}
         <RegionalWaterCard visible={earthVisible["regionalWater"]} />
 
         {earthVisible["GMSMountain"] && (

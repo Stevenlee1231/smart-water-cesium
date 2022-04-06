@@ -15,23 +15,28 @@ const tunnelLabel = [
 const tunnels = tunnel.geometries.map((obj) => {
   return Cartesian3.fromDegrees(obj.coordinates[0], obj.coordinates[1], 0);
 });
-export const MonitoringCard = ({
-  visible
-}: CardProps) => {
-  const [visibility,setVisibility]=useState(visible)
+export const MonitoringCard = ({ visible }: CardProps) => {
+  const [monitoringVisible, setMonitoringVisible] = useState(false);
   return (
     <>
-      <div style={{ position: "absolute", top: "180px", right: "25px" }}>
+      <div
+        style={{
+          position: "absolute",
+          top: "180px",
+          right: "25px",
+          visibility: visible ? "visible" : "hidden",
+        }}
+      >
         <Card title={"监测井"} bordered={false}>
           开关：
           <Switch
             onChange={(checked) => {
-              setVisibility(checked)
+              setMonitoringVisible(checked);
             }}
-            checked={visibility}
+            checked={monitoringVisible}
           />
         </Card>
-        {visibility && (
+        {monitoringVisible && (
           <Point size={25} position={tunnels} location={tunnelLabel} />
         )}
       </div>
