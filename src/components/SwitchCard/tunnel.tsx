@@ -50,12 +50,15 @@ export const TunnelCard = ({ visible }: CardProps) => {
       >
         <Card title={"隧道及支洞"} bordered={false}>
           开关：
-          <Switch
+          {visible&&<Switch
+            style={{
+              visibility: visible ? "visible" : "hidden",
+            }}
             onChange={(checked) => {
               setTunnelVisible(checked);
             }}
             checked={tunnelVisible}
-          />
+          />}
         </Card>
         {tunnelVisible && (
           <>

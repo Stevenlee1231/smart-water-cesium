@@ -29,12 +29,13 @@ export const RegionalWaterCard = ({ visible }: CardProps) => {
       >
         <Card title={"区域水位"} bordered={false}>
           开关：
-          <Switch
+         {visible&& <Switch
+           
             onChange={(checked) => {
               setRegionalWaterVisible(checked);
             }}
             checked={regionalWaterVisible}
-          />
+          />}
         </Card>
         {regionalWaterVisible &&
           waterLevel.geometries.map((value, index) => {

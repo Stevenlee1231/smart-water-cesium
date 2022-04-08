@@ -29,12 +29,14 @@ export const MonitoringCard = ({ visible }: CardProps) => {
       >
         <Card title={"监测井"} bordered={false}>
           开关：
-          <Switch
-            onChange={(checked) => {
-              setMonitoringVisible(checked);
-            }}
-            checked={monitoringVisible}
-          />
+          {visible && (
+            <Switch
+              onChange={(checked) => {
+                setMonitoringVisible(checked);
+              }}
+              checked={monitoringVisible}
+            />
+          )}
         </Card>
         {monitoringVisible && (
           <Point size={25} position={tunnels} location={tunnelLabel} />
