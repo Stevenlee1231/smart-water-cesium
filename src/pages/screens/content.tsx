@@ -2,11 +2,13 @@ import { Layout } from "antd";
 import { SiderTheme } from "antd/lib/layout/Sider";
 import { Outlet } from "react-router";
 import { useWidtheight } from "../../utils/customHooks";
+import { EarthScreen } from "../earth/earth";
 const { Content } = Layout;
 export const ContentScreen = ({
   theme,
   callback,
   earthVisible,
+
 }: {
   theme: SiderTheme | string;
   callback: any;
@@ -31,7 +33,7 @@ export const ContentScreen = ({
           style={{ width: "100%", height: "100%" }}
           className="content-container"
         >
-          <Outlet context={{ eleMsg, callback, earthVisible }}></Outlet>
+          <EarthScreen earthVisible={earthVisible} callback={callback}></EarthScreen>
         </div>
       </Content>
     </Layout>

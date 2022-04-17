@@ -15,15 +15,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<UnauthenticatedApp />} />
           <Route path="/" element={<Screen />}>
-            <Route path="rainfall" element={<Rainfall />}></Route>
-            <Route
-              path="evaporationcapacity"
-              element={<Evaporationcapacity />}
-            ></Route>
-            <Route path="earth" element={<EarthScreen />}></Route>
-            <Route path="formation" element={<FormationScreen />}></Route>
           </Route>
-          <Route index element={<UnauthenticatedApp />} />
         </Routes>
       </Router>
     </div>

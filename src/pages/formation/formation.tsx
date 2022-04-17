@@ -60,7 +60,7 @@ export const FormationScreen = () => {
       <Card className="switch-wrap">
         {Object.entries(switchsValue).map((value, index) => {
           return (
-            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+            <Row key={index} gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
               <Col span={4}>
                 <span
                   style={{

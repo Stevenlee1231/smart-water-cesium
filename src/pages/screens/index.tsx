@@ -42,8 +42,7 @@ export const Screen = () => {
     //预警结果
     result: false,
   });
-  //控制sider显示没用
-  const [visible, setVisible] = useState(false);
+
   return (
     <Container>
       <Layout>
@@ -51,8 +50,6 @@ export const Screen = () => {
         <Layout>
           <SiderScreen
             theme={theme}
-            visible={visible}
-            setVisible={setVisible}
             callback={setEarthVisible}
             earthVisible={earthVisible}
           />
