@@ -4,8 +4,9 @@ import { SiderTheme } from "antd/lib/layout/Sider";
 import Chart from "../../components/Chart/Chart";
 import { theme_store } from "../../store/theme";
 import { useGetData } from "../../utils/data";
-export const Rainfall = () => {
-  const { eleMsg } = useOutletContext<any>();
+export const Rainfall = (props: { eleMsg?: any }) => {
+  const { eleMsg } = props;
+  // const { eleMsg } = useOutletContext<any>();
   const [theme] = useRecoilState<SiderTheme | string>(theme_store);
   const { series, xAxis } = useGetData("allwaterlevels", "XLP4ZK2", true);
   return (

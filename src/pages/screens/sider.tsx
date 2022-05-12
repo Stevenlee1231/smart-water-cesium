@@ -15,6 +15,9 @@ import { ContentScreen } from "./content";
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 export const initEarthVisible = {
+  rainfall: false,
+  eva: false,
+  formation: false,
   hydrology: false,
   tunnel: false,
   monitoring: false,
@@ -47,18 +50,22 @@ export const SiderScreen = ({
       <Sider width={304} style={{ height: "100vh" }}>
         <Menu
           mode="inline"
-          defaultSelectedKeys={
-            window.location.pathname === "/rainfall" ? ["1"] : ["2"]
-          }
+          defaultSelectedKeys={["rainfall"]}
           style={{ height: "100%", borderRight: 0 }}
           theme={theme as SiderTheme}
         >
           <SubMenu key="sub1" icon={<FireOutlined />} title="水文信息">
-            <Menu.Item key="1">降水量</Menu.Item>
-            <Menu.Item key="2">蒸发量</Menu.Item>
+            <Menu.Item key="rainfall" onClick={handleSelect}>
+              降水量
+            </Menu.Item>
+            <Menu.Item key="eva" onClick={handleSelect}>
+              蒸发量
+            </Menu.Item>
           </SubMenu>
           <SubMenu key="sub2" icon={<GlobalOutlined />} title="区域信息">
-            <Menu.Item key="5">地层信息</Menu.Item>
+            <Menu.Item key="formation" onClick={handleSelect}>
+              地层信息
+            </Menu.Item>
             <Menu.Item key="hydrology" onClick={handleSelect}>
               水文地质信息
             </Menu.Item>

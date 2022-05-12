@@ -18,6 +18,9 @@ export const Screen = () => {
   };
   //控制地图上显示的东西  并不使用router控制
   const [earthVisible, setEarthVisible] = useState({
+    rainfall: true,
+    eva: false,
+    formation: false,
     //水文地质信息
     hydrology: false,
     //隧洞及支洞

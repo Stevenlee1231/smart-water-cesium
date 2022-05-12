@@ -19,6 +19,20 @@ export const UnauthenticatedApp = () => {
   const [error, setError] = useState<Error | null>(null);
   return (
     <Container>
+      <div
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          color: "#1890ff",
+          zIndex: 100,
+          fontSize: "36px",
+        }}
+        className="title"
+      >
+        隧洞突涌水(泥)综合预测及安全预警平台
+      </div>
       <BackGround />
       <ShadowCardLeft>
         <Carousel autoplay arrows>
@@ -39,9 +53,9 @@ export const UnauthenticatedApp = () => {
         {isRegister ? <RegisterScreen /> : <LoginScreen />}
         <Divider />
 
-        <LongButton type={"link"} onClick={() => setIsRegister(!isRegister)}>
+        {/* <LongButton type={"link"} onClick={() => setIsRegister(!isRegister)}>
           {isRegister ? "Login" : "Sign Up"}
-        </LongButton>
+        </LongButton> */}
       </ShadowCardRight>
     </Container>
   );

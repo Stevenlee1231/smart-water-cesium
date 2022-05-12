@@ -47,7 +47,7 @@ export const LoginScreen = () => {
           }}
           htmlType={"submit"}
         >
-          Login
+          登陆
         </Button>
       </Form.Item>
       <Form.Item></Form.Item>
