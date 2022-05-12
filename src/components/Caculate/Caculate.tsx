@@ -223,7 +223,7 @@ function Caculate(props: caculate) {
       >
         <Form layout="vertical" hideRequiredMark form={form}>
           <Row gutter={16}>
-            {/* <Col span={8}>
+            <Col span={8}>
               <Form.Item name="tunnel" label="隧道名称">
                 <Select
                   placeholder="请选择隧道"
@@ -231,7 +231,7 @@ function Caculate(props: caculate) {
                     setId(Number(value));
                     form.resetFields();
                   }}
-                  //defaultValue={String(id)}
+                  defaultValue={String(id)}
                 >
                   <Option value="0">季家坡隧道YK16+040</Option>
                   <Option value="1">季家坡隧道YK16+086~+022</Option>
@@ -241,7 +241,7 @@ function Caculate(props: caculate) {
                   <Option value="5">宜万线齐岳山隧道DK363+540</Option>
                 </Select>
               </Form.Item>
-            </Col> */}
+            </Col>
             <Col span={8}>
               <Form.Item
                 name="catchment_area "
@@ -251,8 +251,8 @@ function Caculate(props: caculate) {
                 <Input
                   style={{ width: "100%" }}
                   placeholder="请输入汇水面积"
-                  //defaultValue={datas[id][0].catchment_area}
-                  //disabled={datas[id][0].catchment_area !== undefined}
+                  defaultValue={datas[id][0].catchment_area}
+                  disabled={datas[id][0].catchment_area !== undefined}
                   suffix={"km^2"}
                 />
               </Form.Item>
@@ -266,23 +266,8 @@ function Caculate(props: caculate) {
                 <InputNumber
                   style={{ width: "100%" }}
                   placeholder="请输入地形坡度"
-                  //defaultValue={datas[id][0].topographic_slope}
-                  //disabled={datas[id][0].catchment_area !== undefined}
-                />
-              </Form.Item>
-            </Col>
-            <Col span={8}>
-              <Form.Item
-                name="buried_depth "
-                label="隧洞埋深"
-                rules={[{ required: true, message: "请输入隧洞埋深" }]}
-              >
-                <Input
-                  style={{ width: "100%" }}
-                  placeholder={"请输入隧洞埋深"}
-                  //defaultValue={datas[id][0].buried_depth}
-                  //disabled={datas[id][0].buried_depth !== undefined}
-                  suffix={"m"}
+                  defaultValue={datas[id][0].topographic_slope}
+                  disabled={datas[id][0].catchment_area !== undefined}
                 />
               </Form.Item>
             </Col>
@@ -296,8 +281,8 @@ function Caculate(props: caculate) {
               >
                 <Select
                   placeholder="请选择地形"
-                  //defaultValue={datas[id][0].is_negative_relief}
-                  //disabled={datas[id][0].is_negative_relief !== ""}
+                  defaultValue={datas[id][0].is_negative_relief}
+                  disabled={datas[id][0].is_negative_relief !== ""}
                 >
                   <Option value="0">沟谷</Option>
                   <Option value="1">沟谷洼地</Option>
@@ -323,8 +308,8 @@ function Caculate(props: caculate) {
                 <Input
                   style={{ width: "100%" }}
                   placeholder="请输入地层岩性"
-                  //defaultValue={datas[id][0].formation_lithology}
-                  //disabled={datas[id][0].formation_lithology != ""}
+                  defaultValue={datas[id][0].formation_lithology}
+                  disabled={datas[id][0].formation_lithology != ""}
                 />
               </Form.Item>
             </Col>
@@ -336,8 +321,8 @@ function Caculate(props: caculate) {
               >
                 <Select
                   placeholder="请选择地质构造"
-                  //defaultValue={datas[id][0].geologic_structure}
-                  //disabled={datas[id][0].geologic_structure !== ""}
+                  defaultValue={datas[id][0].geologic_structure}
+                  disabled={datas[id][0].geologic_structure !== ""}
                 >
                   <Option value="0">阻水型断裂</Option>
                   <Option value="1">导水型断裂</Option>
@@ -356,8 +341,8 @@ function Caculate(props: caculate) {
               >
                 <Select
                   placeholder="请选择地质构造风化程度"
-                  //defaultValue={datas[id][0].rate_of_decay}
-                  //disabled={datas[id][0].rate_of_decay !== ""}
+                  defaultValue={datas[id][0].rate_of_decay}
+                  disabled={datas[id][0].rate_of_decay !== ""}
                 >
                   <Option value="0">强风化</Option>
                   <Option value="1">中等风化</Option>
@@ -376,8 +361,8 @@ function Caculate(props: caculate) {
                 <Input
                   style={{ width: "100%" }}
                   placeholder={"请输入岩层倾向"}
-                  //defaultValue={datas[id][0].rock_tendency}
-                  //disabled={datas[id][0].rock_tendency !== undefined}
+                  defaultValue={datas[id][0].rock_tendency}
+                  disabled={datas[id][0].rock_tendency !== undefined}
                   suffix={"°"}
                 />
               </Form.Item>
@@ -391,8 +376,8 @@ function Caculate(props: caculate) {
                 <Input
                   style={{ width: "100%" }}
                   placeholder="请输入岩层倾角"
-                  //defaultValue={datas[id][0].angle}
-                  //disabled={datas[id][0].angle !== undefined}
+                  defaultValue={datas[id][0].angle}
+                  disabled={datas[id][0].angle !== undefined}
                   suffix={"°"}
                 />
               </Form.Item>
@@ -409,8 +394,8 @@ function Caculate(props: caculate) {
               >
                 <Select
                   placeholder="请选择裂隙发育类型和程度"
-                  //defaultValue={datas[id][0].type_and_degree}
-                  //disabled={datas[id][0].type_and_degree !== ""}
+                  defaultValue={datas[id][0].type_and_degree}
+                  disabled={datas[id][0].type_and_degree !== ""}
                 >
                   <Option value="0">纵张性裂隙发育</Option>
                   <Option value="1">张性裂隙发育</Option>
@@ -428,10 +413,10 @@ function Caculate(props: caculate) {
                 <Input
                   style={{ width: "100%" }}
                   placeholder="请输入地下水径流模数"
-                  //defaultValue={datas[id][0].groundwater_runoff_modulus}
-                  //disabled={
-                  //   datas[id][0].groundwater_runoff_modulus !== undefined
-                  // }
+                  defaultValue={datas[id][0].groundwater_runoff_modulus}
+                  disabled={
+                    datas[id][0].groundwater_runoff_modulus !== undefined
+                  }
                   suffix={"L/s·km2"}
                 />
               </Form.Item>
@@ -445,8 +430,8 @@ function Caculate(props: caculate) {
                 <Input
                   style={{ width: "100%" }}
                   placeholder="请输入吕荣值"
-                  //defaultValue={datas[id][0].volunteers_value}
-                  //disabled={datas[id][0].volunteers_value !== undefined}
+                  defaultValue={datas[id][0].volunteers_value}
+                  disabled={datas[id][0].volunteers_value !== undefined}
                   suffix={" L/(m*Mpa*min)"}
                 />
               </Form.Item>
@@ -462,8 +447,8 @@ function Caculate(props: caculate) {
                 <Input
                   style={{ width: "100%" }}
                   placeholder="请输入渗透系数"
-                  //defaultValue={datas[id][0].osmotic_coefficient}
-                  //disabled={datas[id][0].osmotic_coefficient !== undefined}
+                  defaultValue={datas[id][0].osmotic_coefficient}
+                  disabled={datas[id][0].osmotic_coefficient !== undefined}
                   suffix={" m/d"}
                 />
               </Form.Item>
@@ -476,8 +461,8 @@ function Caculate(props: caculate) {
               >
                 <Select
                   placeholder="请选择地下水补给条件"
-                  //defaultValue={datas[id][0].groundwater_recharge_condition}
-                  //disabled={datas[id][0].groundwater_recharge_condition !== ""}
+                  defaultValue={datas[id][0].groundwater_recharge_condition}
+                  disabled={datas[id][0].groundwater_recharge_condition !== ""}
                 >
                   <Option value="0">好</Option>
                   <Option value="1">中等</Option>
@@ -493,8 +478,8 @@ function Caculate(props: caculate) {
               >
                 <Select
                   placeholder="请选择地下水位埋深"
-                  //defaultValue={datas[id][0].depth}
-                  //disabled={datas[id][0].depth !== ""}
+                  defaultValue={datas[id][0].depth}
+                  disabled={datas[id][0].depth !== ""}
                 >
                   <Option value="0">高压</Option>
                   <Option value="1">中压</Option>
@@ -514,8 +499,8 @@ function Caculate(props: caculate) {
               >
                 <Select
                   placeholder="请选择储水构造相对隧道位置"
-                  //defaultValue={datas[id][0].position}
-                  //disabled={datas[id][0].position !== ""}
+                  defaultValue={datas[id][0].position}
+                  disabled={datas[id][0].position !== ""}
                 >
                   <Option value="0">上方</Option>
                   <Option value="1">下方</Option>
@@ -531,8 +516,8 @@ function Caculate(props: caculate) {
               >
                 <Select
                   placeholder="请选择不良地质类型"
-                  //defaultValue={datas[id][0].geological_type}
-                  //disabled={datas[id][0].geological_type !== ""}
+                  defaultValue={datas[id][0].geological_type}
+                  disabled={datas[id][0].geological_type !== ""}
                 >
                   <Option value="0">高陡倾裂隙</Option>
                   <Option value="1">特大型溶腔</Option>
@@ -549,8 +534,8 @@ function Caculate(props: caculate) {
                 <Input
                   width={"100%"}
                   placeholder={"请输入发育程度或规模"}
-                  //defaultValue={datas[id][0].size}
-                  //disabled={datas[id][0].size !== ""}
+                  defaultValue={datas[id][0].size}
+                  disabled={datas[id][0].size !== ""}
                 />
               </Form.Item>
             </Col>
@@ -564,8 +549,8 @@ function Caculate(props: caculate) {
               >
                 <Select
                   placeholder="请选择施工扰动程度"
-                  //defaultValue={datas[id][0].degree}
-                  //disabled={datas[id][0].degree !== ""}
+                  defaultValue={datas[id][0].degree}
+                  disabled={datas[id][0].degree !== ""}
                 >
                   <Option value="0">无</Option>
                   <Option value="1">爆破</Option>
@@ -582,8 +567,8 @@ function Caculate(props: caculate) {
               >
                 <Select
                   placeholder="请选择支护措施"
-                  //defaultValue={datas[id][0].measure}
-                  //disabled={datas[id][0].measure !== ""}
+                  defaultValue={datas[id][0].measure}
+                  disabled={datas[id][0].measure !== ""}
                 >
                   <Option value="0">无</Option>
                   <Option value="1">一衬</Option>
@@ -601,8 +586,8 @@ function Caculate(props: caculate) {
                 <InputNumber
                   style={{ width: "100%" }}
                   placeholder={"请输入防突岩墙厚度"}
-                  //defaultValue={datas[id][0].thickness}
-                  //disabled={datas[id][0].thickness !== undefined}
+                  defaultValue={datas[id][0].thickness}
+                  disabled={datas[id][0].thickness !== undefined}
                 />
               </Form.Item>
             </Col>
@@ -619,8 +604,8 @@ function Caculate(props: caculate) {
                 <InputNumber
                   style={{ width: "100%" }}
                   placeholder={"请输入开挖爆破松弛圈深度"}
-                  //defaultValue={datas[id][0].circle_depth}
-                  //disabled={datas[id][0].circle_depth !== undefined}
+                  defaultValue={datas[id][0].circle_depth}
+                  disabled={datas[id][0].circle_depth !== undefined}
                 />
               </Form.Item>
             </Col>
@@ -632,8 +617,8 @@ function Caculate(props: caculate) {
               >
                 <Select
                   placeholder="请选择施工抽排水能力"
-                  //defaultValue={datas[id][0].ability}
-                  //disabled={datas[id][0].ability !== ""}
+                  defaultValue={datas[id][0].ability}
+                  disabled={datas[id][0].ability !== ""}
                 >
                   <Option value="0">标准</Option>
                   <Option value="1">好</Option>
@@ -649,8 +634,8 @@ function Caculate(props: caculate) {
               >
                 <Select
                   placeholder="请选择工程施工措施"
-                  //defaultValue={datas[id][0].construction_measures}
-                  //disabled={datas[id][0].construction_measures !== ""}
+                  defaultValue={datas[id][0].construction_measures}
+                  disabled={datas[id][0].construction_measures !== ""}
                 >
                   <Option value="0">绕避与跨越</Option>
                   <Option value="1">围岩加固补强</Option>
@@ -670,13 +655,28 @@ function Caculate(props: caculate) {
                 <Input
                   style={{ width: "100%" }}
                   placeholder={"请输入隧洞长度"}
-                  //defaultValue={datas[id][0].length}
-                  //disabled={datas[id][0].length !== undefined}
+                  defaultValue={datas[id][0].length}
+                  disabled={datas[id][0].length !== undefined}
                   suffix={"m"}
                 />
               </Form.Item>
             </Col>
-            {/* <Col span={8}>
+            <Col span={8}>
+              <Form.Item
+                name="buried_depth "
+                label="隧洞埋深"
+                rules={[{ required: true, message: "请输入隧洞埋深" }]}
+              >
+                <Input
+                  style={{ width: "100%" }}
+                  placeholder={"请输入隧洞埋深"}
+                  defaultValue={datas[id][0].buried_depth}
+                  disabled={datas[id][0].buried_depth !== undefined}
+                  suffix={"m"}
+                />
+              </Form.Item>
+            </Col>
+            <Col span={8}>
               <Form.Item
                 name=" water_inflow "
                 label="突涌水量  "
@@ -685,12 +685,12 @@ function Caculate(props: caculate) {
                 <Input
                   style={{ width: "100%" }}
                   placeholder={"请输入突涌水量"}
-                  //defaultValue={datas[id][0].water_inflow}
-                  //disabled={datas[id][0].water_inflow !== ""}
+                  defaultValue={datas[id][0].water_inflow}
+                  disabled={datas[id][0].water_inflow !== ""}
                   suffix={"m3/h"}
                 />
               </Form.Item>
-            </Col> */}
+            </Col>
           </Row>
         </Form>
       </Drawer>

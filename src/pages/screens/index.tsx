@@ -10,7 +10,7 @@ import { SiderScreen } from "./sider";
 import { useState } from "react";
 
 export const Screen = () => {
-  useDocumentTitle("隧洞突涌水(泥)综合预测及安全预警平台");
+  useDocumentTitle("项目首页");
   const [theme, setTheme] = useRecoilState<SiderTheme | string>(theme_store);
 
   const changeTheme = (value: boolean) => {
