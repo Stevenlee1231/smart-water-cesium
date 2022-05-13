@@ -17,7 +17,8 @@ const { SubMenu } = Menu;
 export const initEarthVisible = {
   rainfall: false,
   eva: false,
-  formation: false,
+  three: false,
+  stratum: false,
   hydrology: false,
   tunnel: false,
   monitoring: false,
@@ -47,7 +48,14 @@ export const SiderScreen = ({
   };
   return (
     <Layout>
-      <Sider width={304} style={{ height: "100vh" }}>
+      <Sider
+        width={304}
+        style={{
+          height: `calc(100vh - 70px)`,
+          overflowY: "auto",
+          overflowX: "hidden",
+        }}
+      >
         <Menu
           mode="inline"
           defaultSelectedKeys={["rainfall"]}
@@ -63,11 +71,14 @@ export const SiderScreen = ({
             </Menu.Item>
           </SubMenu>
           <SubMenu key="sub2" icon={<GlobalOutlined />} title="区域信息">
-            <Menu.Item key="formation" onClick={handleSelect}>
+            <Menu.Item key="stratum" onClick={handleSelect}>
               地层信息
             </Menu.Item>
             <Menu.Item key="hydrology" onClick={handleSelect}>
               水文地质信息
+            </Menu.Item>
+            <Menu.Item key="three" onClick={handleSelect}>
+              三维地质模型
             </Menu.Item>
             <Menu.Item key="tunnel" onClick={handleSelect}>
               隧洞及支洞

@@ -2,6 +2,7 @@ import { Ion } from "cesium";
 import { Viewer, CameraFlyTo } from "resium";
 import { Cartesian3 } from "cesium";
 import MountainCard from "../../components/MountainCard/MountainCard";
+import StratumCard from "../../components/StratumCard/StratumCard";
 import Caculate from "../../components/Caculate/Caculate";
 import { useEffect, useRef, useState } from "react";
 import { TunnelCard } from "../../components/SwitchCard/tunnel";
@@ -15,23 +16,22 @@ export const EarthScreen = (props: any) => {
   const renderCount = useRef(0);
   // console.log(renderCount.current)
   useEffect(() => {
-    setTimeout(()=>{
-      renderCount.current++
-      console.log(renderCount.current)
-    },0)
-     
-    
+    setTimeout(() => {
+      renderCount.current++;
+      console.log(renderCount.current);
+    }, 0);
   }, []);
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <Viewer timeline={false} animation={false} infoBox={false}>
-        {renderCount.current === 0&& (
+        {renderCount.current === 0 && (
           <CameraFlyTo
             duration={0}
             destination={Cartesian3.fromDegrees(100.075, 26.602, 15000.0)}
           ></CameraFlyTo>
         )}
-
+        {/*地层信息*/}
+        {earthVisible["stratum"] && <StratumCard></StratumCard>}
         {/* 监测井 */}
 
         <MonitoringCard visible={earthVisible["monitoring"]} />

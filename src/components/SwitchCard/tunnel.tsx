@@ -5,11 +5,15 @@ import Line from "../Line/Line";
 import Text from "../Text/Text";
 import branchHole from "../../assets/datas/zhidong.json";
 import suidongData from "../../assets/datas/suidong.json";
+import suidaoData from "../../assets/datas/suidao.json";
 import { useState } from "react";
 export interface CardProps {
   visible: boolean;
 }
 const lineData = suidongData.geometries[0].coordinates.map((value) => {
+  return Cartesian3.fromDegrees(value[0], value[1], 0);
+});
+const line2Data = suidaoData.geometries[0].coordinates.map((value) => {
   return Cartesian3.fromDegrees(value[0], value[1], 0);
 });
 const branchLabel = [
@@ -50,15 +54,17 @@ export const TunnelCard = ({ visible }: CardProps) => {
       >
         <Card title={"隧道及支洞"} bordered={false}>
           开关：
-          {visible&&<Switch
-            style={{
-              visibility: visible ? "visible" : "hidden",
-            }}
-            onChange={(checked) => {
-              setTunnelVisible(checked);
-            }}
-            checked={tunnelVisible}
-          />}
+          {visible && (
+            <Switch
+              style={{
+                visibility: visible ? "visible" : "hidden",
+              }}
+              onChange={(checked) => {
+                setTunnelVisible(checked);
+              }}
+              checked={tunnelVisible}
+            />
+          )}
         </Card>
         {tunnelVisible && (
           <>
@@ -93,6 +99,13 @@ export const TunnelCard = ({ visible }: CardProps) => {
                 color: new Color(255, 0, 0, 1),
               })}
               positions={lineData}
+              width={7}
+            ></Line>
+            <Line
+              material={Material.fromType("Color", {
+                color: new Color(128, 0, 128, 1),
+              })}
+              positions={line2Data}
               width={7}
             ></Line>
           </>

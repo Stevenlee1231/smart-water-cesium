@@ -17,7 +17,7 @@ export const ContentScreen = ({
   earthVisible: any;
 }) => {
   const [eleRef, eleMsg] = useWidtheight<HTMLDivElement>();
-  const { rainfall, eva, formation } = earthVisible;
+  const { rainfall, eva, three } = earthVisible;
   return (
     <Layout>
       <Content
@@ -27,19 +27,20 @@ export const ContentScreen = ({
           margin: 0,
           minHeight: 280,
           width: "100%",
-          height: "100%",
+          height: `calc(100vh - 70px)`,
           backgroundColor: theme === "light" ? "" : "#161d40",
+          overflow: "hidden",
         }}
       >
         <div
           ref={eleRef}
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: `calc(100vh - 70px)` }}
           className="content-container"
         >
           {rainfall && <Rainfall eleMsg={eleMsg}></Rainfall>}
           {eva && <Evaporationcapacity eleMsg={eleMsg}></Evaporationcapacity>}
-          {formation && <FormationScreen></FormationScreen>}
-          {!rainfall && !eva && !formation && (
+          {three && <FormationScreen></FormationScreen>}
+          {!rainfall && !eva && !three && (
             <EarthScreen
               earthVisible={earthVisible}
               callback={callback}

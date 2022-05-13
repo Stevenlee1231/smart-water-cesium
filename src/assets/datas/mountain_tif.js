@@ -28,3 +28,9 @@ export const mountains = {
   //枯水期裸洞开挖
   SWLLK: "/yun/tif/wulku/{z}/{x}/{y}.png",
 };
+export const stratum = {
+  //大理
+  dali: "/yun/tif/dali/{z}/{x}/{y}.png",
+  //玉溪
+  yuxi: "/yun/tif/yuxi/{z}/{x}/{y}.png",
+};

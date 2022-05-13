@@ -62,7 +62,7 @@ export const HeaderScreen = ({ theme, changeTheme }: HeaderProps) => {
 
 const HeaderCss = styled(Header)`
   display: flex;
-  height: 7rem;
+  height: 70px;
   text-align: center;
   justify-content: space-between;
   font-size: 20px;

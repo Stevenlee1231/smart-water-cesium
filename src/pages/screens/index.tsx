@@ -20,7 +20,9 @@ export const Screen = () => {
   const [earthVisible, setEarthVisible] = useState({
     rainfall: true,
     eva: false,
-    formation: false,
+    three: false,
+    //地层信息
+    stratum: false,
     //水文地质信息
     hydrology: false,
     //隧洞及支洞
