@@ -1,7 +1,12 @@
 import { Card, Switch } from "antd";
 import { CardProps } from "./tunnel";
 import Point from "../Point/Point";
-import { Cartesian3 } from "cesium";
+import {
+  Cartesian3,
+  CircleGeometry,
+  EllipsoidSurfaceAppearance,
+  GeometryInstance,
+} from "cesium";
 import tunnel from "../../assets/datas/obswell.json";
 import { useState } from "react";
 const tunnelLabel = [
@@ -38,9 +43,25 @@ export const MonitoringCard = ({ visible }: CardProps) => {
             />
           )}
         </Card>
-        {monitoringVisible && (
-          <Point size={25} position={tunnels} location={tunnelLabel} />
-        )}
+        {monitoringVisible &&
+          tunnels.map((value, index) => {
+            const circleGeometry = new GeometryInstance({
+              geometry: new CircleGeometry({
+                center: value,
+                radius: 150,
+                vertexFormat: EllipsoidSurfaceAppearance.VERTEX_FORMAT,
+              }),
+              id: index,
+            });
+            return (
+              <Point
+                key={index}
+                geometry={circleGeometry}
+                // position={value}
+                // location={tunnelLabel}
+              />
+            );
+          })}
       </div>
     </>
   );

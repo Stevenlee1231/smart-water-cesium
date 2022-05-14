@@ -10,6 +10,7 @@ import { useState } from "react";
 export interface CardProps {
   visible: boolean;
 }
+type textState = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 const lineData = suidongData.geometries[0].coordinates.map((value) => {
   return Cartesian3.fromDegrees(value[0], value[1], 0);
 });
@@ -42,6 +43,27 @@ branchHole.geometries.map((value) => {
 });
 export const TunnelCard = ({ visible }: CardProps) => {
   const [tunnelVisible, setTunnelVisible] = useState(false);
+  const [textVisible, setTextVisible] = useState({
+    0: false,
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+    6: false,
+    7: false,
+    8: false,
+  });
+  const handleMouseEnter = (e: any, target: any) => {
+    setTextVisible((prev) => {
+      return { ...prev, [target.id]: true };
+    });
+  };
+  const handleMouseLeave = (e: any, target: any) => {
+    setTextVisible((prev) => {
+      return { ...prev, [target.id]: false };
+    });
+  };
   return (
     <>
       <div
@@ -73,11 +95,14 @@ export const TunnelCard = ({ visible }: CardProps) => {
                 return (
                   <Line
                     key={index}
+                    id={index}
                     material={Material.fromType("Color", {
                       color: new Color(0, 255, 0, 1),
                     })}
                     positions={value}
-                    width={3}
+                    width={6}
+                    mouseEnter={handleMouseEnter}
+                    mouseLeave={handleMouseLeave}
                   ></Line>
                 );
               })}
@@ -89,6 +114,7 @@ export const TunnelCard = ({ visible }: CardProps) => {
                       position={value}
                       text={branchLabel[index]}
                       color={Color.BLUE}
+                      show={textVisible[index as textState]}
                     ></Text>
                   );
                 })}
@@ -99,14 +125,14 @@ export const TunnelCard = ({ visible }: CardProps) => {
                 color: new Color(255, 0, 0, 1),
               })}
               positions={lineData}
-              width={7}
+              width={10}
             ></Line>
             <Line
               material={Material.fromType("Color", {
                 color: new Color(128, 0, 128, 1),
               })}
               positions={line2Data}
-              width={7}
+              width={10}
             ></Line>
           </>
         )}

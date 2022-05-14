@@ -1,5 +1,5 @@
 import React from "react";
-import { Label, LabelCollection } from "resium";
+import { Label } from "resium";
 import { Color, Cartesian3 } from "cesium";
 
 interface text {
@@ -7,10 +7,11 @@ interface text {
   color: Color;
   text: string;
   key?: any;
+  show: boolean;
 }
 
 function Text(props: text) {
-  const { position, color, text, key } = props;
+  const { position, color, text, key, show } = props;
   return (
     <Label
       disableDepthTestDistance={Number.POSITIVE_INFINITY}
@@ -21,6 +22,7 @@ function Text(props: text) {
       scale={0.6}
       showBackground
       backgroundColor={Color.WHITE}
+      show={show}
     />
   );
 }

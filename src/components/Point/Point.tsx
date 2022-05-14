@@ -1,25 +1,41 @@
-import { Entity, PointGraphics } from "resium";
+import { Entity, PointGraphics, Primitive } from "resium";
+import backgroundImg from "../../assets/images/jing.png";
 import {
   Cartesian2,
   Color,
+  EllipsoidSurfaceAppearance,
+  GeometryInstance,
   HorizontalOrigin,
   LabelStyle,
+  Material,
 } from "cesium";
 interface point {
-  size: number;
-  position: Array<any>;
-  location: Array<string>;
+  // size: number;
+  // position: Object;
+  // location: Array<string>;
+  geometry: GeometryInstance;
 }
-
+const appearance = new EllipsoidSurfaceAppearance({
+  aboveGround: false,
+  material: new Material({
+    fabric: {
+      type: "Image",
+      uniforms: {
+        image: backgroundImg,
+      },
+    },
+  }),
+});
 const Point = (props: point) => {
-  const { size, position, location } = props;
-
+  const { geometry } = props;
+  console.log(geometry);
   return (
-    <div>
-      {position.map((point, i) => {
-        return (
-          <>
-            <Entity
+    <>
+      <Primitive
+        geometryInstances={geometry}
+        appearance={appearance}
+      ></Primitive>
+      {/* <Entity
               key={i}
               position={point}
               label={{
@@ -38,11 +54,8 @@ const Point = (props: point) => {
               }}
             >
               <PointGraphics pixelSize={size}></PointGraphics>
-            </Entity>
-          </>
-        );
-      })}
-    </div>
+            </Entity> */}
+    </>
   );
 };
 export default Point;
