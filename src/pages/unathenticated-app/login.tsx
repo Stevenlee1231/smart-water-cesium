@@ -9,7 +9,7 @@ import {
 export const LoginScreen = () => {
   const navigate = useNavigate();
   const handleSubmit = () => {
-    navigate("/rainfall");
+    navigate("/earth");
   };
 
   return (

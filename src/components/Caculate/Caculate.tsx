@@ -9,8 +9,9 @@ import {
   Space,
   InputNumber,
 } from "antd";
-import { useForm } from "antd/lib/form/Form";
-import { useState } from "react";
+import { useForm, useWatch } from "antd/lib/form/Form";
+import axios from "axios";
+import { useEffect, useState } from "react";
 const datas = [
   [
     {
@@ -202,7 +203,6 @@ interface caculate {
 }
 function Caculate(props: caculate) {
   const { visible, onClose } = props;
-  const [id, setId] = useState(0);
   const [form] = useForm();
   return (
     <>
@@ -221,7 +221,21 @@ function Caculate(props: caculate) {
           </Space>
         }
       >
-        <Form layout="vertical" hideRequiredMark form={form}>
+        <Form
+          // onFieldsChange={(current, all) => {
+          //   console.log(current);
+          //   console.log(all);
+          // }}
+          onValuesChange={(current, all) => {
+            console.log(all);
+          }}
+          onFinish={(e) => {
+            console.log(e);
+          }}
+          layout="vertical"
+          hideRequiredMark
+          form={form}
+        >
           <Row gutter={16}>
             {/* <Col span={8}>
               <Form.Item name="tunnel" label="隧道名称">
@@ -244,7 +258,7 @@ function Caculate(props: caculate) {
             </Col> */}
             <Col span={8}>
               <Form.Item
-                name="catchment_area "
+                name="catchment_area"
                 label="汇水面积"
                 rules={[{ required: true, message: "请输入汇水面积" }]}
               >
@@ -273,7 +287,7 @@ function Caculate(props: caculate) {
             </Col>
             <Col span={8}>
               <Form.Item
-                name="buried_depth "
+                name="buried_depth"
                 label="隧洞埋深"
                 rules={[{ required: true, message: "请输入隧洞埋深" }]}
               >
@@ -290,7 +304,7 @@ function Caculate(props: caculate) {
           <Row gutter={16}>
             <Col span={8}>
               <Form.Item
-                name="is_negative_relief "
+                name="is_negative_relief"
                 label="是否存在负地形"
                 rules={[{ required: true, message: "请选择地形" }]}
               >
@@ -316,7 +330,7 @@ function Caculate(props: caculate) {
             </Col>
             <Col span={8}>
               <Form.Item
-                name="formation_lithology "
+                name="formation_lithology"
                 label="地层岩性"
                 rules={[{ required: true, message: "请输入地层岩性" }]}
               >
@@ -350,7 +364,7 @@ function Caculate(props: caculate) {
           <Row gutter={16}>
             <Col span={8}>
               <Form.Item
-                name="rate_of_decay "
+                name="rate_of_decay"
                 label="隧道位置风化程度"
                 rules={[{ required: true, message: "请选择地质构造风化程度" }]}
               >
@@ -401,7 +415,7 @@ function Caculate(props: caculate) {
           <Row gutter={16}>
             <Col span={8}>
               <Form.Item
-                name=" type_and_degree "
+                name="type_and_degree"
                 label="裂隙发育类型和程度"
                 rules={[
                   { required: true, message: "请选择裂隙发育类型和程度" },
@@ -421,7 +435,7 @@ function Caculate(props: caculate) {
             </Col>
             <Col span={8}>
               <Form.Item
-                name=" groundwater_runoff_modulus "
+                name="groundwater_runoff_modulus"
                 label="地下水径流模数"
                 rules={[{ required: true, message: "请输入地下水径流模数" }]}
               >
@@ -438,7 +452,7 @@ function Caculate(props: caculate) {
             </Col>
             <Col span={8}>
               <Form.Item
-                name=" volunteers_value"
+                name="volunteers_value"
                 label="吕荣值"
                 rules={[{ required: true, message: "请输入吕荣值" }]}
               >
@@ -487,7 +501,7 @@ function Caculate(props: caculate) {
             </Col>
             <Col span={8}>
               <Form.Item
-                name=" depth"
+                name="depth"
                 label="地下水位埋深"
                 rules={[{ required: true, message: "请选择地下水位埋深" }]}
               >
@@ -507,7 +521,7 @@ function Caculate(props: caculate) {
             <Col span={8}>
               <Form.Item
                 name="position"
-                label="储水构造相对隧道位置 "
+                label="储水构造相对隧道位置"
                 rules={[
                   { required: true, message: "请选择储水构造相对隧道位置 " },
                 ]}
@@ -525,7 +539,7 @@ function Caculate(props: caculate) {
             </Col>
             <Col span={8}>
               <Form.Item
-                name=" geological_type "
+                name="geological_type"
                 label="不良地质类型"
                 rules={[{ required: true, message: "请选择不良地质类型" }]}
               >
@@ -542,7 +556,7 @@ function Caculate(props: caculate) {
             </Col>
             <Col span={8}>
               <Form.Item
-                name="size "
+                name="size"
                 label="发育程度或规模"
                 rules={[{ required: true, message: "请输入发育程度或规模" }]}
               >
@@ -558,7 +572,7 @@ function Caculate(props: caculate) {
           <Row gutter={16}>
             <Col span={8}>
               <Form.Item
-                name="degree "
+                name="degree"
                 label="施工扰动程度"
                 rules={[{ required: true, message: "请选择施工扰动程度" }]}
               >
@@ -576,7 +590,7 @@ function Caculate(props: caculate) {
             </Col>
             <Col span={8}>
               <Form.Item
-                name=" measure"
+                name="measure"
                 label=" 支护措施"
                 rules={[{ required: true, message: "请选择支护措施" }]}
               >
@@ -610,7 +624,7 @@ function Caculate(props: caculate) {
           <Row gutter={16}>
             <Col span={8}>
               <Form.Item
-                name="circle_depth "
+                name="circle_depth"
                 label="开挖爆破松弛圈深度"
                 rules={[
                   { required: true, message: "请输入开挖爆破松弛圈深度" },
@@ -626,7 +640,7 @@ function Caculate(props: caculate) {
             </Col>
             <Col span={8}>
               <Form.Item
-                name="ability "
+                name="ability"
                 label="施工抽排水能力"
                 rules={[{ required: true, message: "请选择施工抽排水能力" }]}
               >
@@ -643,7 +657,7 @@ function Caculate(props: caculate) {
             </Col>
             <Col span={8}>
               <Form.Item
-                name=" construction_measures "
+                name="construction_measures"
                 label="工程施工措施 "
                 rules={[{ required: true, message: "请选择工程施工措施 " }]}
               >
@@ -663,7 +677,7 @@ function Caculate(props: caculate) {
           <Row gutter={16}>
             <Col span={8}>
               <Form.Item
-                name="length "
+                name="length"
                 label="隧洞长度"
                 rules={[{ required: true, message: "请输入隧洞长度" }]}
               >
@@ -678,7 +692,7 @@ function Caculate(props: caculate) {
             </Col>
             <Col span={8}>
               <Form.Item
-                name="buried_depth "
+                name="buried_depth"
                 label="隧洞埋深"
                 rules={[{ required: true, message: "请输入隧洞埋深" }]}
               >

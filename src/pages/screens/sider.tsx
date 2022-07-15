@@ -58,31 +58,31 @@ export const SiderScreen = ({
       >
         <Menu
           mode="inline"
-          defaultSelectedKeys={["rainfall"]}
+          defaultSelectedKeys={["meteorology"]}
           style={{ height: "100%", borderRight: 0 }}
           theme={theme as SiderTheme}
         >
-          <SubMenu key="sub1" icon={<FireOutlined />} title="水文信息">
-            <Menu.Item key="rainfall" onClick={handleSelect}>
+          <SubMenu key="meteorology" icon={<FireOutlined />} title="气象水文">
+            {/* <Menu.Item key="rainfall" onClick={handleSelect}>
               降水量
             </Menu.Item>
             <Menu.Item key="eva" onClick={handleSelect}>
-              蒸发量
-            </Menu.Item>
+              蒸发量 
+            </Menu.Item> */}
           </SubMenu>
           <SubMenu key="sub2" icon={<GlobalOutlined />} title="区域信息">
+            <Menu.Item key="tunnel" onClick={handleSelect}>
+              隧洞线路
+            </Menu.Item>
             <Menu.Item key="stratum" onClick={handleSelect}>
-              地层信息
+              区域地质
             </Menu.Item>
             <Menu.Item key="hydrology" onClick={handleSelect}>
-              水文地质信息
+              水文地质
             </Menu.Item>
-            <Menu.Item key="three" onClick={handleSelect}>
+            {/* <Menu.Item key="three" onClick={handleSelect}>
               三维地质模型
-            </Menu.Item>
-            <Menu.Item key="tunnel" onClick={handleSelect}>
-              隧洞及支洞
-            </Menu.Item>
+            </Menu.Item> */}
           </SubMenu>
           <SubMenu key="sub3" icon={<StockOutlined />} title="监测信息">
             <Menu.Item key="monitoring" onClick={handleSelect}>
@@ -114,13 +114,6 @@ export const SiderScreen = ({
             </SubMenu>
           </SubMenu>
           <SubMenu key="sub5" icon={<ExclamationOutlined />} title="预警">
-            <Menu.Item key="12">
-              算法选择：
-              <Radio.Group defaultValue="a" buttonStyle="solid">
-                <Radio.Button value="a">KMN</Radio.Button>
-                <Radio.Button value="b">CNN</Radio.Button>
-              </Radio.Group>
-            </Menu.Item>
             <Menu.Item key="count" onClick={handleSelect}>
               计算
             </Menu.Item>

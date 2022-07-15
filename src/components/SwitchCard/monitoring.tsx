@@ -53,14 +53,7 @@ export const MonitoringCard = ({ visible }: CardProps) => {
               }),
               id: index,
             });
-            return (
-              <Point
-                key={index}
-                geometry={circleGeometry}
-                // position={value}
-                // location={tunnelLabel}
-              />
-            );
+            return <Point key={index} geometry={circleGeometry} />;
           })}
       </div>
     </>
