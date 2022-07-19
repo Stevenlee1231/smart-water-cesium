@@ -18,8 +18,7 @@ export const Screen = () => {
   };
   //控制地图上显示的东西  并不使用router控制
   const [earthVisible, setEarthVisible] = useState({
-    rainfall: true,
-    eva: false,
+    meteorology:true,
     three: false,
     //地层信息
     stratum: false,
@@ -34,18 +33,13 @@ export const Screen = () => {
     gushing: false,
     //区域水位
     regionalWater: false,
-    //GMS香炉山
-    GMSMountain: false,
-    //GMS香炉山六号
-    GMSMountainSix: false,
-    //深度学习香炉山
+    //香炉山
     mountain: false,
-    //深度学习香炉山六号
+    //香炉山六号
     mountainSix: false,
     //计算
     count: false,
     //预警结果
-    result: false,
   });
 
   return (
@@ -55,7 +49,7 @@ export const Screen = () => {
         <Layout>
           <SiderScreen
             theme={theme}
-            callback={setEarthVisible}
+            setEarthVisible={setEarthVisible}
             earthVisible={earthVisible}
           />
         </Layout>

@@ -5,7 +5,7 @@ import {
   MonitorOutlined,
   StockOutlined,
 } from "@ant-design/icons";
-import { Menu, Radio } from "antd";
+import { Menu, Radio, Switch } from "antd";
 import Layout from "antd/lib/layout";
 import { SiderTheme } from "antd/lib/layout/Sider";
 import { useState } from "react";
@@ -15,8 +15,9 @@ import { ContentScreen } from "./content";
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 export const initEarthVisible = {
-  rainfall: false,
-  eva: false,
+  // rainfall: false,
+  // eva: false,
+  meteorology: false,
   three: false,
   stratum: false,
   hydrology: false,
@@ -24,27 +25,34 @@ export const initEarthVisible = {
   monitoring: false,
   gushing: false,
   regionalWater: false,
-  GMSMountain: false,
-  GMSMountainSix: false,
   mountain: false,
   mountainSix: false,
   count: false,
-  result: false,
+};
+const switchStyle = {
+  // float: "right",
+  transform: "translateY(-50%)",
+  position: "absolute",
+  top: "50%",
+  right: "10%",
 };
 export const SiderScreen = ({
   theme,
-  callback,
+  setEarthVisible,
   earthVisible,
 }: {
   theme: SiderTheme | string;
-  callback: any;
+  setEarthVisible: any;
   earthVisible: any;
 }) => {
-  const handleSelect = (e: any) => {
-    callback((prev: any) => {
-      if (prev[e.key]) return prev;
-      return { ...initEarthVisible, [e.key]: true };
-    });
+  const handleSwitch = (key: string) => {
+    return (checked: boolean, e: any) => {
+      e.stopPropagation();
+      setEarthVisible(() => {
+        // if (prev[e.key]) return prev;
+        return { [key]: checked };
+      });
+    };
   };
   return (
     <Layout>
@@ -62,70 +70,110 @@ export const SiderScreen = ({
           style={{ height: "100%", borderRight: 0 }}
           theme={theme as SiderTheme}
         >
-          <SubMenu key="meteorology" icon={<FireOutlined />} title="气象水文">
-            {/* <Menu.Item key="rainfall" onClick={handleSelect}>
-              降水量
-            </Menu.Item>
-            <Menu.Item key="eva" onClick={handleSelect}>
-              蒸发量 
-            </Menu.Item> */}
-          </SubMenu>
+          <Menu.Item key="meteorology" icon={<FireOutlined />}>
+            气象水文
+            <Switch
+              onClick={handleSwitch("meteorology")}
+              size="small"
+              style={switchStyle as any}
+              checked={earthVisible["meteorology"]}
+            />
+          </Menu.Item>
           <SubMenu key="sub2" icon={<GlobalOutlined />} title="区域信息">
-            <Menu.Item key="tunnel" onClick={handleSelect}>
+            <Menu.Item key="tunnel">
               隧洞线路
+              <Switch
+                size="small"
+                style={switchStyle as any}
+                onClick={handleSwitch("tunnel")}
+                checked={earthVisible["tunnel"]}
+              />
             </Menu.Item>
-            <Menu.Item key="stratum" onClick={handleSelect}>
+            <Menu.Item key="stratum">
               区域地质
+              <Switch
+                size="small"
+                style={switchStyle as any}
+                onClick={handleSwitch("stratum")}
+                checked={earthVisible["stratum"]}
+              />
             </Menu.Item>
-            <Menu.Item key="hydrology" onClick={handleSelect}>
+            <Menu.Item key="hydrology">
               水文地质
+              <Switch
+                size="small"
+                style={switchStyle as any}
+                onClick={handleSwitch("hydrology")}
+                checked={earthVisible["hydrology"]}
+              />
             </Menu.Item>
-            {/* <Menu.Item key="three" onClick={handleSelect}>
+            {/* <Menu.Item key="three">
               三维地质模型
             </Menu.Item> */}
           </SubMenu>
           <SubMenu key="sub3" icon={<StockOutlined />} title="监测信息">
-            <Menu.Item key="monitoring" onClick={handleSelect}>
+            <Menu.Item key="monitoring">
               监测井
+              <Switch
+                size="small"
+                style={switchStyle as any}
+                onClick={handleSwitch("monitoring")}
+                checked={earthVisible["monitoring"]}
+              />
             </Menu.Item>
-            <Menu.Item key="gushing" onClick={handleSelect}>
+            <Menu.Item key="gushing">
               突涌水点
+              <Switch
+                size="small"
+                style={switchStyle as any}
+                onClick={handleSwitch("gushing")}
+                checked={earthVisible["gushing"]}
+              />
             </Menu.Item>
-            <Menu.Item key="regionalWater" onClick={handleSelect}>
+            <Menu.Item key="regionalWater">
               区域水位
+              <Switch
+                size="small"
+                style={switchStyle as any}
+                onClick={handleSwitch("regionalWater")}
+                checked={earthVisible["regionalWater"]}
+              />
             </Menu.Item>
           </SubMenu>
           <SubMenu key="sub4" icon={<MonitorOutlined />} title="预测">
-            <SubMenu key="sub41" title="GMS模型预测">
-              <Menu.Item key="GMSMountain" onClick={handleSelect}>
-                香炉山隧洞模型
-              </Menu.Item>
-              <Menu.Item key="GMSMountainSix" onClick={handleSelect}>
-                香炉山六号隧洞模型
-              </Menu.Item>
-            </SubMenu>
-            <SubMenu key="sub42" title="深度学习模型预测">
-              <Menu.Item key="mountain" onClick={handleSelect}>
-                香炉山隧洞模型
-              </Menu.Item>
-              <Menu.Item key="mountainSix" onClick={handleSelect}>
-                香炉山六号隧洞模型
-              </Menu.Item>
-            </SubMenu>
-          </SubMenu>
-          <SubMenu key="sub5" icon={<ExclamationOutlined />} title="预警">
-            <Menu.Item key="count" onClick={handleSelect}>
-              计算
+            <Menu.Item key="mountain">
+              香炉山隧洞模型
+              <Switch
+                size="small"
+                style={switchStyle as any}
+                onClick={handleSwitch("mountain")}
+                checked={earthVisible["mountain"]}
+              />
             </Menu.Item>
-            <Menu.Item key="result" onClick={handleSelect}>
-              预警结果
+            <Menu.Item key="mountainSix">
+              香炉山六号隧洞模型
+              <Switch
+                size="small"
+                style={switchStyle as any}
+                onClick={handleSwitch("mountainSix")}
+                checked={earthVisible["mountainSix"]}
+              />
             </Menu.Item>
           </SubMenu>
+          <Menu.Item key="count">
+            预警输入
+            <Switch
+              size="small"
+              style={switchStyle as any}
+              onClick={handleSwitch("count")}
+              checked={earthVisible["count"]}
+            />
+          </Menu.Item>
         </Menu>
       </Sider>
       <ContentScreen
         theme={theme}
-        callback={callback}
+        setEarthVisible={setEarthVisible}
         earthVisible={earthVisible}
       />
     </Layout>

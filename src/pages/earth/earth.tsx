@@ -12,18 +12,17 @@ Ion.defaultAccessToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2OTU2ZDE3Yi04ZDliLTRjZDAtYWYyOC01ZTk1OWFjOGNiZTUiLCJpZCI6NDQ3NjgsImlhdCI6MTYyNzk2Mjk1MX0.FrqhJD70CQLH9QsnePyuU0gmevojlEmGgF8swsUQue4";
 
 export const EarthScreen = (props: any) => {
-  const { earthVisible, callback } = props;
+  const { earthVisible, setEarthVisible} = props;
   const renderCount = useRef(0);
   // console.log(renderCount.current)
   useEffect(() => {
     setTimeout(() => {
       renderCount.current++;
-      console.log(renderCount.current);
     }, 0);
   }, []);
   return (
     <div style={{ width: "100%", height: "100%" }}>
-      <Viewer timeline={false} animation={false} infoBox={false}>
+      <Viewer timeline={false} animation={false} infoBox={false} style={{height:"95%"}}>
         {renderCount.current === 0 && (
           <CameraFlyTo
             duration={0}
@@ -70,12 +69,12 @@ export const EarthScreen = (props: any) => {
         <Caculate
           visible={earthVisible["count"]}
           showDrawer={() => {
-            callback((prev: any) => {
+            setEarthVisible((prev: any) => {
               return { ...prev, count: true };
             });
           }}
           onClose={() => {
-            callback((prev: any) => {
+            setEarthVisible((prev: any) => {
               return { ...prev, count: false };
             });
           }}

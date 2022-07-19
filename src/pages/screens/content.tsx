@@ -9,15 +9,15 @@ import { EarthScreen } from "../earth/earth";
 const { Content } = Layout;
 export const ContentScreen = ({
   theme,
-  callback,
+  setEarthVisible,
   earthVisible,
 }: {
   theme: SiderTheme | string;
-  callback: any;
+  setEarthVisible: any;
   earthVisible: any;
 }) => {
   const [eleRef, eleMsg] = useWidtheight<HTMLDivElement>();
-  const { rainfall, eva, three } = earthVisible;
+  // const { rainfall, eva, three } = earthVisible;
   return (
     <Layout>
       <Content
@@ -37,15 +37,13 @@ export const ContentScreen = ({
           style={{ width: "100%", height: `calc(100vh - 70px)` }}
           className="content-container"
         >
-          {rainfall && <Rainfall eleMsg={eleMsg}></Rainfall>}
+          {/* {rainfall && <Rainfall eleMsg={eleMsg}></Rainfall>}
           {eva && <Evaporationcapacity eleMsg={eleMsg}></Evaporationcapacity>}
-          {three && <FormationScreen></FormationScreen>}
-          {!rainfall && !eva && !three && (
-            <EarthScreen
-              earthVisible={earthVisible}
-              callback={callback}
-            ></EarthScreen>
-          )}
+          {three && <FormationScreen></FormationScreen>} */}
+          <EarthScreen
+            earthVisible={earthVisible}
+            setEarthVisible={setEarthVisible}
+          ></EarthScreen>
         </div>
       </Content>
     </Layout>
