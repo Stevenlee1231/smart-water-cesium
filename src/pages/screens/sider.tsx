@@ -48,9 +48,8 @@ export const SiderScreen = ({
   const handleSwitch = (key: string) => {
     return (checked: boolean, e: any) => {
       e.stopPropagation();
-      setEarthVisible(() => {
-        // if (prev[e.key]) return prev;
-        return { [key]: checked };
+      setEarthVisible((prev: any) => {
+        return { ...prev, [key]: checked };
       });
     };
   };

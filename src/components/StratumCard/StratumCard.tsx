@@ -18,9 +18,9 @@ const stratum_options = [
 ];
 
 const StratumCard = () => {
-  const [stratumVisible, setstratumVisible] = useState({
-    ...stratum_visible_init,
-  });
+  // const [stratumVisible, setstratumVisible] = useState({
+  //   ...stratum_visible_init,
+  // });
 
   // setstratumVisible((prev) => {
   //   return { ...prev, [key]: true };
@@ -40,11 +40,11 @@ const StratumCard = () => {
           ></CameraFlyTo>
           <Loadtif
             url={`${BASE_URL}${stratum.dali}`}
-            visible={stratumVisible.dali}
+            visible={true}
           ></Loadtif>
           <Loadtif
             url={`${BASE_URL}${stratum.yuxi}`}
-            visible={stratumVisible.yuxi}
+            visible={true}
           ></Loadtif>
         </>
       }

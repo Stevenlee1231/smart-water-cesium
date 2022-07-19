@@ -21,7 +21,7 @@ const tunnels = tunnel.geometries.map((obj) => {
   return Cartesian3.fromDegrees(obj.coordinates[0], obj.coordinates[1], 0);
 });
 export const MonitoringCard = ({ visible }: CardProps) => {
-  const [monitoringVisible, setMonitoringVisible] = useState(false);
+  // const [monitoringVisible, setMonitoringVisible] = useState(false);
   return (
     <>
       <div
@@ -32,7 +32,7 @@ export const MonitoringCard = ({ visible }: CardProps) => {
           visibility: visible ? "visible" : "hidden",
         }}
       >
-        <Card title={"监测井"} bordered={false}>
+        {/* <Card title={"监测井"} bordered={false}>
           开关：
           {visible && (
             <Switch
@@ -42,8 +42,8 @@ export const MonitoringCard = ({ visible }: CardProps) => {
               checked={monitoringVisible}
             />
           )}
-        </Card>
-        {monitoringVisible &&
+        </Card> */}
+        {visible &&
           tunnels.map((value, index) => {
             const circleGeometry = new GeometryInstance({
               geometry: new CircleGeometry({

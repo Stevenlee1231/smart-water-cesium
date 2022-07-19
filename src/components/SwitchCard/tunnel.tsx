@@ -42,7 +42,7 @@ branchHole.geometries.map((value) => {
   branchLabelPositions.push(temp);
 });
 export const TunnelCard = ({ visible }: CardProps) => {
-  const [tunnelVisible, setTunnelVisible] = useState(false);
+  // const [tunnelVisible, setTunnelVisible] = useState(false);
   const [textVisible, setTextVisible] = useState({
     0: false,
     1: false,
@@ -74,7 +74,7 @@ export const TunnelCard = ({ visible }: CardProps) => {
           visibility: visible ? "visible" : "hidden",
         }}
       >
-        <Card title={"隧道及支洞"} bordered={false}>
+        {/* <Card title={"隧道及支洞"} bordered={false}>
           开关：
           {visible && (
             <Switch
@@ -87,8 +87,8 @@ export const TunnelCard = ({ visible }: CardProps) => {
               checked={tunnelVisible}
             />
           )}
-        </Card>
-        {tunnelVisible && (
+        </Card> */}
+        {visible && (
           <>
             {branchHoles &&
               branchHoles.map((value: any[], index: any) => {
