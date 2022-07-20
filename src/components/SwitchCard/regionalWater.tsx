@@ -14,7 +14,7 @@ let templateGeoJson = {
     },
   ],
 };
-export const RegionalWaterCard = ({ visible }: CardProps) => {
+const RegionalWater= ({ visible }: CardProps) => {
   // const [regionalWaterVisible, setRegionalWaterVisible] = useState(false);
 
   return (
@@ -55,3 +55,4 @@ export const RegionalWaterCard = ({ visible }: CardProps) => {
     </>
   );
 };
+export default RegionalWater

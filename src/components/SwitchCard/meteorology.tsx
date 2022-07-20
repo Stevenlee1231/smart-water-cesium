@@ -19,8 +19,7 @@ const tunnelLabel = [
 const tunnels = tunnel.geometries.map((obj) => {
   return Cartesian3.fromDegrees(obj.coordinates[0], obj.coordinates[1], 0);
 });
-const Monitoring = ({ visible }: CardProps) => {
-  // const [monitoringVisible, setMonitoringVisible] = useState(false);
+const Meteorology = ({ visible }: CardProps) => {
   return (
     <>
       <div
@@ -31,17 +30,6 @@ const Monitoring = ({ visible }: CardProps) => {
           visibility: visible ? "visible" : "hidden",
         }}
       >
-        {/* <Card title={"监测井"} bordered={false}>
-          开关：
-          {visible && (
-            <Switch
-              onChange={(checked) => {
-                setMonitoringVisible(checked);
-              }}
-              checked={monitoringVisible}
-            />
-          )}
-        </Card> */}
         {visible &&
           tunnels.map((value, index) => {
             const circleGeometry = new GeometryInstance({
@@ -56,8 +44,8 @@ const Monitoring = ({ visible }: CardProps) => {
               <Point
                 key={index}
                 geometry={circleGeometry}
-                mode="custom"
-                id={tunnelLabel[index]}
+                mode="site"
+                id={"XinfengWeatherStation"}
               />
             );
           })}
@@ -65,4 +53,4 @@ const Monitoring = ({ visible }: CardProps) => {
     </>
   );
 };
-export default Monitoring;
+export default Meteorology;

@@ -41,7 +41,7 @@ branchHole.geometries.map((value) => {
   });
   branchLabelPositions.push(temp);
 });
-export const TunnelCard = ({ visible }: CardProps) => {
+ const Tunnel = ({ visible }: CardProps) => {
   // const [tunnelVisible, setTunnelVisible] = useState(false);
   const [textVisible, setTextVisible] = useState({
     0: false,
@@ -140,3 +140,4 @@ export const TunnelCard = ({ visible }: CardProps) => {
     </>
   );
 };
+export default Tunnel

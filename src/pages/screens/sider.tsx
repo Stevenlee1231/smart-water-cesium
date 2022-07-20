@@ -61,6 +61,7 @@ export const SiderScreen = ({
           height: `calc(100vh - 70px)`,
           overflowY: "auto",
           overflowX: "hidden",
+          background: "white",
         }}
       >
         <Menu

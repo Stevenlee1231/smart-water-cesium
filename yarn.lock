@@ -9133,6 +9133,16 @@ rc-dialog@~8.8.0, rc-dialog@~8.8.1:
     rc-motion "^2.3.0"
     rc-util "^5.21.0"
 
+rc-dialog@~8.9.0:
+  version "8.9.0"
+  resolved "https://registry.yarnpkg.com/rc-dialog/-/rc-dialog-8.9.0.tgz#04dc39522f0321ed2e06018d4a7e02a4c32bd3ea"
+  integrity sha512-Cp0tbJnrvPchJfnwIvOMWmJ4yjX3HWFatO6oBFD1jx8QkgsQCR0p8nUWAKdd3seLJhEC39/v56kZaEjwp9muoQ==
+  dependencies:
+    "@babel/runtime" "^7.10.1"
+    classnames "^2.2.6"
+    rc-motion "^2.3.0"
+    rc-util "^5.21.0"
+
 rc-drawer@~4.4.2:
   version "4.4.3"
   resolved "https://registry.npmmirror.com/rc-drawer/-/rc-drawer-4.4.3.tgz"
@@ -9160,6 +9170,16 @@ rc-field-form@~1.26.1:
     "@babel/runtime" "^7.18.0"
     async-validator "^4.1.0"
     rc-util "^5.8.0"
+
+rc-image@^5.6.3:
+  version "5.6.3"
+  resolved "https://registry.yarnpkg.com/rc-image/-/rc-image-5.6.3.tgz#bac485d563ae52923e64885e7044534293a18d25"
+  integrity sha512-co7D/3+S34S0QA/t+Zo8etMEt8FGHQDl9GyQoE3X+tHppCV0sFxit3OnAEmYl9HbqV583IY+J3rMDwhOt8ax4A==
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+    classnames "^2.2.6"
+    rc-dialog "~8.9.0"
+    rc-util "^5.0.6"
 
 rc-image@~5.6.0:
   version "5.6.2"
