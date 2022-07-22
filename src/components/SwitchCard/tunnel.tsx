@@ -41,7 +41,7 @@ branchHole.geometries.map((value) => {
   });
   branchLabelPositions.push(temp);
 });
- const Tunnel = ({ visible }: CardProps) => {
+const Tunnel = ({ visible }: CardProps) => {
   // const [tunnelVisible, setTunnelVisible] = useState(false);
   const [textVisible, setTextVisible] = useState({
     0: false,
@@ -96,9 +96,15 @@ branchHole.geometries.map((value) => {
                   <Line
                     key={index}
                     id={index}
-                    material={Material.fromType("Color", {
-                      color: new Color(0, 255, 0, 1),
-                    })}
+                    material={
+                      textVisible[index as textState]
+                        ? Material.fromType("Color", {
+                            color: new Color(0, 255, 0, 1),
+                          })
+                        : Material.fromType("Color", {
+                            color: new Color(0, 0, 255, 1),
+                          })
+                    }
                     positions={value}
                     width={6}
                     mouseEnter={handleMouseEnter}
@@ -140,4 +146,4 @@ branchHole.geometries.map((value) => {
     </>
   );
 };
-export default Tunnel
+export default Tunnel;
