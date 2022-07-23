@@ -119,7 +119,6 @@ const SitePoint = ({ id }: { id: string }) => {
   );
 };
 const Point = (props: point) => {
-  console.log(props.id);
   const appearance = new EllipsoidSurfaceAppearance({
     aboveGround: false,
     material: new Material({

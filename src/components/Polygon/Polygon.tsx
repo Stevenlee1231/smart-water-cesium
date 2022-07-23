@@ -7,9 +7,10 @@ interface polygon {
   data: object;
   stroke: Color;
   strokeWidth: number;
+  onClick?:Function
 }
 function Polygon(props: polygon) {
-  const { data, stroke, strokeWidth, material } = props;
+  const { data, stroke, strokeWidth, material,onClick } = props;
   return (
     <>
       <GeoJsonDataSource
@@ -17,9 +18,7 @@ function Polygon(props: polygon) {
         stroke={stroke}
         strokeWidth={strokeWidth}
         fill={material.withAlpha(0.1)}
-        onClick={() => {
-         
-        }}
+        onClick={onClick as any}
       ></GeoJsonDataSource>
      
     </>

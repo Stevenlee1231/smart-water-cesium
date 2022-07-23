@@ -1,5 +1,6 @@
 import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { URLSearchParamsInit, useSearchParams } from "react-router-dom";
+import raf from "./raf";
 
 export const useDocumentTitle = (title: string) => {
   useEffect(() => {
@@ -39,5 +40,37 @@ export const useWidtheight = <T>(): [
   return [ref, value];
 };
 
+type SetActionType<T> = Partial<T> | ((state: T) => Partial<T>);
 
+export default function useFrameSetState<T extends object>(
+  initial: T
+): [T, (newState: SetActionType<T>) => void] {
+  const frame = useRef(null);
+  const [state, setState] = useState(initial);
 
+  const queue = useRef<SetActionType<T>[]>([]);
+
+  const setFrameState = (newState: SetActionType<T>) => {
+    if (frame.current === null) {
+      queue.current = [];
+      //@ts-ignore
+      frame.current = raf(() => {
+        setState((preState) => {
+          let memoState: any = preState;
+          queue.current.forEach((queueState) => {
+            memoState = { ...memoState, ...queueState };
+          });
+          frame.current = null;
+
+          return memoState;
+        });
+      });
+    }
+
+    queue.current.push(newState);
+  };
+  //@ts-ignore
+  useEffect(() => () => frame.current && raf.cancel(frame.current), []);
+
+  return [state, setFrameState];
+}

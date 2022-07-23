@@ -5,6 +5,7 @@ import { stratum } from "../../assets/datas/mountain_tif";
 import model_area_data from "../../assets/datas/model_area.json";
 import Loadtif from "../Loadtif/Loadtif";
 import Image from "rc-image";
+import Model from "../../components/Model/Model";
 import Polygon from "../Polygon/Polygon";
 import "./Stratum.scss";
 import { CameraFlyTo } from "resium";
@@ -19,6 +20,7 @@ const stratum_options = [
 ];
 
 const Stratum = () => {
+  const [modelVis, setModelVis] = useState(false);
   // const [stratumVisible, setstratumVisible] = useState({
   //   ...stratum_visible_init,
   // });
@@ -54,15 +56,18 @@ const Stratum = () => {
             material={Color.RED}
             stroke={Color.RED}
             strokeWidth={5}
-          ></Polygon>
-          <div
-            style={{
-              position: "absolute",
-              top: 64,
+            onClick={() => {
+              setModelVis(true);
             }}
-            className="image-wrap"
-          >
-          </div>
+          ></Polygon>
+          <Model
+            src={""}
+            visible={modelVis}
+            onClose={(e) => {
+              e.stopPropagation();
+              setModelVis(false);
+            }}
+          ></Model>
         </>
       }
     </>

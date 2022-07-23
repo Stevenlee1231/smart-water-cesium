@@ -37,7 +37,7 @@ export const EarthScreen = (props: any) => {
         )}
         {/*水文气象 */}
         {earthVisible["meteorology"]&&<Meteorology visible={earthVisible["meteorology"]}></Meteorology>}
-        {/*地层信息*/}
+        {/*区域地质*/}
         {earthVisible["stratum"] && <Stratum></Stratum>}
         {/* 监测井 */}
 

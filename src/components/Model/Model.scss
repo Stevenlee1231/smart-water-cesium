@@ -1,0 +1,33 @@
+.model-wrap {
+  position: fixed;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba($color: #000000, $alpha: 0.8);
+  .model-close {
+    float: right;
+    width: 40px;
+    height: 40px;
+    margin: 20px 20px 0 0;
+    background-image: url("../../assets/images/close.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .model-content {
+    width: 800px;
+    height: 800px;
+    margin: 50vh auto;
+    transform: translateY(-50%);
+    .model-image-wrap {
+      width: 800px;
+      height: 800px;
+      img {
+        width: 800px;
+        height: 800px;
+        object-fit: contain;
+      }
+    }
+  }
+}
