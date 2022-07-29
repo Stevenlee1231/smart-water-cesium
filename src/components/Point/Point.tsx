@@ -1,5 +1,10 @@
 import { Primitive } from "resium";
-import { EllipsoidSurfaceAppearance, GeometryInstance, Material } from "cesium";
+import {
+  EllipsoidSurfaceAppearance,
+  GeometryInstance,
+  Material,
+  PrimitiveCollection,
+} from "cesium";
 import { useState } from "react";
 import { Drawer, Tabs } from "antd";
 import customImg from "../../assets/images/jing.png";
@@ -146,6 +151,7 @@ const Point = (props: point) => {
         geometryInstances={geometry}
         appearance={appearance}
       ></Primitive>
+
       <Drawer
         title={props.mode === "custom" ? "监测井信息" : "气象站信息"}
         placement="right"
