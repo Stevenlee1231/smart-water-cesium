@@ -17,7 +17,7 @@ import suidaoData from "../../assets/datas/suidao.json";
 import { useEffect, useState } from "react";
 export interface CardProps {
   earthInstance?: any;
-  visible: boolean;
+  visible?: boolean;
 }
 type textState = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 const lineData = suidongData.geometries[0].coordinates.map((value) => {
@@ -66,11 +66,12 @@ branchHole.geometries.map((value) => {
 const Tunnel = ({ visible, earthInstance }: CardProps) => {
   // const [tunnelVisible, setTunnelVisible] = useState(false);
   useEffect(() => {
-    // console.log(lineArr)
+    console.log(visible);
     if (earthInstance.current && earthInstance.current.cesiumElement) {
       // ref.current.cesiumElement is Cesium's Viewer
       // DO SOMETHING
       earthInstance.current.cesiumElement.entities.add({
+        id: "volume",
         // name: "Blue star with mitered corners and outline",
         polylineVolume: {
           positions: Cartesian3.fromDegreesArray(lineArr),
@@ -80,9 +81,19 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
           material: Color.PALETURQUOISE,
         },
       });
+      return () => {
+        //模拟代码
+        console.log("xxx", earthInstance.current.cesiumElement.entities.getById("volume"))
+        earthInstance.current.cesiumElement.entities.remove(
+          earthInstance.current.cesiumElement.entities.getById("volume")
+        );
+      };
       // earthInstance.current.cesiumElement.zoomTo(earthInstance.current.cesiumElement.entities);
     }
-  });
+    // return () => {
+    //   earthInstance.current.cesiumElement.entities.remove("volume")
+    // };
+  }, [visible]);
   const [textVisible, setTextVisible] = useState({
     0: false,
     1: false,
@@ -117,15 +128,7 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
   // },[])
   return (
     <>
-      <div
-        style={{
-          position: "absolute",
-          top: "180px",
-          right: "25px",
-          visibility: visible ? "visible" : "hidden",
-        }}
-      >
-        {/* <Card title={"隧道及支洞"} bordered={false}>
+      {/* <Card title={"隧道及支洞"} bordered={false}>
           开关：
           {visible && (
             <Switch
@@ -139,62 +142,60 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
             />
           )}
         </Card> */}
-        {visible && (
-          <>
-            {branchHoles &&
-              branchHoles.map((value: any[], index: any) => {
-                return (
-                  <Line
-                    key={index}
-                    id={index}
-                    material={
-                      textVisible[index as textState]
-                        ? Material.fromType("Color", {
-                            color: Color.LIGHTPINK,
-                          })
-                        : Material.fromType("Color", {
-                            color: Color.LIGHTSTEELBLUE,
-                          })
-                    }
-                    positions={value}
-                    width={6}
-                    mouseEnter={handleMouseEnter}
-                    mouseLeave={handleMouseLeave}
-                  ></Line>
-                );
-              })}
-            <LabelCollection>
-              {branchLabelPositions &&
-                branchLabelPositions.map((value, index) => {
-                  return (
-                    <Text
-                      key={index}
-                      position={value}
-                      text={branchLabel[index]}
-                      color={Color.LIGHTSKYBLUE}
-                      show={textVisible[index as textState]}
-                    ></Text>
-                  );
-                })}
-            </LabelCollection>
 
-            {/* <Line
+      <>
+        {branchHoles &&
+          branchHoles.map((value: any[], index: any) => {
+            return (
+              <Line
+                key={index}
+                id={index}
+                material={
+                  textVisible[index as textState]
+                    ? Material.fromType("Color", {
+                        color: Color.LIGHTPINK,
+                      })
+                    : Material.fromType("Color", {
+                        color: Color.LIGHTSTEELBLUE,
+                      })
+                }
+                positions={value}
+                width={6}
+                mouseEnter={handleMouseEnter}
+                mouseLeave={handleMouseLeave}
+              ></Line>
+            );
+          })}
+        <LabelCollection>
+          {branchLabelPositions &&
+            branchLabelPositions.map((value, index) => {
+              return (
+                <Text
+                  key={index}
+                  position={value}
+                  text={branchLabel[index]}
+                  color={Color.LIGHTSKYBLUE}
+                  show={textVisible[index as textState]}
+                ></Text>
+              );
+            })}
+        </LabelCollection>
+
+        {/* <Line
               material={Material.fromType("Color", {
                 color: new Color(255, 0, 0, 1),
               })}
               positions={lineData}
               width={10}
             ></Line> */}
-            <Line
-              material={Material.fromType("Color", {
-                color: new Color(0, 223, 252, 1),
-              })}
-              positions={line2Data}
-              width={10}
-            ></Line>
-          </>
-        )}
-      </div>
+        <Line
+          material={Material.fromType("Color", {
+            color: new Color(0, 223, 252, 1),
+          })}
+          positions={line2Data}
+          width={10}
+        ></Line>
+      </>
     </>
   );
 };

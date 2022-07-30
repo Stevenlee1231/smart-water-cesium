@@ -108,7 +108,7 @@ export const EarthScreen = (props: any) => {
         {/* 监测井 */}
         <Monitoring visible={earthVisible["monitoring"]} />
         {/* 隧道及支洞 */}
-        <Tunnel earthInstance={earthRef} visible={earthVisible["tunnel"]} />
+        {earthVisible["tunnel"] && <Tunnel earthInstance={earthRef} />}
         {/* 区域水位 */}
         <RegionalWater visible={earthVisible["regionalWater"]} />
         {earthVisible["GMSMountain"] && (
