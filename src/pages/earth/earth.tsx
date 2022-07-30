@@ -1,5 +1,6 @@
 import {
   Ion,
+  ScreenSpaceEventType,
   UrlTemplateImageryProvider,
   WebMapTileServiceImageryProvider,
 } from "cesium";
@@ -13,7 +14,7 @@ import Meteorology from "../../components/SwitchCard/meteorology";
 import Tunnel from "../../components/SwitchCard/tunnel";
 import Monitoring from "../../components/SwitchCard/monitoring";
 import RegionalWater from "../../components/SwitchCard/regionalWater";
-import { Chrono } from "react-chrono";
+import "./earth.scss";
 Ion.defaultAccessToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2OTU2ZDE3Yi04ZDliLTRjZDAtYWYyOC01ZTk1OWFjOGNiZTUiLCJpZCI6NDQ3NjgsImlhdCI6MTYyNzk2Mjk1MX0.FrqhJD70CQLH9QsnePyuU0gmevojlEmGgF8swsUQue4";
 
@@ -25,6 +26,10 @@ export const EarthScreen = (props: any) => {
     if (earthRef.current && earthRef.current.cesiumElement) {
       earthRef.current.cesiumElement.scene.globe.depthTestAgainstTerrain =
         false;
+      earthRef.current.cesiumElement.cesiumWidget.screenSpaceEventHandler.removeInputAction(
+        ScreenSpaceEventType.LEFT_DOUBLE_CLICK
+      );
+      earthRef.current.cesiumElement.scene.fxaa = true
     }
   });
   useEffect(() => {
@@ -85,14 +90,26 @@ export const EarthScreen = (props: any) => {
             })
           }
         ></ImageryLayer> */}
-        {/* <ImageryLayer
+        <ImageryLayer
           imageryProvider={
             new UrlTemplateImageryProvider({
-              url: "https://t{s}.tianditu.gov.cn/img_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={x}&TILECOL={y}&tk=48d8f36297a4adcd94eb4f85ea260349",
-              subdomains:['0','1','2','3','4','5','6','7'],
+              url: "https://t{s}.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=48d8f36297a4adcd94eb4f85ea260349",
+              subdomains: ["0", "1", "2", "3", "4", "5", "6", "7"],
+              minimumLevel: 0,
+              maximumLevel: 18,
             })
           }
-        ></ImageryLayer> */}
+        ></ImageryLayer>
+        <ImageryLayer
+          imageryProvider={
+            new UrlTemplateImageryProvider({
+              url: "https://t{s}.tianditu.gov.cn/DataServer?T=cia_w&x={x}&y={y}&l={z}&tk=48d8f36297a4adcd94eb4f85ea260349",
+              subdomains: ["0", "1", "2", "3", "4", "5", "6", "7"],
+              minimumLevel: 0,
+              maximumLevel: 18,
+            })
+          }
+        ></ImageryLayer>
         {renderCount.current === 0 && (
           <CameraFlyTo
             duration={0}
