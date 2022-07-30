@@ -39,25 +39,13 @@ export const EarthScreen = (props: any) => {
   }, []);
   return (
     <div style={{ width: "100%", height: "100%" }}>
-      <div
-        style={{
-          width: "600px",
-          height: "120px",
-          position: "absolute",
-          bottom: "20px",
-          zIndex: "999",
-          left: "50%",
-          transform: "translate3d(-25%,0,0)",
-        }}
-      >
-        {/* <Chrono items={items} mode={"HORIZONTAL"} cardLess={true} /> */}
-      </div>
       <Viewer
         timeline={false}
         animation={false}
         infoBox={false}
         style={{ height: "95%" }}
         ref={earthRef}
+        selectionIndicator={false}
         // imageryProvider={false}
       >
         {/* <ImageryLayer
