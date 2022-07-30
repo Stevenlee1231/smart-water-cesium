@@ -10,6 +10,9 @@ import Loadtif from "../Loadtif/Loadtif";
 import Image from "rc-image";
 import Model from "../../components/Model/Model";
 import Polygon from "../Polygon/Polygon";
+import Dali from "./Dali";
+import Honghe from "./Honghe";
+import Yuxi from "./Yuxi";
 import "./Stratum.scss";
 import { CameraFlyTo } from "resium";
 const { TabPane } = Tabs;
@@ -73,7 +76,10 @@ const Stratum = () => {
         //   ></Loadtif>
         // </>
         <>
-          <Polygon
+          <Dali></Dali>
+          <Yuxi></Yuxi>
+          <Honghe></Honghe>
+          {/* <Polygon
             data={dali_area}
             material={dali ? Color.DEEPPINK : Color.ROYALBLUE}
             stroke={dali ? Color.DEEPPINK : Color.ROYALBLUE}
@@ -176,7 +182,7 @@ const Stratum = () => {
                 return { ...pre, honghe: false };
               });
             }}
-          ></Model>
+          ></Model> */}
         </>
       }
     </>
