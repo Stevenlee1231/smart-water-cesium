@@ -1,5 +1,6 @@
 import { Spin, Modal } from "antd";
 import { Color } from "cesium";
+import React from "react";
 import { useState } from "react";
 import { GeoJsonDataSource } from "resium";
 interface polygon {
@@ -7,10 +8,20 @@ interface polygon {
   data: object;
   stroke: Color;
   strokeWidth: number;
-  onClick?:Function
+  onClick?: Function;
+  mouseEnter?: any;
+  mouseLeave?: any;
 }
 function Polygon(props: polygon) {
-  const { data, stroke, strokeWidth, material,onClick } = props;
+  const {
+    data,
+    stroke,
+    strokeWidth,
+    material,
+    onClick,
+    mouseEnter,
+    mouseLeave,
+  } = props;
   return (
     <>
       <GeoJsonDataSource
@@ -19,10 +30,11 @@ function Polygon(props: polygon) {
         strokeWidth={strokeWidth}
         fill={material.withAlpha(0.1)}
         onClick={onClick as any}
+        onMouseEnter={mouseEnter}
+        onMouseLeave={mouseLeave}
       ></GeoJsonDataSource>
-     
     </>
   );
 }
 
-export default Polygon;
+export default React.memo(Polygon);

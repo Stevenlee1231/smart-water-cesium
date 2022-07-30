@@ -1,5 +1,12 @@
 import { Card, Switch } from "antd";
-import { Cartesian2, Cartesian3, Color, CornerType, Material,Math as CMath } from "cesium";
+import {
+  Cartesian2,
+  Cartesian3,
+  Color,
+  CornerType,
+  Material,
+  Math as CMath,
+} from "cesium";
 import { LabelCollection } from "resium";
 import Line from "../Line/Line";
 import Text from "../Text/Text";
@@ -16,9 +23,9 @@ type textState = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 const lineData = suidongData.geometries[0].coordinates.map((value) => {
   return Cartesian3.fromDegrees(value[0], value[1], 0);
 });
-const lineArr=suidongData.geometries[0].coordinates.reduce((pre,cur)=>{
-  return pre.concat(cur)
-},[])
+const lineArr = suidongData.geometries[0].coordinates.reduce((pre, cur) => {
+  return pre.concat(cur);
+}, []);
 const line2Data = suidaoData.geometries[0].coordinates.map((value) => {
   return Cartesian3.fromDegrees(value[0], value[1], 0);
 });
@@ -43,10 +50,7 @@ function computeCircle(radius: number) {
   for (let i = 0; i < 360; i++) {
     const radians = CMath.toRadians(i);
     positions.push(
-      new Cartesian2(
-        radius * Math.cos(radians),
-        radius * Math.sin(radians)
-      )
+      new Cartesian2(radius * Math.cos(radians), radius * Math.sin(radians))
     );
   }
   return positions;
@@ -91,9 +95,10 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
     8: false,
   });
   const handleMouseEnter = (e: any, target: any) => {
-   let body = document.querySelector("body")
+    if (textVisible[target.id as textState]) return;
+    let body = document.querySelector("body");
     //@ts-ignore
-    body.style.cursor= "pointer"
+    body.style.cursor = "pointer";
     setTextVisible((prev) => {
       return { ...prev, [target.id]: true };
     });
@@ -102,9 +107,9 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
     setTextVisible((prev) => {
       return { ...prev, [target.id]: false };
     });
-    let body = document.querySelector("body")
+    let body = document.querySelector("body");
     //@ts-ignore
-    body.style.cursor= "auto"
+    body.style.cursor = "auto";
   };
   // useEffect(()=>{
   //   const body = document.querySelector("body")
@@ -148,7 +153,7 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
                             color: Color.LIGHTPINK,
                           })
                         : Material.fromType("Color", {
-                            color:Color.LIGHTSTEELBLUE,
+                            color: Color.LIGHTSTEELBLUE,
                           })
                     }
                     positions={value}
