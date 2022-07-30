@@ -33,7 +33,7 @@ const Dali = () => {
             data={dali_area}
             material={dali ? Color.DEEPPINK : Color.ROYALBLUE}
             stroke={dali ? Color.DEEPPINK : Color.ROYALBLUE}
-            strokeWidth={5}
+            strokeWidth={10}
             onClick={() => {
               setMouseIn({dali:false})
               setModelVis((pre) => {

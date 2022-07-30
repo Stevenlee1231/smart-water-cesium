@@ -28,7 +28,7 @@ function Polygon(props: polygon) {
         data={data}
         stroke={stroke}
         strokeWidth={strokeWidth}
-        fill={material.withAlpha(0.1)}
+        fill={material.withAlpha(0.5)}
         onClick={onClick as any}
         onMouseEnter={mouseEnter}
         onMouseLeave={mouseLeave}

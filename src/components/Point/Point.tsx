@@ -5,13 +5,14 @@ import {
   Material,
   PrimitiveCollection,
 } from "cesium";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Drawer, Tabs } from "antd";
 import customImg from "../../assets/images/jing.png";
 import siteImg from "../../assets/images/station.png";
 import { useGetData } from "../../utils/data";
 import LineChart from "../LineChart/LineChart";
 interface point {
+  earthInstance?:any;
   geometry: GeometryInstance;
   mode?: string;
   id?: string;
@@ -124,6 +125,22 @@ const SitePoint = ({ id }: { id: string }) => {
   );
 };
 const Point = (props: point) => {
+  const {earthInstance}=props
+  // useEffect(() => {
+  //   if (earthInstance&&earthInstance.current && earthInstance.current.cesiumElement) {
+  //     // ref.current.cesiumElement is Cesium's Viewer
+  //     // DO SOMETHING
+  //   //   let position = earthInstance.current.cesiumElement.camera.position;
+  //   // let cameraHeight = earthInstance.current.cesiumElement.scene.globe.ellipsoid.cartesianToCartographic(position).height;
+  //   // // 每次缩小 20 倍，参数可改  
+  //   // let moveRate = cameraHeight / 20.0;
+  //   // earthInstance.current.cesiumElement.camera.moveForward(moveRate);
+  //     earthInstance.current.cesiumElement.zoomTo(earthInstance.current.cesiumElement.entities);
+  //   }
+  //   // return () => {
+  //   //   earthInstance.current.cesiumElement.entities.remove("volume")
+  //   // };
+  // }, [earthInstance]);
   const appearance = new EllipsoidSurfaceAppearance({
     aboveGround: false,
     material: new Material({

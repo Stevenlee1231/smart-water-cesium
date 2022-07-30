@@ -66,7 +66,6 @@ branchHole.geometries.map((value) => {
 const Tunnel = ({ visible, earthInstance }: CardProps) => {
   // const [tunnelVisible, setTunnelVisible] = useState(false);
   useEffect(() => {
-    console.log(visible);
     if (earthInstance.current && earthInstance.current.cesiumElement) {
       // ref.current.cesiumElement is Cesium's Viewer
       // DO SOMETHING
@@ -80,15 +79,15 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
           shape: computeCircle(20.0),
           material: Color.PALETURQUOISE,
         },
+        
       });
+      earthInstance.current.cesiumElement.zoomTo(earthInstance.current.cesiumElement.entities);
       return () => {
         //模拟代码
-        console.log("xxx", earthInstance.current.cesiumElement.entities.getById("volume"))
         earthInstance.current.cesiumElement.entities.remove(
           earthInstance.current.cesiumElement.entities.getById("volume")
         );
       };
-      // earthInstance.current.cesiumElement.zoomTo(earthInstance.current.cesiumElement.entities);
     }
     // return () => {
     //   earthInstance.current.cesiumElement.entities.remove("volume")

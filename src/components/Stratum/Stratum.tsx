@@ -76,6 +76,16 @@ const Stratum = () => {
         //   ></Loadtif>
         // </>
         <>
+          <CameraFlyTo
+            duration={0}
+            destination={
+              {
+                x: -1235477.0099878273,
+                y: 6112028.233173981,
+                z: 2888111.1876860037,
+              } as Cartesian3
+            }
+          ></CameraFlyTo>
           <Dali></Dali>
           <Yuxi></Yuxi>
           <Honghe></Honghe>

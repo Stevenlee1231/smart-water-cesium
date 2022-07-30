@@ -19,7 +19,7 @@ const tunnelLabel = [
 const tunnels = tunnel.geometries.map((obj) => {
   return Cartesian3.fromDegrees(obj.coordinates[0], obj.coordinates[1], 0);
 });
-const Monitoring = ({ visible }: CardProps) => {
+const Monitoring = ({ visible, earthInstance }: CardProps) => {
   // const [monitoringVisible, setMonitoringVisible] = useState(false);
   return (
     <>
@@ -54,6 +54,7 @@ const Monitoring = ({ visible }: CardProps) => {
             });
             return (
               <Point
+                earthInstance={earthInstance}
                 key={index}
                 geometry={circleGeometry}
                 mode="custom"
