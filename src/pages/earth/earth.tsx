@@ -13,6 +13,7 @@ import Meteorology from "../../components/SwitchCard/meteorology";
 import Tunnel from "../../components/SwitchCard/tunnel";
 import Monitoring from "../../components/SwitchCard/monitoring";
 import RegionalWater from "../../components/SwitchCard/regionalWater";
+import { Chrono } from "react-chrono";
 Ion.defaultAccessToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2OTU2ZDE3Yi04ZDliLTRjZDAtYWYyOC01ZTk1OWFjOGNiZTUiLCJpZCI6NDQ3NjgsImlhdCI6MTYyNzk2Mjk1MX0.FrqhJD70CQLH9QsnePyuU0gmevojlEmGgF8swsUQue4";
 
@@ -20,10 +21,10 @@ export const EarthScreen = (props: any) => {
   const earthRef = useRef<CesiumComponentRef<any>>(null);
   const { earthVisible, setEarthVisible } = props;
   const renderCount = useRef(0);
-
   useEffect(() => {
     if (earthRef.current && earthRef.current.cesiumElement) {
-      earthRef.current.cesiumElement.scene.globe.depthTestAgainstTerrain = false;
+      earthRef.current.cesiumElement.scene.globe.depthTestAgainstTerrain =
+        false;
     }
   });
   useEffect(() => {
@@ -33,6 +34,19 @@ export const EarthScreen = (props: any) => {
   }, []);
   return (
     <div style={{ width: "100%", height: "100%" }}>
+      <div
+        style={{
+          width: "600px",
+          height: "120px",
+          position: "absolute",
+          bottom: "20px",
+          zIndex: "999",
+          left: "50%",
+          transform: "translate3d(-25%,0,0)",
+        }}
+      >
+        {/* <Chrono items={items} mode={"HORIZONTAL"} cardLess={true} /> */}
+      </div>
       <Viewer
         timeline={false}
         animation={false}
@@ -74,8 +88,8 @@ export const EarthScreen = (props: any) => {
         {/* <ImageryLayer
           imageryProvider={
             new UrlTemplateImageryProvider({
-              url: "http://t0.tianditu.gov.cn/cia_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={x}&TILECOL={y}&tk=48d8f36297a4adcd94eb4f85ea260349",
-              
+              url: "https://t{s}.tianditu.gov.cn/img_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={x}&TILECOL={y}&tk=48d8f36297a4adcd94eb4f85ea260349",
+              subdomains:['0','1','2','3','4','5','6','7'],
             })
           }
         ></ImageryLayer> */}

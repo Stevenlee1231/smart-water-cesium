@@ -181,7 +181,7 @@ function Model(props: ModelProp) {
               <img
                 onMouseDown={onMouseDown}
                 ref={imgRef}
-                src="http://103.118.40.123:9999/react/5000.jpeg"
+                src={props.src}
                 alt=""
                 style={{
                   transform: `scale3d(${scale}, ${scale}, 1) rotate(${rotate}deg)`,

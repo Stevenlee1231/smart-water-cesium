@@ -72,10 +72,11 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
           positions: Cartesian3.fromDegreesArray(lineArr),
           // position: lineData,
           // shape: computeCircle(10.0),
-          shape: computeCircle(10.0),
+          shape: computeCircle(20.0),
           material: Color.PALETURQUOISE,
         },
       });
+      // earthInstance.current.cesiumElement.zoomTo(earthInstance.current.cesiumElement.entities);
     }
   });
   const [textVisible, setTextVisible] = useState({

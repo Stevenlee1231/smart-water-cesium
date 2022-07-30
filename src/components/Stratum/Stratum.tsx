@@ -2,6 +2,9 @@ import { Tabs, Radio, Checkbox } from "antd";
 import { useEffect, useState } from "react";
 import { Cartesian3, Color } from "cesium";
 import { stratum } from "../../assets/datas/mountain_tif";
+import dali_area from "../../assets/datas/dali_area.json"
+import honghe_area from "../../assets/datas/honghe_area.json"
+import yuxi_area from "../../assets/datas/yuxi_area.json"
 import model_area_data from "../../assets/datas/model_area.json";
 import Loadtif from "../Loadtif/Loadtif";
 import Image from "rc-image";
@@ -20,7 +23,22 @@ const stratum_options = [
 ];
 
 const Stratum = () => {
-  const [modelVis, setModelVis] = useState(false);
+  const [modelVis, setModelVis] = useState({
+    honghe:false,
+    yuxi:false,
+    dali:false
+  });
+  useEffect(()=>{
+  const resBoolean=Object.values(modelVis).filter((value)=>{
+    return value===true
+  })
+  if(resBoolean.length>=1&& document.body.style.cursor!="pointer"){
+    document.body.style.cursor= "pointer"
+  }else{
+    document.body.style.cursor= "auto"
+  }
+  },[modelVis])
+  const [imgUrl,setImgUrl]=useState("")
   // const [stratumVisible, setstratumVisible] = useState({
   //   ...stratum_visible_init,
   // });
@@ -28,7 +46,6 @@ const Stratum = () => {
   // setstratumVisible((prev) => {
   //   return { ...prev, [key]: true };
   // });
-
   const BASE_URL =
     process.env.NODE_ENV === "development"
       ? "/api"
@@ -52,20 +69,66 @@ const Stratum = () => {
         // </>
         <>
           <Polygon
-            data={model_area_data}
+            data={dali_area}
             material={Color.RED}
             stroke={Color.RED}
             strokeWidth={5}
             onClick={() => {
-              setModelVis(true);
+              setModelVis((pre)=>{
+                return {...pre,dali:true}
+              });
+            }}
+          ></Polygon>
+          <Polygon
+            data={yuxi_area}
+            material={Color.RED}
+            stroke={Color.RED}
+            strokeWidth={5}
+            onClick={() => {
+              setModelVis((pre)=>{
+                return {...pre,yuxi:true}
+              });
+            }}
+          ></Polygon>
+          <Polygon
+            data={honghe_area}
+            material={Color.RED}
+            stroke={Color.RED}
+            strokeWidth={5}
+            onClick={() => {
+              setModelVis((pre)=>{
+                return {...pre,honghe:true}
+              });
             }}
           ></Polygon>
           <Model
-            src={""}
-            visible={modelVis}
+            src={"https://mld-1305939785.cos.ap-nanjing.myqcloud.com/dali.jpg"}
+            visible={modelVis.dali}
             onClose={(e) => {
               e.stopPropagation();
-              setModelVis(false);
+              setModelVis((pre)=>{
+                return {...pre,dali:false}
+              });
+            }}
+          ></Model>
+          <Model
+            src={"https://mld-1305939785.cos.ap-nanjing.myqcloud.com/yuxi.jpg"}
+            visible={modelVis.yuxi}
+            onClose={(e) => {
+              e.stopPropagation();
+              setModelVis((pre)=>{
+                return {...pre,yuxi:false}
+              });
+            }}
+          ></Model>
+          <Model
+            src={"https://mld-1305939785.cos.ap-nanjing.myqcloud.com/honghe.jpg"}
+            visible={modelVis.honghe}
+            onClose={(e) => {
+              e.stopPropagation();
+              setModelVis((pre)=>{
+                return {...pre,honghe:false}
+              });
             }}
           ></Model>
         </>
