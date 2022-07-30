@@ -18,20 +18,27 @@ let templateGeoJson = {
 const RegionalWater = ({ visible }: CardProps) => {
   return (
     <>
-    <div  style={{backgroundColor:"white",transform:"translateY(-50px)",overflow:"auto"}} >
-      <Steps  current={6} size="small" style={{padding:"20px,0"}} >
-        <Step title="2022.1" />
-        <Step title="2022.2" />
-        <Step title="2022.3" />
-        <Step title="2022.4" />
-        <Step title="2022.5" />
-        <Step title="2022.6" />
-        <Step title="2022.7" />
-        <Step title="2022.8" />
-        <Step title="2022.9" />
-        
-      </Steps>
-      </div>
+      {visible && (
+        <div
+          style={{
+            backgroundColor: "white",
+            transform: "translateY(-50px)",
+            overflow: "auto",
+          }}
+        >
+          <Steps current={6} size="small" style={{ padding: "20px,0" }}>
+            <Step title="2022.1" />
+            <Step title="2022.2" />
+            <Step title="2022.3" />
+            <Step title="2022.4" />
+            <Step title="2022.5" />
+            <Step title="2022.6" />
+            <Step title="2022.7" />
+            <Step title="2022.8" />
+            <Step title="2022.9" />
+          </Steps>
+        </div>
+      )}
       {visible &&
         waterLevel.geometries.map((value, index) => {
           let tempGeoJson = JSON.parse(JSON.stringify(templateGeoJson));
