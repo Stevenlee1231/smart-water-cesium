@@ -48,6 +48,7 @@ const Yuxi = () => {
               });
             }}
             mouseLeave={() => {
+              if (!mouseIn.yuxi) return;
               // document.body.style.cursor = "auto";
               setMouseIn((pre) => {
                 return { ...pre, yuxi: false };

@@ -187,13 +187,13 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
               positions={lineData}
               width={10}
             ></Line> */}
-        <Line
+        {/* <Line
           material={Material.fromType("Color", {
             color: new Color(0, 223, 252, 1),
           })}
           positions={line2Data}
           width={10}
-        ></Line>
+        ></Line> */}
       </>
     </>
   );

@@ -48,6 +48,7 @@ const  Honghe= () => {
               });
             }}
             mouseLeave={() => {
+              if (!mouseIn.honghe) return;
               document.body.style.cursor = "auto";
               setMouseIn((pre) => {
                 return { ...pre, honghe: false };

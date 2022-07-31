@@ -48,6 +48,7 @@ const Dali = () => {
               });
             }}
             mouseLeave={() => {
+              if (!mouseIn.dali) return;
               document.body.style.cursor = "auto";
               setMouseIn((pre) => {
                 return { ...pre, dali: false };

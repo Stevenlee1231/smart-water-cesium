@@ -49,36 +49,6 @@ export const EarthScreen = (props: any) => {
         // imageryProvider={false}
       >
         {/* <ImageryLayer
-          alpha={1}
-          imageryProvider={
-            new WebMapTileServiceImageryProvider({
-              url: "http://t0.tianditu.gov.cn/img_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&tk=48d8f36297a4adcd94eb4f85ea260349",
-              layer: "img_c",
-              style: "default",
-              format:"image/jpeg",
-              tileMatrixSetID: "img_c",
-              subdomains: ["t0", "t1", "t2", "t3", "t4", "t5", "t6", "t7"],//天地图8个服务器
-              minimumLevel: 0,
-              maximumLevel: 18,
-            })
-          }
-        ></ImageryLayer> */}
-        {/* <ImageryLayer
-          alpha={1}
-          imageryProvider={
-            new WebMapTileServiceImageryProvider({
-              url: "http://t0.tianditu.gov.cn/cia_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&tk=48d8f36297a4adcd94eb4f85ea260349",
-              layer: "cia_c",
-              style: "default",
-              format:"image/jpeg",
-              tileMatrixSetID: "cia_c",
-              subdomains: ["t0", "t1", "t2", "t3", "t4", "t5", "t6", "t7"],//天地图8个服务器
-              minimumLevel: 0,
-              maximumLevel: 18,
-            })
-          }
-        ></ImageryLayer> */}
-        <ImageryLayer
           imageryProvider={
             new UrlTemplateImageryProvider({
               url: "https://t{s}.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=48d8f36297a4adcd94eb4f85ea260349",
@@ -87,7 +57,7 @@ export const EarthScreen = (props: any) => {
               maximumLevel: 18,
             })
           }
-        ></ImageryLayer>
+        ></ImageryLayer> */}
         <ImageryLayer
           imageryProvider={
             new UrlTemplateImageryProvider({
