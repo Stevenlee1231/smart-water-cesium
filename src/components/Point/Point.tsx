@@ -179,14 +179,12 @@ const Point = (props: point) => {
         geometryInstances={geometry}
         appearance={appearance}
         onMouseEnter={() => {
-          if (mouseIn) return;
           document.body.style.cursor = "pointer";
-          setMouseIn(true);
+          // setMouseIn(true);
         }}
         onMouseLeave={() => {
-          if (!mouseIn) return;
           document.body.style.cursor = "auto";
-          setMouseIn(false);
+          // setMouseIn(false);
         }}
       ></Primitive>
       <Drawer

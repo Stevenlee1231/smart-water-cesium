@@ -81,7 +81,7 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
         },
         
       });
-      earthInstance.current.cesiumElement.zoomTo(earthInstance.current.cesiumElement.entities);
+      // earthInstance.current.cesiumElement.zoomTo(earthInstance.current.cesiumElement.entities);
       return () => {
         //模拟代码
         earthInstance.current.cesiumElement.entities.remove(
