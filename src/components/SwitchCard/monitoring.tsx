@@ -7,7 +7,9 @@ import {
   GeometryInstance,
 } from "cesium";
 import tunnel from "../../assets/datas/obswell.json";
+import jingIcon from "../../assets/images/jing.png"
 import { useState } from "react";
+import Legend from "../Legend/Legend";
 const tunnelLabel = [
   "XL2K7",
   "XL2K12",
@@ -26,11 +28,12 @@ const Monitoring = ({ visible, earthInstance }: CardProps) => {
       <div
         style={{
           position: "absolute",
-          top: "180px",
+          top: "100px",
           right: "25px",
           visibility: visible ? "visible" : "hidden",
         }}
       >
+          <Legend url={jingIcon} msg={"监测井" }></Legend>
         {/* <Card title={"监测井"} bordered={false}>
           开关：
           {visible && (

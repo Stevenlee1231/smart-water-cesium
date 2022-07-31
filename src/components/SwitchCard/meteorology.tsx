@@ -6,8 +6,10 @@ import {
   EllipsoidSurfaceAppearance,
   GeometryInstance,
 } from "cesium";
+import stationIcon from "../../assets/images/station.png";
 import tunnel from "../../assets/datas/obswell.json";
 import { useState } from "react";
+import Legend from "../Legend/Legend";
 const tunnelLabel = [
   "XL2K7",
   "XL2K12",
@@ -25,11 +27,12 @@ const Meteorology = ({ visible }: CardProps) => {
       <div
         style={{
           position: "absolute",
-          top: "180px",
+          top: "100px",
           right: "25px",
           visibility: visible ? "visible" : "hidden",
         }}
       >
+        <Legend url={stationIcon} msg={"气象站"}></Legend>
         {visible &&
           tunnels.map((value, index) => {
             const circleGeometry = new GeometryInstance({
