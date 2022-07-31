@@ -6,9 +6,9 @@ import {
   EllipsoidSurfaceAppearance,
   GeometryInstance,
 } from "cesium";
+import { BillboardCollection } from "resium";
 import tunnel from "../../assets/datas/obswell.json";
-import jingIcon from "../../assets/images/jing.png"
-import { useState } from "react";
+import jingIcon from "../../assets/images/jing.png";
 import Legend from "../Legend/Legend";
 const tunnelLabel = [
   "XL2K7",
@@ -33,7 +33,7 @@ const Monitoring = ({ visible, earthInstance }: CardProps) => {
           visibility: visible ? "visible" : "hidden",
         }}
       >
-          <Legend url={jingIcon} msg={"监测井" }></Legend>
+        <Legend url={jingIcon} msg={"监测井"}></Legend>
         {/* <Card title={"监测井"} bordered={false}>
           开关：
           {visible && (
@@ -56,13 +56,16 @@ const Monitoring = ({ visible, earthInstance }: CardProps) => {
               id: index,
             });
             return (
-              <Point
-                earthInstance={earthInstance}
-                key={index}
-                geometry={circleGeometry}
-                mode="custom"
-                id={tunnelLabel[index]}
-              />
+              <BillboardCollection>
+                <Point
+                  earthInstance={earthInstance}
+                  position={value}
+                  key={index}
+                  geometry={circleGeometry}
+                  mode="custom"
+                  id={tunnelLabel[index]}
+                />
+              </BillboardCollection>
             );
           })}
       </div>

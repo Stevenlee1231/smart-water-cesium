@@ -1,8 +1,9 @@
-import { Primitive } from "resium";
+import { Primitive, Billboard } from "resium";
 import {
   EllipsoidSurfaceAppearance,
   GeometryInstance,
   Material,
+  NearFarScalar,
   PrimitiveCollection,
 } from "cesium";
 import { useEffect, useState } from "react";
@@ -16,6 +17,7 @@ interface point {
   geometry: GeometryInstance;
   mode?: string;
   id?: string;
+  position?: any;
 }
 const { TabPane } = Tabs;
 const CustomPoint = ({ id }: { id: string }) => {
@@ -124,45 +126,30 @@ const SitePoint = ({ id }: { id: string }) => {
     </Tabs>
   );
 };
-const debounce=(fn: () => void)=>{
-  let timer: any=null;
-  return ()=>{
-    if (!timer){
-      clearTimeout(timer)
+const debounce = (fn: () => void) => {
+  let timer: any = null;
+  return () => {
+    if (!timer) {
+      clearTimeout(timer);
     }
-    timer=setTimeout(()=>{
-      fn()
-    },2000)
-  }
-}
+    timer = setTimeout(() => {
+      fn();
+    }, 2000);
+  };
+};
 const Point = (props: point) => {
   const [mouseIn, setMouseIn] = useState(false);
-  // useEffect(() => {
-  //   if (earthInstance&&earthInstance.current && earthInstance.current.cesiumElement) {
-  //     // ref.current.cesiumElement is Cesium's Viewer
-  //     // DO SOMETHING
-  //   //   let position = earthInstance.current.cesiumElement.camera.position;
-  //   // let cameraHeight = earthInstance.current.cesiumElement.scene.globe.ellipsoid.cartesianToCartographic(position).height;
-  //   // // 每次缩小 20 倍，参数可改
-  //   // let moveRate = cameraHeight / 20.0;
-  //   // earthInstance.current.cesiumElement.camera.moveForward(moveRate);
-  //     earthInstance.current.cesiumElement.zoomTo(earthInstance.current.cesiumElement.entities);
-  //   }
-  //   // return () => {
-  //   //   earthInstance.current.cesiumElement.entities.remove("volume")
-  //   // };
-  // }, [earthInstance]);
-  const appearance = new EllipsoidSurfaceAppearance({
-    aboveGround: false,
-    material: new Material({
-      fabric: {
-        type: "Image",
-        uniforms: {
-          image: props.mode === "custom" ? customImg : siteImg,
-        },
-      },
-    }),
-  });
+  // const appearance = new EllipsoidSurfaceAppearance({
+  //   aboveGround: false,
+  //   material: new Material({
+  //     fabric: {
+  //       type: "Image",
+  //       uniforms: {
+  //         image: props.mode === "custom" ? customImg : siteImg,
+  //       },
+  //     },
+  //   }),
+  // });
   const [visible, setVisible] = useState(false);
   const showDrawer = () => {
     setVisible(true);
@@ -174,7 +161,7 @@ const Point = (props: point) => {
   const { geometry } = props;
   return (
     <>
-      <Primitive
+      {/* <Primitive
         onClick={showDrawer}
         geometryInstances={geometry}
         appearance={appearance}
@@ -186,7 +173,23 @@ const Point = (props: point) => {
           document.body.style.cursor = "auto";
           // setMouseIn(false);
         }}
-      ></Primitive>
+      ></Primitive> */}
+      <Billboard
+        position={props.position}
+        image={props.mode === "custom" ? customImg : siteImg}
+        width={50}
+        height={50}
+        onMouseEnter={() => {
+          document.body.style.cursor = "pointer";
+          setMouseIn(true);
+        }}
+        onMouseLeave={() => {
+          document.body.style.cursor = "auto";
+          setMouseIn(false);
+        }}
+        onClick={showDrawer}
+        // scaleByDistance={new NearFarScalar(1.5e2, 2.0, 1.5e7, 0.5)}
+      ></Billboard>
       <Drawer
         title={props.mode === "custom" ? "监测井信息" : "气象站信息"}
         placement="right"

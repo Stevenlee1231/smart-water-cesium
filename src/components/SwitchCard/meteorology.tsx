@@ -7,6 +7,7 @@ import {
   GeometryInstance,
 } from "cesium";
 import stationIcon from "../../assets/images/station.png";
+import { BillboardCollection } from "resium";
 import tunnel from "../../assets/datas/obswell.json";
 import { useState } from "react";
 import Legend from "../Legend/Legend";
@@ -44,12 +45,15 @@ const Meteorology = ({ visible }: CardProps) => {
               id: index,
             });
             return (
-              <Point
-                key={index}
-                geometry={circleGeometry}
-                mode="site"
-                id={"XinfengWeatherStation"}
-              />
+              <BillboardCollection>
+                <Point
+                  key={index}
+                  geometry={circleGeometry}
+                  mode="site"
+                  id={"XinfengWeatherStation"}
+                  position={value}
+                />
+              </BillboardCollection>
             );
           })}
       </div>
