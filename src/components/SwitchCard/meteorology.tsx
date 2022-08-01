@@ -33,7 +33,7 @@ const Meteorology = ({ visible }: CardProps) => {
           visibility: visible ? "visible" : "hidden",
         }}
       >
-        <Legend url={stationIcon} msg={"气象站"}></Legend>
+        
         {visible &&
           tunnels.map((value, index) => {
             const circleGeometry = new GeometryInstance({

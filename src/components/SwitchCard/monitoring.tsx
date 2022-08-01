@@ -33,18 +33,6 @@ const Monitoring = ({ visible, earthInstance }: CardProps) => {
           visibility: visible ? "visible" : "hidden",
         }}
       >
-        <Legend url={jingIcon} msg={"监测井"}></Legend>
-        {/* <Card title={"监测井"} bordered={false}>
-          开关：
-          {visible && (
-            <Switch
-              onChange={(checked) => {
-                setMonitoringVisible(checked);
-              }}
-              checked={monitoringVisible}
-            />
-          )}
-        </Card> */}
         {visible &&
           tunnels.map((value, index) => {
             const circleGeometry = new GeometryInstance({

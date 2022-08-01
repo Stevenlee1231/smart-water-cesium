@@ -1,15 +1,10 @@
 import { Primitive, Billboard } from "resium";
-import {
-  EllipsoidSurfaceAppearance,
-  GeometryInstance,
-  Material,
-  NearFarScalar,
-  PrimitiveCollection,
-} from "cesium";
+import { GeometryInstance } from "cesium";
 import { useEffect, useState } from "react";
 import { Drawer, Tabs } from "antd";
 import customImg from "../../assets/images/jing.png";
 import siteImg from "../../assets/images/station.png";
+import locationIcon from "../../assets/images/location.png";
 import { useGetData } from "../../utils/data";
 import LineChart from "../LineChart/LineChart";
 interface point {
@@ -176,14 +171,16 @@ const Point = (props: point) => {
       ></Primitive> */}
       <Billboard
         position={props.position}
-        image={props.mode === "custom" ? customImg : siteImg}
-        width={50}
-        height={50}
+        image={locationIcon}
+        width={mouseIn ? 80 : 50}
+        height={mouseIn ? 80 : 50}
         onMouseEnter={() => {
+          if (mouseIn) return;
           document.body.style.cursor = "pointer";
           setMouseIn(true);
         }}
         onMouseLeave={() => {
+          if (!mouseIn) return;
           document.body.style.cursor = "auto";
           setMouseIn(false);
         }}
