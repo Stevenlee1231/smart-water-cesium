@@ -4,7 +4,7 @@ import Polygon from "../Polygon/Polygon";
 import { CardProps } from "./tunnel";
 import waterLevel from "../../assets/datas/water_level0706.json";
 import waterLevelColor from "../../assets/datas/water_level_color";
-import "./regionalWater.scss"
+import "./regionalWater.scss";
 const { Step } = Steps;
 let templateGeoJson = {
   type: "GeometryCollection",
@@ -21,10 +21,12 @@ const RegionalWater = ({ visible }: CardProps) => {
       {visible && (
         <div
           style={{
-            backgroundColor: "white",
-            transform: "translateY(-170px)",
+            // backgroundColor: "white",
+            transform: "translateY(-180px)",
             overflow: "auto",
-            height:"200px"
+            height: "200px",
+            width: "800px",
+            margin: "0 auto",
           }}
         >
           <div
@@ -78,7 +80,7 @@ const RegionalWater = ({ visible }: CardProps) => {
                         style={{
                           transform:
                             "translate(45.20914%, 0px) scale(0.0898377812663527, 1)",
-                            background:"rgba(110, 110, 110, 0.4)"
+                          background: "rgba(110, 110, 110, 0.4)",
                         }}
                         touch-action="none"
                       ></div>
@@ -1183,12 +1185,9 @@ const RegionalWater = ({ visible }: CardProps) => {
                   Jun
                 </div>
               </div>
-              <div className="esri-time-slider__previous">
-              </div>
-              <div className="esri-time-slider__animation">
-              </div>
-              <div className="esri-time-slider__next">
-              </div>
+              <div className="esri-time-slider__previous"></div>
+              <div className="esri-time-slider__animation"></div>
+              <div className="esri-time-slider__next"></div>
               <div className="esri-time-slider__max">
                 <div
                   className="esri-time-slider__max-date"

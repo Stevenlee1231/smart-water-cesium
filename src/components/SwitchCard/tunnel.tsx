@@ -79,7 +79,6 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
           shape: computeCircle(20.0),
           material: Color.PALETURQUOISE,
         },
-        
       });
       // earthInstance.current.cesiumElement.zoomTo(earthInstance.current.cesiumElement.entities);
       return () => {

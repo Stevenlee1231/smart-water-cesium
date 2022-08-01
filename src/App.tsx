@@ -1,4 +1,5 @@
 import "./App.css";
+import "./assets/font/HanyiSentyFoundation.css"
 import { Route, Routes } from "react-router";
 import { HashRouter as Router } from "react-router-dom";
 import { UnauthenticatedApp } from "./pages/unathenticated-app";

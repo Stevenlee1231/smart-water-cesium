@@ -7,5 +7,6 @@ html body #root .App {
 }
 
 * {
+  font-family:"Microsoft Yahei";
   box-sizing: border-box;
 }

@@ -18,7 +18,7 @@ export const Screen = () => {
   };
   //控制地图上显示的东西  并不使用router控制
   const [earthVisible, setEarthVisible] = useState({
-    meteorology:true,
+    meteorology:false,
     three: false,
     //地层信息
     stratum: false,

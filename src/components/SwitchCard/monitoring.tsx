@@ -3,10 +3,13 @@ import Point from "../Point/Point";
 import {
   Cartesian3,
   CircleGeometry,
+  Color,
   EllipsoidSurfaceAppearance,
   GeometryInstance,
+  LabelStyle,
+  NearFarScalar,
 } from "cesium";
-import { BillboardCollection } from "resium";
+import { BillboardCollection, Label, LabelCollection } from "resium";
 import tunnel from "../../assets/datas/obswell.json";
 import jingIcon from "../../assets/images/jing.png";
 import Legend from "../Legend/Legend";
@@ -20,6 +23,13 @@ const tunnelLabel = [
 ];
 const tunnels = tunnel.geometries.map((obj) => {
   return Cartesian3.fromDegrees(obj.coordinates[0], obj.coordinates[1], 0);
+});
+const tunnelsText = tunnel.geometries.map((obj) => {
+  return Cartesian3.fromDegrees(
+    obj.coordinates[0] + 0.0015,
+    obj.coordinates[1],
+    0
+  );
 });
 const Monitoring = ({ visible, earthInstance }: CardProps) => {
   // const [monitoringVisible, setMonitoringVisible] = useState(false);
@@ -44,16 +54,48 @@ const Monitoring = ({ visible, earthInstance }: CardProps) => {
               id: index,
             });
             return (
-              <BillboardCollection>
-                <Point
-                  earthInstance={earthInstance}
+              <>
+                <BillboardCollection>
+                  <Point
+                    earthInstance={earthInstance}
+                    position={value}
+                    key={index}
+                    geometry={circleGeometry}
+                    mode="custom"
+                    id={tunnelLabel[index]}
+                  />
+                </BillboardCollection>
+                {/* <LabelCollection>
+                  <Label
+                    position={value}
+                    text="监测井"
+                    fillColor={Color.LIGHTGREEN}
+                    font={"12pt Source Han Sans CN"}
+                  ></Label>
+                </LabelCollection> */}
+              </>
+            );
+          })}
+        {visible &&
+          tunnelsText.map((value, index) => {
+            return (
+              <LabelCollection>
+                <Label
                   position={value}
-                  key={index}
-                  geometry={circleGeometry}
-                  mode="custom"
-                  id={tunnelLabel[index]}
-                />
-              </BillboardCollection>
+                  text="监测井"
+                  outlineColor={Color.BLACK}
+                  outlineWidth={20}
+                  style={LabelStyle.FILL_AND_OUTLINE}
+                  fillColor={Color.WHITE}
+                  font={"14pt Microsoft Yahei "}
+                  translucencyByDistance={new NearFarScalar(
+                    0.0e5,
+                    1.0,
+                    0.1e7,
+                    0.0
+                  )}
+                ></Label>
+              </LabelCollection>
             );
           })}
       </div>

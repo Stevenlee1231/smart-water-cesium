@@ -172,8 +172,8 @@ const Point = (props: point) => {
       <Billboard
         position={props.position}
         image={locationIcon}
-        width={mouseIn ? 80 : 50}
-        height={mouseIn ? 80 : 50}
+        width={mouseIn ? 65 : 50}
+        height={mouseIn ? 65 : 50}
         onMouseEnter={() => {
           if (mouseIn) return;
           document.body.style.cursor = "pointer";

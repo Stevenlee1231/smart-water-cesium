@@ -3,11 +3,14 @@ import Point from "../Point/Point";
 import {
   Cartesian3,
   CircleGeometry,
+  Color,
   EllipsoidSurfaceAppearance,
   GeometryInstance,
+  LabelStyle,
+  NearFarScalar,
 } from "cesium";
 import stationIcon from "../../assets/images/station.png";
-import { BillboardCollection } from "resium";
+import { BillboardCollection, Label, LabelCollection } from "resium";
 import tunnel from "../../assets/datas/obswell.json";
 import { useState } from "react";
 import Legend from "../Legend/Legend";
@@ -22,6 +25,13 @@ const tunnelLabel = [
 const tunnels = tunnel.geometries.map((obj) => {
   return Cartesian3.fromDegrees(obj.coordinates[0], obj.coordinates[1], 0);
 });
+const tunnelsText = tunnel.geometries.map((obj) => {
+  return Cartesian3.fromDegrees(
+    obj.coordinates[0] + 0.0015,
+    obj.coordinates[1],
+    0
+  );
+});
 const Meteorology = ({ visible }: CardProps) => {
   return (
     <>
@@ -33,7 +43,6 @@ const Meteorology = ({ visible }: CardProps) => {
           visibility: visible ? "visible" : "hidden",
         }}
       >
-        
         {visible &&
           tunnels.map((value, index) => {
             const circleGeometry = new GeometryInstance({
@@ -54,6 +63,28 @@ const Meteorology = ({ visible }: CardProps) => {
                   position={value}
                 />
               </BillboardCollection>
+            );
+          })}
+        {visible &&
+          tunnelsText.map((value, index) => {
+            return (
+              <LabelCollection>
+                <Label
+                  position={value}
+                  text="气象站"
+                  fillColor={Color.WHITE}
+                  outlineColor={Color.BLACK}
+                  outlineWidth={20}
+                  style={LabelStyle.FILL_AND_OUTLINE}
+                  font={"14pt Microsoft Yahei"}
+                  translucencyByDistance={new NearFarScalar(
+                    0.0e5,
+                    1.0,
+                    0.1e7,
+                    0.0
+                  )}
+                ></Label>
+              </LabelCollection>
             );
           })}
       </div>
