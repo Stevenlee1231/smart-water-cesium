@@ -55,17 +55,20 @@ const Meteorology = ({ visible }: CardProps) => {
             });
             return (
               <BillboardCollection>
-                <Point
-                  key={index}
-                  geometry={circleGeometry}
-                  mode="site"
-                  id={"XinfengWeatherStation"}
-                  position={value}
-                />
+                <LabelCollection>
+                  <Point
+                    key={index}
+                    geometry={circleGeometry}
+                    mode="site"
+                    id={"XinfengWeatherStation"}
+                    position={value}
+                    textPosition={tunnelsText[index]}
+                  />
+                </LabelCollection>
               </BillboardCollection>
             );
           })}
-        {visible &&
+        {/* {visible &&
           tunnelsText.map((value, index) => {
             return (
               <LabelCollection>
@@ -86,7 +89,7 @@ const Meteorology = ({ visible }: CardProps) => {
                 ></Label>
               </LabelCollection>
             );
-          })}
+          })} */}
       </div>
     </>
   );

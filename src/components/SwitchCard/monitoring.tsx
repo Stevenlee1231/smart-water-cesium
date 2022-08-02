@@ -56,14 +56,17 @@ const Monitoring = ({ visible, earthInstance }: CardProps) => {
             return (
               <>
                 <BillboardCollection>
-                  <Point
-                    earthInstance={earthInstance}
-                    position={value}
-                    key={index}
-                    geometry={circleGeometry}
-                    mode="custom"
-                    id={tunnelLabel[index]}
-                  />
+                  <LabelCollection>
+                    <Point
+                      earthInstance={earthInstance}
+                      position={value}
+                      key={index}
+                      geometry={circleGeometry}
+                      mode="custom"
+                      textPosition={tunnelsText[index]}
+                      id={tunnelLabel[index]}
+                    />
+                  </LabelCollection>
                 </BillboardCollection>
                 {/* <LabelCollection>
                   <Label
@@ -76,7 +79,7 @@ const Monitoring = ({ visible, earthInstance }: CardProps) => {
               </>
             );
           })}
-        {visible &&
+        {/* {visible &&
           tunnelsText.map((value, index) => {
             return (
               <LabelCollection>
@@ -97,7 +100,7 @@ const Monitoring = ({ visible, earthInstance }: CardProps) => {
                 ></Label>
               </LabelCollection>
             );
-          })}
+          })} */}
       </div>
     </>
   );

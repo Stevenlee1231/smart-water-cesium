@@ -1,5 +1,5 @@
-import { Primitive, Billboard } from "resium";
-import { GeometryInstance } from "cesium";
+import { Primitive, Billboard, Label } from "resium";
+import { Color, GeometryInstance, LabelStyle, NearFarScalar } from "cesium";
 import { useEffect, useState } from "react";
 import { Drawer, Tabs } from "antd";
 import customImg from "../../assets/images/jing.png";
@@ -13,6 +13,7 @@ interface point {
   mode?: string;
   id?: string;
   position?: any;
+  textPosition?: any;
 }
 const { TabPane } = Tabs;
 const CustomPoint = ({ id }: { id: string }) => {
@@ -187,6 +188,16 @@ const Point = (props: point) => {
         onClick={showDrawer}
         // scaleByDistance={new NearFarScalar(1.5e2, 2.0, 1.5e7, 0.5)}
       ></Billboard>
+      <Label
+        position={props.textPosition}
+        text={props.mode === "custom" ? "监测井" : "气象站"}
+        fillColor={!mouseIn?Color.WHITE:Color.CORNFLOWERBLUE}
+        outlineColor={Color.BLACK}
+        outlineWidth={20}
+        style={LabelStyle.FILL_AND_OUTLINE}
+        font={"14pt Microsoft Yahei"}
+        translucencyByDistance={new NearFarScalar(0.0e5, 1.0, 0.1e7, 0.0)}
+      ></Label>
       <Drawer
         title={props.mode === "custom" ? "监测井信息" : "气象站信息"}
         placement="right"
