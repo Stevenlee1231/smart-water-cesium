@@ -8,7 +8,7 @@ import { Viewer, CameraFlyTo, ImageryLayer, CesiumComponentRef } from "resium";
 import { Cartesian3 } from "cesium";
 import MountainCard from "../../components/MountainCard/MountainCard";
 import Stratum from "../../components/Stratum/Stratum";
-import Caculate from "../../components/Caculate/Caculate";
+import Caculate from "../../components/Caculate/Caculate copy";
 import { useEffect, useRef, useState } from "react";
 import Meteorology from "../../components/SwitchCard/meteorology";
 import Tunnel from "../../components/SwitchCard/tunnel";

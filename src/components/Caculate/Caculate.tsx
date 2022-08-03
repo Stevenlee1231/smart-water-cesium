@@ -305,7 +305,7 @@ function Caculate(props: caculate) {
             <Col span={8}>
               <Form.Item
                 name="is_negative_relief"
-                label="是否存在负地形"
+                label="地形地貌"
                 rules={[{ required: true, message: "请选择地形" }]}
               >
                 <Select
