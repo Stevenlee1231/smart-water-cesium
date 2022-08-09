@@ -119,7 +119,7 @@ function Caculate(props: caculate) {
             <Button
               onClick={() => {
                 const formValue = Object.values(formMsg);
-                if (formValue.includes(undefined)) {
+                if (formValue.includes(undefined)||formValue.includes(null)) {
                   message.error("您还有选项未输入，请继续输入");
                 } else {
                   message.loading({
