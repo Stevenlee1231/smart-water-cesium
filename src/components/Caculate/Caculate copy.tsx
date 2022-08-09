@@ -1,4 +1,15 @@
-import { Drawer, Form, Button, Col, Row, Input, Select, Space } from "antd";
+import {
+  Drawer,
+  Form,
+  Button,
+  Col,
+  Row,
+  Input,
+  Select,
+  Space,
+  message,
+  InputNumber,
+} from "antd";
 import { useForm } from "antd/lib/form/Form";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -90,6 +101,8 @@ const items9 = ["爆破", "探孔", "施工揭露", "钻探揭露"];
 const items10 = ["二衬", "无", "初衬", "二衬完成", "初支完成", "初支"];
 function Caculate(props: caculate) {
   const { visible, onClose } = props;
+  const [formMsg, setFromMsg] = useState({});
+  const [ modelRes, setModelRes] = useState();
   const [form] = useForm();
   return (
     <>
@@ -101,8 +114,32 @@ function Caculate(props: caculate) {
         bodyStyle={{ paddingBottom: 80 }}
         extra={
           <Space>
+            {modelRes&&<div>预警结果:{modelRes}</div>}
             <Button onClick={onClose}>取消</Button>
-            <Button onClick={onClose} type="primary">
+            <Button
+              onClick={() => {
+                const formValue = Object.values(formMsg);
+                if (formValue.includes(undefined)) {
+                  message.error("您还有选项未输入，请继续输入");
+                } else {
+                  message.loading({
+                    content: "模型运算中，请稍等！",
+                    key: "loading",
+                  });
+                  axios
+                    .post("http://103.118.40.123:8080/psot/model", formMsg, {
+                      headers: {
+                        "Content-Type": "text/plain",
+                      },
+                    })
+                    .then((res) => {
+                      message.destroy("loading");
+                      setModelRes(res.data)
+                    });
+                }
+              }}
+              type="primary"
+            >
               提交
             </Button>
           </Space>
@@ -110,10 +147,9 @@ function Caculate(props: caculate) {
       >
         <Form
           onValuesChange={(current, all) => {
-            console.log(all);
-          }}
-          onFinish={(e) => {
-            console.log(e);
+            setFromMsg((prev) => {
+              return { ...prev, ...all };
+            });
           }}
           layout="vertical"
           hideRequiredMark
@@ -256,6 +292,35 @@ function Caculate(props: caculate) {
                     return <Option value={value}>{value}</Option>;
                   })}
                 </Select>
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item
+                name="岩层倾向"
+                label="岩层倾向"
+                rules={[{ required: true, message: "请输入岩层倾向" }]}
+              >
+                <InputNumber
+                  min={0}
+                  max={360}
+                  style={{ width: "100%" }}
+                  placeholder={"请输入岩层倾向"}
+                />
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item
+                name="岩层倾角"
+                label="岩层倾角"
+                rules={[{ required: true, message: "请输入岩层倾角" }]}
+              >
+                <InputNumber
+                  min={0}
+                  max={360}
+                  style={{ width: "100%" }}
+                  placeholder="请输入岩层倾角"
+                  // suffix={"°"}
+                />
               </Form.Item>
             </Col>
           </Row>
