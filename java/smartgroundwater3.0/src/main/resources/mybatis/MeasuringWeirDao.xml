@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace:名称空间：写接口的全类名，相当于告诉mubatis这个配置文件是实现哪个接口-->
+<mapper namespace="com.dixiashui.boot.mapper.MeasuringWeirMapper">
+    <insert id="insertBatch" parameterType="com.dixiashui.boot.bean.MeasuringWeir">
+                 INSERT INTO measuring_weir (`sensor`,`date`,`modulus`,`weirhead`,`flow`)
+                VALUES
+                 <foreach collection ="list" item="measuringweir" separator =",">
+                    (#{measuringweir.sensor}, #{measuringweir.date}, #{measuringweir.modulus}, #{measuringweir.weirhead},#{measuringweir.flow})
+                 </foreach >
+            </insert>
+</mapper>

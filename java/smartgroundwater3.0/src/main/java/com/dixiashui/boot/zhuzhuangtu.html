@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>蓄变量柱状图</title>
+    <!-- 引入 echarts.js -->
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<input name="btnClick" type="button" id="quxian" value="曲线"/>
+<input name="btnClick" type="button" id="chafen" value="差分"/>
+<input name="btnClick" type="button" id="xianghuchafen" value="相互差分"/>
+<input name="btnClick" type="button" id="fangcha" value="方差"/>
+<div id="main" style="width: 1750px;height:600px;"></div>
+
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+
+
+
+
+
+    var quxian=quxian
+    var chafen=chafen
+    var xianghuchafen=xianghuchafen
+    var http=''
+    document.getElementById("quxian").addEventListener("click", function(){
+        http='http://localhost:8080/xiboerte'
+        huabiaoge(http)
+    });
+    document.getElementById("chafen").addEventListener("click", function(){
+        http='http://localhost:8080/zixiangguan?quxianorchafen=chafen'
+        huabiaoge(http)
+    });
+    document.getElementById("xianghuchafen").addEventListener("click", function(){
+        http='http://localhost:8080/zixiangguan?quxianorchafen=xianghuchafen'
+
+        huabiaoge(http)
+    });
+    document.getElementById("fangcha").addEventListener("click", function(){
+        http='http://localhost:8080/zixiangguan?quxianorchafen=nihe'
+
+        huabiaoge(http)
+    });
+    function huabiaoge(canshu) {
+        var myChart = echarts.init(document.getElementById('main'));
+
+        $.get(canshu, function (data) {
+
+            //data.slice();
+            var y_zhou=[];
+
+
+
+            var shujuchangdu= data[data.length-1][0];
+            var jiange= data[data.length-1][1];
+            var x_zhou=[];
+            for (var i=0;i<shujuchangdu;i++){
+
+                x_zhou.push(i)
+            }
+
+
+
+            for (var i=0;i<data.length-1;i++){
+
+                var  meitiaoxian=      {
+                    name: i+'',
+                    type: 'line',
+                    data: data[i],
+                    itemStyle: {
+                        normal: {
+                            //这里是重点
+                            color: '#4586F3'
+                        }
+                    }
+
+                }
+                if(i==data.length-2){
+                    meitiaoxian.itemStyle.normal.color='#EB4334'
+
+                }
+                y_zhou.push(meitiaoxian)
+            }
+
+
+            myChart.setOption(
+                (option = {
+                    title: {
+                        text: '电压值',
+                        left: '1%'
+                    },
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    grid: {
+                        left: '5%',
+                        right: '15%',
+                        bottom: '10%'
+                    },
+                    xAxis: {
+                        data: x_zhou,
+                    },
+                    yAxis: {},
+                    toolbox: {
+                        right: 10,
+                        feature: {
+                            dataZoom: {
+                                yAxisIndex: 'none'
+                            },
+                            restore: {},
+                            saveAsImage: {}
+                        }
+                    },
+                    dataZoom: [
+                        {
+                            startValue: shujuchangdu+''
+                        },
+                        {
+                            type: 'inside'
+                        }
+                    ],
+
+                    series:y_zhou,
+
+
+
+                })
+            );
+        });
+        // 使用刚指定的配置项和数据显示图表。
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace:名称空间：写接口的全类名，相当于告诉mubatis这个配置文件是实现哪个接口-->
+<mapper namespace="com.dixiashui.boot.mapper.CurrentSpeedMapper">
+
+    <insert id="insertCurrentSpeedBatch" parameterType="com.dixiashui.boot.bean.CurrentSpeed">
+                 INSERT INTO current_speed (`date`,`sensor`,`DepthRaw`,`DepthAvg`,`VelocityRaw`,`VelocityAvg`,`TemperatureRaw`,`BatteryRaw`,`QuartileRaw`,`SamplesRaw`)
+                VALUES
+                 <foreach collection ="list" item="currentspeed" separator =",">
+                    (#{currentspeed.date}, #{currentspeed.sensor}, #{currentspeed.DepthRaw}, #{currentspeed.DepthAvg},#{currentspeed.VelocityRaw},#{currentspeed.VelocityAvg},#{currentspeed.TemperatureRaw},#{currentspeed.BatteryRaw},#{currentspeed.QuartileRaw},#{currentspeed.SamplesRaw})
+                 </foreach >
+            </insert>
+</mapper>

@@ -1,0 +1,12 @@
+html {
+  font-size: 62.5%;
+}
+
+html body #root .App {
+  min-height: 100vh;
+}
+
+* {
+  font-family:"Microsoft Yahei";
+  box-sizing: border-box;
+}
