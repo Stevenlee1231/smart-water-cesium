@@ -86,14 +86,22 @@ const MountainCard = (props: mountainCard) => {
               onChange={handleRadio}
             />
           </TabPane>
+<<<<<<< HEAD
           {/* <TabPane tab="水均衡" key="3">
+=======
+          <TabPane tab="水均衡" key="3">
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
             <Radio.Group
               options={WB_options}
               optionType="button"
               buttonStyle="solid"
               onChange={handleRadio}
             />
+<<<<<<< HEAD
           </TabPane> */}
+=======
+          </TabPane>
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
         </Tabs>
       </div>
       {

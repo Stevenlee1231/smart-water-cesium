@@ -70,6 +70,7 @@ export const SiderScreen = ({
           style={{ height: "100%", borderRight: 0 }}
           theme={theme as SiderTheme}
         >
+<<<<<<< HEAD
           <SubMenu key="sub1" icon={<GlobalOutlined />} title="项目信息">
             <Menu.Item key="tunnel">
               项目简介
@@ -80,6 +81,20 @@ export const SiderScreen = ({
             </Menu.Item>
             <Menu.Item key="stratum">
               隧洞线路  
+=======
+          <Menu.Item key="meteorology" icon={<FireOutlined />}>
+            气象水文
+            <Switch
+              onClick={handleSwitch("meteorology")}
+              size="small"
+              style={switchStyle as any}
+              checked={earthVisible["meteorology"]}
+            />
+          </Menu.Item>
+          <SubMenu key="sub2" icon={<GlobalOutlined />} title="区域信息">
+            <Menu.Item key="tunnel">
+              隧洞线路
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
               <Switch
                 size="small"
                 style={switchStyle as any}
@@ -87,6 +102,7 @@ export const SiderScreen = ({
                 checked={earthVisible["tunnel"]}
               />
             </Menu.Item>
+<<<<<<< HEAD
           </SubMenu>
           {/* <Menu.Item key="meteorology" icon={<FireOutlined />}>
             项目信息
@@ -107,6 +123,10 @@ export const SiderScreen = ({
             </Menu.Item>
             <Menu.Item key="stratum">
               地质信息
+=======
+            <Menu.Item key="stratum">
+              区域地质
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
               <Switch
                 size="small"
                 style={switchStyle as any}
@@ -127,7 +147,11 @@ export const SiderScreen = ({
               三维地质模型
             </Menu.Item> */}
           </SubMenu>
+<<<<<<< HEAD
           {/* <SubMenu key="sub3" icon={<StockOutlined />} title="监测信息">
+=======
+          <SubMenu key="sub3" icon={<StockOutlined />} title="监测信息">
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
             <Menu.Item key="monitoring">
               监测井
               <Switch
@@ -155,7 +179,11 @@ export const SiderScreen = ({
                 checked={earthVisible["regionalWater"]}
               />
             </Menu.Item>
+<<<<<<< HEAD
           </SubMenu> */}
+=======
+          </SubMenu>
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
           <SubMenu key="sub4" icon={<MonitorOutlined />} title="预测">
             <Menu.Item key="mountain">
               香炉山隧洞模型
@@ -166,18 +194,30 @@ export const SiderScreen = ({
                 checked={earthVisible["mountain"]}
               />
             </Menu.Item>
+<<<<<<< HEAD
             {/* <Menu.Item key="mountainSix">
               香炉山五号施工支洞
+=======
+            <Menu.Item key="mountainSix">
+              香炉山六号隧洞模型
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
               <Switch
                 size="small"
                 style={switchStyle as any}
                 onClick={handleSwitch("mountainSix")}
                 checked={earthVisible["mountainSix"]}
               />
+<<<<<<< HEAD
             </Menu.Item> */}
           </SubMenu>
           <Menu.Item icon={<ExclamationOutlined />}key="count">
             预警
+=======
+            </Menu.Item>
+          </SubMenu>
+          <Menu.Item key="count">
+            预警输入
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
             <Switch
               size="small"
               style={switchStyle as any}

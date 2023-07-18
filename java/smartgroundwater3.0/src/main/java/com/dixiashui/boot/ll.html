@@ -48,13 +48,23 @@
         var myChart = echarts.init(document.getElementById('main'));
 
         $.get(canshu, function (data) {
+<<<<<<< HEAD
+=======
+
+            console.log(data);
+            console.log(data.length);
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
             //data.slice();
             var y_zhou=[];
 
 
 
           var shujuchangdu= data[data.length-1][0];
+<<<<<<< HEAD
 
+=======
+            console.log(shujuchangdu);
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
             var jiange= data[data.length-1][1];
             var x_zhou=[];
             for (var i=0;i<shujuchangdu;i++){
@@ -80,6 +90,10 @@
                 }
                 if(i==data.length-2){
                     meitiaoxian.itemStyle.normal.color='#EB4334'
+<<<<<<< HEAD
+=======
+                    console.log("寄来了");
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
                 }
                 y_zhou.push(meitiaoxian)
             }

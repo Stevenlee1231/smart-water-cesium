@@ -7,7 +7,10 @@ import { useDocumentTitle } from "../../utils/customHooks";
 import "antd/dist/antd.css";
 import { HeaderScreen } from "./header";
 import { SiderScreen } from "./sider";
+<<<<<<< HEAD
 import {InfoBox} from "./infoBox";
+=======
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
 import { useState } from "react";
 
 export const Screen = () => {
@@ -54,7 +57,10 @@ export const Screen = () => {
             earthVisible={earthVisible}
           />
         </Layout>
+<<<<<<< HEAD
         <InfoBox/>
+=======
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
       </Layout>
     </Container>
   );

@@ -14,7 +14,10 @@ import { BillboardCollection, Label, LabelCollection } from "resium";
 import tunnel from "../../assets/datas/obswell.json";
 import { useState } from "react";
 import Legend from "../Legend/Legend";
+<<<<<<< HEAD
 import { Drawer } from "antd";
+=======
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
 const tunnelLabel = [
   "XL2K7",
   "XL2K12",
@@ -33,6 +36,7 @@ const tunnelsText = tunnel.geometries.map((obj) => {
     0
   );
 });
+<<<<<<< HEAD
 
 const Meteorology = ({ visible }: CardProps) => {
   const [visible1, setVisible1] = useState(visible);
@@ -43,6 +47,9 @@ const Meteorology = ({ visible }: CardProps) => {
   const onClose = () => {
     setVisible1(false);
   };
+=======
+const Meteorology = ({ visible }: CardProps) => {
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
   return (
     <>
       <div
@@ -53,6 +60,7 @@ const Meteorology = ({ visible }: CardProps) => {
           visibility: visible ? "visible" : "hidden",
         }}
       >
+<<<<<<< HEAD
         <Drawer
           title="水文气象"
           placement="right"
@@ -61,6 +69,9 @@ const Meteorology = ({ visible }: CardProps) => {
           size={"large"}
         ></Drawer>
         {/* {visible &&
+=======
+        {visible &&
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
           tunnels.map((value, index) => {
             const circleGeometry = new GeometryInstance({
               geometry: new CircleGeometry({
@@ -84,7 +95,11 @@ const Meteorology = ({ visible }: CardProps) => {
                 </LabelCollection>
               </BillboardCollection>
             );
+<<<<<<< HEAD
           })} */}
+=======
+          })}
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
         {/* {visible &&
           tunnelsText.map((value, index) => {
             return (

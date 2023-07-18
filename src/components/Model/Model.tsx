@@ -92,6 +92,10 @@ function Model(props: ModelProp) {
   };
 
   const onWheelMove: React.WheelEventHandler<HTMLBodyElement> = (event) => {
+<<<<<<< HEAD
+=======
+    console.log("wheel");
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
     // if (!visible) return;
     event.preventDefault();
     const wheelDirection = event.deltaY;

@@ -8,7 +8,10 @@ import { Viewer, CameraFlyTo, ImageryLayer, CesiumComponentRef } from "resium";
 import { Cartesian3 } from "cesium";
 import MountainCard from "../../components/MountainCard/MountainCard";
 import Stratum from "../../components/Stratum/Stratum";
+<<<<<<< HEAD
 import Shuiwen from "../../components/Shuiwen/Shuiwen";
+=======
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
 import Caculate from "../../components/Caculate/Caculate copy";
 import { useEffect, useRef, useState } from "react";
 import Meteorology from "../../components/SwitchCard/meteorology";
@@ -16,7 +19,10 @@ import Tunnel from "../../components/SwitchCard/tunnel";
 import Monitoring from "../../components/SwitchCard/monitoring";
 import RegionalWater from "../../components/SwitchCard/regionalWater";
 import "./earth.scss";
+<<<<<<< HEAD
 import Gushing from "../../components/SwitchCard/gushing";
+=======
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
 Ion.defaultAccessToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2OTU2ZDE3Yi04ZDliLTRjZDAtYWYyOC01ZTk1OWFjOGNiZTUiLCJpZCI6NDQ3NjgsImlhdCI6MTYyNzk2Mjk1MX0.FrqhJD70CQLH9QsnePyuU0gmevojlEmGgF8swsUQue4";
 
@@ -82,11 +88,16 @@ export const EarthScreen = (props: any) => {
         )}
         {/*区域地质*/}
         {earthVisible["stratum"] && <Stratum></Stratum>}
+<<<<<<< HEAD
         {/*区域地质*/}
         {earthVisible["hydrology"] && <Shuiwen></Shuiwen>}
         {/* 监测井 */}
         <Monitoring  earthInstance={earthRef}  visible={earthVisible["monitoring"]} />
         <Gushing  earthInstance={earthRef}  visible={earthVisible["gushing"]} />
+=======
+        {/* 监测井 */}
+        <Monitoring  earthInstance={earthRef}  visible={earthVisible["monitoring"]} />
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
         {/* 隧道及支洞 */}
         {earthVisible["tunnel"] && <Tunnel earthInstance={earthRef} />}
         {/* 区域水位 */}

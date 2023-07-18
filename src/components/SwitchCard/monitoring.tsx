@@ -14,12 +14,21 @@ import tunnel from "../../assets/datas/obswell.json";
 import jingIcon from "../../assets/images/jing.png";
 import Legend from "../Legend/Legend";
 const tunnelLabel = [
+<<<<<<< HEAD
   "XLZK7",
   "XLZK12",
   "XLZK25",
   "XLZK17",
   "XLP3-1ZK3",
   "XLP4-ZK2",
+=======
+  "XL2K7",
+  "XL2K12",
+  "XL2K25",
+  "XL2K17",
+  "XLP3-12K3",
+  "XLP4-2K2",
+>>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
 ];
 const tunnels = tunnel.geometries.map((obj) => {
   return Cartesian3.fromDegrees(obj.coordinates[0], obj.coordinates[1], 0);
