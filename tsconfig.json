@@ -18,14 +18,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-<<<<<<< HEAD
     "jsx": "react-jsx",
     "ignoreDeprecations": "5.0",
     "suppressImplicitAnyIndexErrors":true,
-    
-=======
-    "jsx": "react-jsx"
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
   },
   "include": [
     "src"

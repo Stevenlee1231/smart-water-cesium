@@ -1,6 +1,7 @@
-import { Tabs, Radio } from "antd";
+import { Tabs, Radio,Button } from "antd";
 import { useState } from "react";
-import { Color } from "cesium";
+import { Cartesian3, Color, defaultValue } from "cesium";
+import Model from "../Model/Model";
 import {
   mountains,
 } from "../../assets/datas/mountain_tif";
@@ -8,18 +9,21 @@ import model_area_data from "../../assets/datas/model_area.json";
 import Loadtif from "../Loadtif/Loadtif";
 import Polygon from "../Polygon/Polygon";
 import "./MountainCard.scss";
+import React from "react";
+import { CameraFlyTo,Camera } from "resium"
 const { TabPane } = Tabs;
 const mountain_visible_init = {
   model_area: false,
   //Simulatewaterlevel 模拟水位swl简写
   //丰水期
-  SWLF: false,
+  g1: false,
   //枯水期
-  SWLK: false,
+  g2: false,
   //丰水期裸洞开挖
-  SWLLF: false,
+  g3: false,
   //枯水期裸洞开挖
-  SWLLK: false,
+  g4: false,
+  g5:false,
   //water balance  水均衡wb简写
   //丰水期
   WBF: false,
@@ -31,10 +35,11 @@ const mountain_visible_init = {
   WBLK: false,
 };
 const SWL_options = [
-  { label: "枯水期", value: "SWLK" },
-  { label: "丰水期", value: "SWLF" },
-  { label: "枯水期裸洞开挖", value: "SWLLK" },
-  { label: "丰水期裸洞开挖", value: "SWLLF" },
+  { label: "工况一", value: "g1" },
+  { label: "工况二", value: "g2" },
+  { label: "工况三", value: "g3" },
+  { label: "工况四", value: "g4" },
+  { label: "工况五", value: "g5" },
 ];
 const WB_options = [
   { label: "枯水期", value: "WBK" },
@@ -42,20 +47,60 @@ const WB_options = [
   { label: "枯水期裸洞开挖", value: "WBLK" },
   { label: "丰水期裸洞开挖", value: "WBLF" },
 ];
+const Mycontext = React.createContext(defaultValue);
 interface mountainCard {
   mode: string;
 }
+const returnSrc = (index:number) =>{
+  return `http://43.142.17.108:9200/static/xianglushan/5/`+index+`.png`
+}
+
+let index:any;
 const MountainCard = (props: mountainCard) => {
+  console.log(model_area_data)
+  const [modelVis, setModelVis] = useState({
+    model: false,
+  });
   const [mountainVisible, setMountainVisible] = useState({
     ...mountain_visible_init,
     model_area: true,
   });
-  const handleRadio = (e: any) => {
-    const key = e.target.value;
-    setMountainVisible((prev) => {
-      return { ...mountain_visible_init, [key]: true };
-    });
-  };
+const click1 = (e:any) => {
+  index = 1;
+  setModelVis((pre) => {
+    return { ...pre, model: true };
+  });
+}
+const click2 = (e:any) => {
+  index = 2;
+  setModelVis((pre) => {
+    return { ...pre, model: true };
+  });
+}
+const click3 = (e:any) => {
+  index = 3;
+  setModelVis((pre) => {
+    return { ...pre, model: true };
+  });
+}
+const click4 = (e:any) => {
+  index = 4;
+  setModelVis((pre) => {
+    return { ...pre, model: true };
+  });
+}
+const click5 = (e:any) => {
+  index = 5;
+  setModelVis((pre) => {
+    return { ...pre, model: true };
+  });
+}
+  // const handleRadio = (e: any) => {
+  //   key = e.target.value;
+  //   setMountainVisible((prev) => {
+  //     return { ...mountain_visible_init, [key]: true };
+  //   });
+  // };
   const BASE_URL =
     process.env.NODE_ENV === "development"
       ? "/api"
@@ -63,45 +108,57 @@ const MountainCard = (props: mountainCard) => {
   return (
     <>
       <div className="mountain-card-wrap">
-        <Tabs
-          defaultActiveKey="model_area"
-          onChange={(e) => {
-            if (e == "model_area") {
-              setMountainVisible(mountain_visible_init);
-            } else {
-              setMountainVisible((prev) => {
-                return { ...prev, model_area: false };
-              });
+      <CameraFlyTo
+            destination={
+                Cartesian3.fromDegrees(100.040092,26.601987,100000)
             }
-          }}
+          ></CameraFlyTo>
+        <Tabs
+          style={{bottom:50}}
+          defaultActiveKey="model_area"
+          // onChange={(e) => {
+          //   setMountainVisible(mountain_visible_init)
+          //   if (e == "model_area") {
+          //     model_area =  true;
+          //   } else {
+          //     setMountainVisible((prev) => {
+          //       return { ...prev, model_area: true };
+          //     });
+          //   }
+          // }}
         >
           <TabPane tab="模型范围" key="model_area">
-            显示模型范围
+            模型范围
           </TabPane>
           <TabPane tab="模拟水位" key="2">
-            <Radio.Group
+            <Button style={{height:30}} 
+            onClick={click1}
+            >工况一</Button>
+            <Button style={{height:30}} onClick={click2}>工况二</Button>
+            <Button style={{height:30}} onClick={click3}>工况三</Button>
+            <Button style={{height:30}} onClick={click4}>工况四</Button>
+            <Button style={{height:30}} onClick={click5}>工况五</Button>
+            {/* <Radio.Group
               options={SWL_options}
               optionType="button"
               buttonStyle="solid"
               onChange={handleRadio}
-            />
+              onClick={() => {
+                index = key
+                setModelVis((pre) => {
+                  return { ...pre, model: true };
+                });
+              }}
+            /> */}
           </TabPane>
-<<<<<<< HEAD
           {/* <TabPane tab="水均衡" key="3">
-=======
-          <TabPane tab="水均衡" key="3">
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
             <Radio.Group
               options={WB_options}
               optionType="button"
               buttonStyle="solid"
               onChange={handleRadio}
             />
-<<<<<<< HEAD
           </TabPane> */}
-=======
-          </TabPane>
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
         </Tabs>
       </div>
       {
@@ -115,23 +172,16 @@ const MountainCard = (props: mountainCard) => {
               strokeWidth={5}
             ></Polygon>
           )}
-
-          <Loadtif
-            url={`${BASE_URL}${mountains.SWLF}`}
-            visible={mountainVisible.SWLF}
-          ></Loadtif>
-          <Loadtif
-            url={`${BASE_URL}${mountains.SWLK}`}
-            visible={mountainVisible.SWLK}
-          ></Loadtif>
-          <Loadtif
-            url={`${BASE_URL}${mountains.SWLLF}`}
-            visible={mountainVisible.SWLLF}
-          ></Loadtif>
-          <Loadtif
-            url={`${BASE_URL}${mountains.SWLLK}`}
-            visible={mountainVisible.SWLLK}
-          ></Loadtif>
+          {modelVis.model ? <Model
+            src={returnSrc(index)}
+            visible={modelVis.model}
+            onClose={(e) => {
+              e.stopPropagation();
+              setModelVis((pre) => {
+                return { ...pre, model: false };
+              });
+            }}
+          ></Model> : undefined}
         </>
       }
     </>

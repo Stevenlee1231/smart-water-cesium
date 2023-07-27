@@ -7,11 +7,10 @@ import {
 import { Viewer, CameraFlyTo, ImageryLayer, CesiumComponentRef } from "resium";
 import { Cartesian3 } from "cesium";
 import MountainCard from "../../components/MountainCard/MountainCard";
+import MountainCard2 from "../../components/MountainCard/MountainCard2";
+import MountainCard4 from "../../components/MountainCard/MountainCard4";
 import Stratum from "../../components/Stratum/Stratum";
-<<<<<<< HEAD
 import Shuiwen from "../../components/Shuiwen/Shuiwen";
-=======
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
 import Caculate from "../../components/Caculate/Caculate copy";
 import { useEffect, useRef, useState } from "react";
 import Meteorology from "../../components/SwitchCard/meteorology";
@@ -19,10 +18,11 @@ import Tunnel from "../../components/SwitchCard/tunnel";
 import Monitoring from "../../components/SwitchCard/monitoring";
 import RegionalWater from "../../components/SwitchCard/regionalWater";
 import "./earth.scss";
-<<<<<<< HEAD
 import Gushing from "../../components/SwitchCard/gushing";
-=======
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
+import UndergroundWater from "../../components/SwitchCard/undergroundWater";
+import RiverSystem from "../../components/SwitchCard/riverSystem";
+import Spring from "../../components/SwitchCard/spring";
+import Engineering from "../../components/Engineering/Engineering";
 Ion.defaultAccessToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2OTU2ZDE3Yi04ZDliLTRjZDAtYWYyOC01ZTk1OWFjOGNiZTUiLCJpZCI6NDQ3NjgsImlhdCI6MTYyNzk2Mjk1MX0.FrqhJD70CQLH9QsnePyuU0gmevojlEmGgF8swsUQue4";
 
@@ -88,18 +88,21 @@ export const EarthScreen = (props: any) => {
         )}
         {/*区域地质*/}
         {earthVisible["stratum"] && <Stratum></Stratum>}
-<<<<<<< HEAD
-        {/*区域地质*/}
+        {/*工程地质*/}
+        {earthVisible["engineering"] && <Engineering></Engineering>}
+        {/*水文地质*/}
         {earthVisible["hydrology"] && <Shuiwen></Shuiwen>}
         {/* 监测井 */}
         <Monitoring  earthInstance={earthRef}  visible={earthVisible["monitoring"]} />
         <Gushing  earthInstance={earthRef}  visible={earthVisible["gushing"]} />
-=======
-        {/* 监测井 */}
-        <Monitoring  earthInstance={earthRef}  visible={earthVisible["monitoring"]} />
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
+        {/* 地下水 */}
+        <UndergroundWater  earthInstance={earthRef}  visible={earthVisible["undergroundWater"]} />
+        {/* 泉流量 */}
+        <Spring  earthInstance={earthRef}  visible={earthVisible["spring"]} />
         {/* 隧道及支洞 */}
         {earthVisible["tunnel"] && <Tunnel earthInstance={earthRef} />}
+        {/* 水系 */}
+        {earthVisible["riverSystem"] && <RiverSystem  earthInstance={earthRef}  />} 
         {/* 区域水位 */}
         <RegionalWater visible={earthVisible["regionalWater"]} />
         {earthVisible["GMSMountain"] && (
@@ -122,6 +125,12 @@ export const EarthScreen = (props: any) => {
         )}
         {earthVisible["mountain"] && (
           <MountainCard mode={"MOUNTAIN"}></MountainCard>
+        )}
+        {earthVisible["mountain2"] && (
+          <MountainCard2 mode={"MOUNTAIN"}></MountainCard2>
+        )}
+        {earthVisible["mountain4"] && (
+          <MountainCard4 mode={"MOUNTAIN"}></MountainCard4>
         )}
         {earthVisible["mountainSix"] && (
           <MountainCard mode={"MOUNTAINSIX"}></MountainCard>

@@ -21,8 +21,11 @@ function Text(props: text) {
       text={text}
       scale={0.6}
       showBackground
-      backgroundColor={Color.WHITE}
+      outlineColor={Color.BLACK}
+      outlineWidth={5.0}
+      backgroundColor={Color.DEEPSKYBLUE}
       show={show}
+      font='bold 30px 楷体'
     />
   );
 }

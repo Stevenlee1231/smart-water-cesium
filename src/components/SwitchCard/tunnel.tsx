@@ -1,34 +1,17 @@
-<<<<<<< HEAD
 import { Cartesian2, Cartesian3, Color, Material, Math as CMath } from "cesium";
-=======
-import { Card, Switch } from "antd";
-import {
-  Cartesian2,
-  Cartesian3,
-  Color,
-  CornerType,
-  Material,
-  Math as CMath,
-} from "cesium";
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
 import { LabelCollection } from "resium";
 import Line from "../Line/Line";
 import Text from "../Text/Text";
 import branchHole from "../../assets/datas/zhidong.json";
 import suidongData from "../../assets/datas/suidong.json";
-<<<<<<< HEAD
 import zhuxian from "../../assets/datas/zhuxian.json";
-=======
-import suidaoData from "../../assets/datas/suidao.json";
-// import suidongArr  from "../../assets/datas/handleData";
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
 import { useEffect, useState } from "react";
 export interface CardProps {
   earthInstance?: any;
   visible?: boolean;
 }
-type textState = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-<<<<<<< HEAD
+type branchTextState = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+type tunnelTextState = 0 | 1;
 // const preZhuxianData = zhuxian.geometries.map((v) => {
 //   return v.coordinates.reduce((pre, cur) => {
 //     return pre.concat(cur);
@@ -54,39 +37,26 @@ const branchLabel = [
   "红河段-LS2#支洞",
   "红河段-LS1#支洞",
   "红河段-LW1#支洞",
-=======
-const lineData = suidongData.geometries[0].coordinates.map((value) => {
-  return Cartesian3.fromDegrees(value[0], value[1], 0);
-});
-const lineArr = suidongData.geometries[0].coordinates.reduce((pre, cur) => {
-  return pre.concat(cur);
-}, []);
-const line2Data = suidaoData.geometries[0].coordinates.map((value) => {
-  return Cartesian3.fromDegrees(value[0], value[1], 0);
-});
-const branchLabel = [
-  "1#施工支洞",
-  "2#施工支洞",
-  "1-1施工支洞",
-  "3-1施工支洞",
-  "4#施工支洞",
-  "5#施工支洞",
-  "6#施工支洞",
-  "7#施工支洞",
-  "8#施工支洞",
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
 ];
+const tunnelLabel =[
+  "楚雄段",
+  "大理一段",
+  "大理二段",
+  "红河段",
+  "昆明段",
+  "玉溪段",
+]
 const branchHoles = branchHole.geometries.map((obj) => {
   return obj.coordinates.map((value) => {
     return Cartesian3.fromDegrees(value[0], value[1], 0);
   });
 });
-<<<<<<< HEAD
 const zhuxianData = zhuxian.geometries.map((obj) => {
   return obj.coordinates.map((value) => {
     return Cartesian3.fromDegrees(value[0], value[1], 0);
   });
 });
+console.log(zhuxianData)
 // function computeCircle(radius: number) {
 //   const positions = [];
 //   for (let i = 0; i < 360; i++) {
@@ -97,18 +67,6 @@ const zhuxianData = zhuxian.geometries.map((obj) => {
 //   }
 //   return positions;
 // }
-=======
-function computeCircle(radius: number) {
-  const positions = [];
-  for (let i = 0; i < 360; i++) {
-    const radians = CMath.toRadians(i);
-    positions.push(
-      new Cartesian2(radius * Math.cos(radians), radius * Math.sin(radians))
-    );
-  }
-  return positions;
-}
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
 let branchLabelPositions: Array<any> = [];
 branchHole.geometries.map((value) => {
   let temp: Array<any> = [];
@@ -116,9 +74,16 @@ branchHole.geometries.map((value) => {
     return temp.push(value + 0.000000001);
   });
   branchLabelPositions.push(temp);
-<<<<<<< HEAD
-  console.log(branchLabelPositions)
 });
+let tunnelLabelPositions: Array<any> = [];
+zhuxian.geometries.map((value) => {
+  let temp: Array<any> = [];
+  value.coordinates[0].map((value) => {
+    return temp.push(value + 0.000000001);
+  });
+  tunnelLabelPositions.push(temp);
+});
+console.log(zhuxianData)
 const Tunnel = ({ visible, earthInstance }: CardProps) => {
   // useEffect(() => {
   //   if (earthInstance.current && earthInstance.current.cesiumElement) {
@@ -138,39 +103,7 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
   //     };
   //   }
   // }, [visible]);
-=======
-});
-const Tunnel = ({ visible, earthInstance }: CardProps) => {
-  // const [tunnelVisible, setTunnelVisible] = useState(false);
-  useEffect(() => {
-    if (earthInstance.current && earthInstance.current.cesiumElement) {
-      // ref.current.cesiumElement is Cesium's Viewer
-      // DO SOMETHING
-      earthInstance.current.cesiumElement.entities.add({
-        id: "volume",
-        // name: "Blue star with mitered corners and outline",
-        polylineVolume: {
-          positions: Cartesian3.fromDegreesArray(lineArr),
-          // position: lineData,
-          // shape: computeCircle(10.0),
-          shape: computeCircle(20.0),
-          material: Color.PALETURQUOISE,
-        },
-      });
-      // earthInstance.current.cesiumElement.zoomTo(earthInstance.current.cesiumElement.entities);
-      return () => {
-        //模拟代码
-        earthInstance.current.cesiumElement.entities.remove(
-          earthInstance.current.cesiumElement.entities.getById("volume")
-        );
-      };
-    }
-    // return () => {
-    //   earthInstance.current.cesiumElement.entities.remove("volume")
-    // };
-  }, [visible]);
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
-  const [textVisible, setTextVisible] = useState({
+  const [textVisible1, setTextVisible1] = useState({
     0: false,
     1: false,
     2: false,
@@ -181,24 +114,51 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
     7: false,
     8: false,
   });
-  const handleMouseEnter = (e: any, target: any) => {
-    if (textVisible[target.id as textState]) return;
+  const [textVisible2, setTextVisible2] = useState({
+    0: false,
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+    6: false,
+    7: false,
+    8: false,
+  });
+  const handleMouseEnter1 = (e: any, target: any) => { 
+    if (textVisible1[target.id as tunnelTextState]) return;
     let body = document.querySelector("body");
     //@ts-ignore
     body.style.cursor = "pointer";
-    setTextVisible((prev) => {
+    setTextVisible1((prev) => {
       return { ...prev, [target.id]: true };
     });
   };
-  const handleMouseLeave = (e: any, target: any) => {
-    setTextVisible((prev) => {
+  const handleMouseEnter2 = (e: any, target: any) => { 
+    if (textVisible2[target.id as branchTextState]) return;
+    let body = document.querySelector("body");
+    //@ts-ignore
+    body.style.cursor = "pointer";
+    setTextVisible2((prev) => {
+      return { ...prev, [target.id]: true };
+    });
+  };
+  const handleMouseLeave1 = (e: any, target: any) => {
+    setTextVisible1((prev) => {
       return { ...prev, [target.id]: false };
     });
     let body = document.querySelector("body");
     //@ts-ignore
     body.style.cursor = "auto";
   };
-<<<<<<< HEAD
+  const handleMouseLeave2 = (e: any, target: any) => {
+    setTextVisible2((prev) => {
+      return { ...prev, [target.id]: false };
+    });
+    let body = document.querySelector("body");
+    //@ts-ignore
+    body.style.cursor = "auto";
+  };
   return (
     <>
       {zhuxianData &&
@@ -208,18 +168,20 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
               key={index}
               id={index}
               material={
-                textVisible[index as textState]
+                textVisible1[index as tunnelTextState]
                   ? Material.fromType("Color", {
-                      color: Color.LIGHTGREEN,
+                      color: Color.YELLOW,
                     })
                   : Material.fromType("Color", {
-                      color: Color.LIGHTGREEN,
+                      color: Color.RED,
                     })
               }
               positions={value}
               width={6}
               // mouseEnter={handleZhuMouseEnter}
               // mouseLeave={handleZhuMouseLeave}
+              mouseEnter={handleMouseEnter1}
+              mouseLeave={handleMouseLeave1}
             ></Line>
           );
         })}
@@ -230,7 +192,7 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
               key={index}
               id={index}
               material={
-                textVisible[index as textState]
+                textVisible2[index as branchTextState]
                   ? Material.fromType("Color", {
                       color: Color.LIGHTPINK,
                     })
@@ -240,9 +202,10 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
               }
               positions={value}
               width={6}
-              mouseEnter={handleMouseEnter}
-              mouseLeave={handleMouseLeave}
+              mouseEnter={handleMouseEnter2}
+              mouseLeave={handleMouseLeave2}
             ></Line>
+            
           );
         })}
       <LabelCollection>
@@ -253,88 +216,24 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
                 key={index}
                 position={value}
                 text={branchLabel[index]}
-                color={Color.LIGHTSKYBLUE}
-                show={textVisible[index as textState]}
+                color={Color.BLACK}
+                show={textVisible2[index as branchTextState]}
+              ></Text>
+            );
+          })}
+          {tunnelLabelPositions &&
+          tunnelLabelPositions.map((value, index) => {
+            return (
+              <Text
+                key={index}
+                position={value}
+                text={tunnelLabel[index]}
+                color={Color.BLACK}
+                show={textVisible1[index as branchTextState]}
               ></Text>
             );
           })}
       </LabelCollection>
-=======
-  // useEffect(()=>{
-  //   const body = document.querySelector("body")
-  //   body&&body.style.cursor= "move"
-  // },[])
-  return (
-    <>
-      {/* <Card title={"隧道及支洞"} bordered={false}>
-          开关：
-          {visible && (
-            <Switch
-              style={{
-                visibility: visible ? "visible" : "hidden",
-              }}
-              onChange={(checked) => {
-                setTunnelVisible(checked);
-              }}
-              checked={tunnelVisible}
-            />
-          )}
-        </Card> */}
-
-      <>
-        {branchHoles &&
-          branchHoles.map((value: any[], index: any) => {
-            return (
-              <Line
-                key={index}
-                id={index}
-                material={
-                  textVisible[index as textState]
-                    ? Material.fromType("Color", {
-                        color: Color.LIGHTPINK,
-                      })
-                    : Material.fromType("Color", {
-                        color: Color.LIGHTSTEELBLUE,
-                      })
-                }
-                positions={value}
-                width={6}
-                mouseEnter={handleMouseEnter}
-                mouseLeave={handleMouseLeave}
-              ></Line>
-            );
-          })}
-        <LabelCollection>
-          {branchLabelPositions &&
-            branchLabelPositions.map((value, index) => {
-              return (
-                <Text
-                  key={index}
-                  position={value}
-                  text={branchLabel[index]}
-                  color={Color.LIGHTSKYBLUE}
-                  show={textVisible[index as textState]}
-                ></Text>
-              );
-            })}
-        </LabelCollection>
-
-        {/* <Line
-              material={Material.fromType("Color", {
-                color: new Color(255, 0, 0, 1),
-              })}
-              positions={lineData}
-              width={10}
-            ></Line> */}
-        {/* <Line
-          material={Material.fromType("Color", {
-            color: new Color(0, 223, 252, 1),
-          })}
-          positions={line2Data}
-          width={10}
-        ></Line> */}
-      </>
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
     </>
   );
 };

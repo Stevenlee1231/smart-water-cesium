@@ -31,8 +31,8 @@ const Dali2_2 = () => {
         <>
           <Polygon
             data={dali_area}
-            material={dali ? Color.DEEPPINK : Color.ROYALBLUE}
-            stroke={dali ? Color.DEEPPINK : Color.ROYALBLUE}
+            material={dali ? Color.YELLOW : Color.ROYALBLUE}
+            stroke={dali ? Color.YELLOW : Color.ROYALBLUE}
             strokeWidth={10}
             onClick={() => {
               setMouseIn({dali:false})

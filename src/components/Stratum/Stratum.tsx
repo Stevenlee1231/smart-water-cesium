@@ -11,17 +11,6 @@ import Image from "rc-image";
 import Model from "../../components/Model/Model";
 import Polygon from "../Polygon/Polygon";
 import Dali from "./Dali";
-<<<<<<< HEAD
-import Dali2_2 from "./Dali2_2";
-import Dali2_3 from "./Dali2_3";
-import Dali2_m from "./Dali2_m";
-import Dali2_n from "./Dali2_n";
-import Dali2_l from "./Dali2_l";
-import Chuxiong_1 from "./Chuxiong_1";
-import Chuxiong_2 from "./Chuxiong_2";
-import Chuxiong_3 from "./Chuxiong_3";
-=======
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
 import Honghe from "./Honghe";
 import Yuxi from "./Yuxi";
 import "./Stratum.scss";
@@ -100,17 +89,14 @@ const Stratum = () => {
           <Dali></Dali>
           <Yuxi></Yuxi>
           <Honghe></Honghe>
-<<<<<<< HEAD
-          <Dali2_2></Dali2_2>
+          {/* <Dali2_2></Dali2_2>
           <Dali2_3></Dali2_3>
           <Dali2_m></Dali2_m>
           <Dali2_n></Dali2_n>
           <Dali2_l></Dali2_l>
           <Chuxiong_1></Chuxiong_1>
           <Chuxiong_2></Chuxiong_2>
-          <Chuxiong_3></Chuxiong_3>
-=======
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
+          <Chuxiong_3></Chuxiong_3> */}
           {/* <Polygon
             data={dali_area}
             material={dali ? Color.DEEPPINK : Color.ROYALBLUE}

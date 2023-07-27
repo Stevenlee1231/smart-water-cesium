@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { Color } from "cesium";
-import dali_area from "../../assets/datas/Chuxiong_1.json";
+import { Cartesian3, Color } from "cesium";
+import yuxi_area from "../../assets/datas/yuxi_area2.json";
 import Model from "../Model/Model";
 import Polygon from "../Polygon/Polygon";
-const Chuxiong_1 = () => {
+const Yuxi2 = () => {
   const [modelVis, setModelVis] = useState({
-    dali: false,
+    yuxi: false,
   });
   const [mouseIn, setMouseIn] = useState({
-    dali: false,
+    yuxi: false,
   });
   useEffect(() => {
     const modelRes = Object.values(modelVis).filter((value) => {
@@ -22,46 +22,46 @@ const Chuxiong_1 = () => {
     } else {
       document.body.style.cursor = "auto";
     }
-  }, [modelVis]);
+  }, [modelVis,mouseIn]);
 
-  const { dali} = mouseIn;
+  const { yuxi} = mouseIn;
   return (
     <>
       {
         <>
           <Polygon
-            data={dali_area}
-            material={dali ? Color.DEEPPINK : Color.ROYALBLUE}
-            stroke={dali ? Color.DEEPPINK : Color.ROYALBLUE}
-            strokeWidth={10}
+            data={yuxi_area}
+            material={yuxi ? Color.DEEPPINK : Color.ROYALBLUE}
+            stroke={yuxi ? Color.DEEPPINK : Color.ROYALBLUE}
+            strokeWidth={5}
             onClick={() => {
-              setMouseIn({dali:false})
+              setMouseIn({yuxi:false})
               setModelVis((pre) => {
-                return { ...pre, dali: true };
+                return { ...pre, yuxi: true };
               });
             }}
             mouseEnter={() => {
-              if (mouseIn.dali) return;
-              document.body.style.cursor = "pointer";
+              if (mouseIn.yuxi) return;
+              // document.body.style.cursor = "pointer";
               setMouseIn((pre) => {
-                return { ...pre, dali: true };
+                return { ...pre, yuxi: true };
               });
             }}
             mouseLeave={() => {
-              if (!mouseIn.dali) return;
-              document.body.style.cursor = "auto";
+              if (!mouseIn.yuxi) return;
+              // document.body.style.cursor = "auto";
               setMouseIn((pre) => {
-                return { ...pre, dali: false };
+                return { ...pre, yuxi: false };
               });
             }}
           ></Polygon>
           <Model
-            src={"/api/yun/Chuxiong_1.jpg"}
-            visible={modelVis.dali}
+            src={"http://43.142.17.108:9200/static/shuiwen/yuxi2.jpg"}
+            visible={modelVis.yuxi}
             onClose={(e) => {
               e.stopPropagation();
               setModelVis((pre) => {
-                return { ...pre, dali: false };
+                return { ...pre, yuxi: false };
               });
             }}
           ></Model>
@@ -70,4 +70,4 @@ const Chuxiong_1 = () => {
     </>
   );
 };
-export default Chuxiong_1;
+export default Yuxi2;

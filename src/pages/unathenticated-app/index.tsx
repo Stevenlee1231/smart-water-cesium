@@ -13,6 +13,7 @@ import a from "../../assets/images/a.svg";
 import b from "../../assets/images/b.svg";
 import c from "../../assets/images/c.svg";
 import d from "../../assets/images/d.svg";
+import e from "../../assets/images/Untitled-design-14-1080x600.jpg"
 export const UnauthenticatedApp = () => {
   useDocumentTitle("请登录或注册");
   const [isRegister, setIsRegister] = useState(false);
@@ -34,7 +35,7 @@ export const UnauthenticatedApp = () => {
         隧洞突涌水(泥)综合预测及安全预警平台
       </div>
       <BackGround />
-      <ShadowCardLeft>
+      {/* <ShadowCardLeft>
         <Carousel autoplay arrows>
           <SVGLogo1 width={"100%"} height={"100%"} />
           <SVGLogo2 width={"100%"} height={"100%"} />
@@ -42,7 +43,7 @@ export const UnauthenticatedApp = () => {
           <SVGLogo4 width={"100%"} height={"100%"} />
           <SVGLogo5 width={"100%"} height={"100%"} />
         </Carousel>
-      </ShadowCardLeft>
+      </ShadowCardLeft> */}
       <ShadowCardRight>
         <Title>{isRegister ? "请注册" : "请登录"}</Title>
         {error ? (
@@ -69,10 +70,8 @@ const BackGround = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: left top, right bottom, left bottom, right top;
-  background-image: url(${a}), url(${b}), url(${c}), url(${d});
+  background-size:95%;
+  background-image: url(${e});
 `;
 
 const Title = styled.h2`

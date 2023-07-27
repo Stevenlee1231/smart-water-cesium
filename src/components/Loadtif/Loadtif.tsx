@@ -16,11 +16,7 @@ function Loadtif(props: loadtif) {
           })
         }
         alpha={visible ? 1 : 0}
-<<<<<<< HEAD
       />
-=======
-      />{" "}
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
     </>
   );
 }

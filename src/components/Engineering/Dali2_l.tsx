@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Color } from "cesium";
-import dali_area from "../../assets/datas/dali2_3.json";
+import dali_area from "../../assets/datas/hong.json";
 import Model from "../Model/Model";
 import Polygon from "../Polygon/Polygon";
-const Dali2_3 = () => {
+const Dali2_l = () => {
   const [modelVis, setModelVis] = useState({
     dali: false,
   });
@@ -31,8 +31,8 @@ const Dali2_3 = () => {
         <>
           <Polygon
             data={dali_area}
-            material={dali ? Color.DEEPPINK : Color.ROYALBLUE}
-            stroke={dali ? Color.DEEPPINK : Color.ROYALBLUE}
+            material={dali ? Color.YELLOW : Color.ROYALBLUE}
+            stroke={dali ? Color.YELLOW : Color.ROYALBLUE}
             strokeWidth={10}
             onClick={() => {
               setMouseIn({dali:false})
@@ -56,7 +56,7 @@ const Dali2_3 = () => {
             }}
           ></Polygon>
           <Model
-            src={"http://103.118.40.123:9999/yun/dali2_3.jpg"}
+            src={"http://103.118.40.123:9999/yun/dali2_6.jpg"}
             visible={modelVis.dali}
             onClose={(e) => {
               e.stopPropagation();
@@ -70,4 +70,4 @@ const Dali2_3 = () => {
     </>
   );
 };
-export default Dali2_3;
+export default Dali2_l;

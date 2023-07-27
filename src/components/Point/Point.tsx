@@ -1,12 +1,16 @@
 import { Primitive, Billboard, Label } from "resium";
 import { Color, GeometryInstance, LabelStyle, NearFarScalar } from "cesium";
 import { useEffect, useState } from "react";
-import { Drawer, Tabs } from "antd";
+import { Drawer, Modal, Tabs } from "antd";
 import customImg from "../../assets/images/jing.png";
 import siteImg from "../../assets/images/station.png";
 import locationIcon from "../../assets/images/location.png";
 import { useGetData } from "../../utils/data";
 import LineChart from "../LineChart/LineChart";
+import { info } from "console";
+import * as echarts from "echarts"
+import { BarChart } from "echarts/charts";
+import Chart from "../Chart/Chart";
 interface point {
   earthInstance?: any;
   geometry: GeometryInstance;
@@ -14,9 +18,14 @@ interface point {
   id?: string;
   position?: any;
   textPosition?: any;
+  info?:string;
+  remark?:string;
+  title: string;
+  xAxis: string[];
+  series: string[];
+  icon:string;
 }
 const { TabPane } = Tabs;
-<<<<<<< HEAD
 const message = {
   "XLZK7": "监测井编号2063433",
   "XLZK12": "监测井编号2063428",
@@ -25,25 +34,16 @@ const message = {
   "XLP3-1ZK3": "监测井编号2067333",
   "XLP4-ZK2": "监测井编号2067332，为四号支洞2#钻孔",
 };
+
 const CustomPoint = ({ id }: { id: any }) => {
-=======
-const CustomPoint = ({ id }: { id: string }) => {
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
   const { series, xAxis } = useGetData("allwaterlevels", id, true);
   return (
     <Tabs defaultActiveKey="1">
       <TabPane tab="基本信息" key="1">
-<<<<<<< HEAD
         {message[id]}
       </TabPane>
        <TabPane tab="基本数据" key="2">
          <LineChart
-=======
-        一种一孔多层地下水动态监测井，是在一个大口径钻孔中，下入二眼或二眼以上的不同深度的单井，形成一孔多层结构；在每一眼单井内安装结构井管，并在每眼单井的下部各安装滤水管，在每眼井滤水管的外面填满砂砾层；各眼单井之间互不连通。本实用新型可以实现占地面积小，使井位集中，便于管理，降低开发建设和管理成本，便于新技术的应用，环保节能。本实用新型适用于基岩埋藏较深，上腹松散层较厚的平原地区，用于地下水动态监测，获取地下水动态信息。
-      </TabPane>
-      <TabPane tab="基本数据" key="2">
-        <LineChart
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
           options={{
             responsive: true,
             plugins: {
@@ -75,26 +75,16 @@ const CustomPoint = ({ id }: { id: string }) => {
 const SitePoint = ({ id }: { id: string }) => {
   const { series: series1, xAxis: xAxis1 } = useGetData(
     "evaporationcapacitys",
-<<<<<<< HEAD
     "XinfengWeatherStation",
-=======
-    id,
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
     false
   );
   const { series: series2, xAxis: xAxis2 } = useGetData("rainfalls", id, true);
   return (
     <Tabs defaultActiveKey="1">
       <TabPane tab="基本信息" key="1">
-<<<<<<< HEAD
         位于海东2#支洞，岩性为花岗岩/辉绿岩，涌水量400立方米/小时，350立方米塌方（Ⅴ类不良），侵入蚀变，风华差异。
       </TabPane>
       {/* <TabPane tab="蒸发量" key="2">
-=======
-        一种一孔多层地下水动态监测井，是在一个大口径钻孔中，下入二眼或二眼以上的不同深度的单井，形成一孔多层结构；在每一眼单井内安装结构井管，并在每眼单井的下部各安装滤水管，在每眼井滤水管的外面填满砂砾层；各眼单井之间互不连通。本实用新型可以实现占地面积小，使井位集中，便于管理，降低开发建设和管理成本，便于新技术的应用，环保节能。本实用新型适用于基岩埋藏较深，上腹松散层较厚的平原地区，用于地下水动态监测，获取地下水动态信息。
-      </TabPane>
-      <TabPane tab="蒸发量" key="2">
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
         <LineChart
           options={{
             responsive: true,
@@ -120,13 +110,8 @@ const SitePoint = ({ id }: { id: string }) => {
             ],
           }}
         ></LineChart>
-<<<<<<< HEAD
       </TabPane> */}
       {/* <TabPane tab="降雨量" key="3">
-=======
-      </TabPane>
-      <TabPane tab="降雨量" key="3">
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
         <LineChart
           options={{
             responsive: true,
@@ -152,73 +137,30 @@ const SitePoint = ({ id }: { id: string }) => {
             ],
           }}
         ></LineChart>
-<<<<<<< HEAD
       </TabPane> */}
     </Tabs>
   );
 };
 const Point = (props: point) => {
   const [mouseIn, setMouseIn] = useState(false);
-=======
-      </TabPane>
-    </Tabs>
-  );
-};
-const debounce = (fn: () => void) => {
-  let timer: any = null;
-  return () => {
-    if (!timer) {
-      clearTimeout(timer);
-    }
-    timer = setTimeout(() => {
-      fn();
-    }, 2000);
-  };
-};
-const Point = (props: point) => {
-  const [mouseIn, setMouseIn] = useState(false);
-  // const appearance = new EllipsoidSurfaceAppearance({
-  //   aboveGround: false,
-  //   material: new Material({
-  //     fabric: {
-  //       type: "Image",
-  //       uniforms: {
-  //         image: props.mode === "custom" ? customImg : siteImg,
-  //       },
-  //     },
-  //   }),
-  // });
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
   const [visible, setVisible] = useState(false);
-  const showDrawer = () => {
-    setVisible(true);
+  const [open, setOpen] = useState(false);
+  const showModal = () => {
+    setOpen(true);
   };
 
-  const onClose = () => {
-    setVisible(false);
+  const hideModal = () => {
+    setOpen(false);
   };
+  // const onClose = () => {
+  //   setVisible(false);
+  // };
   const { geometry } = props;
   return (
     <>
-<<<<<<< HEAD
-=======
-      {/* <Primitive
-        onClick={showDrawer}
-        geometryInstances={geometry}
-        appearance={appearance}
-        onMouseEnter={() => {
-          document.body.style.cursor = "pointer";
-          // setMouseIn(true);
-        }}
-        onMouseLeave={() => {
-          document.body.style.cursor = "auto";
-          // setMouseIn(false);
-        }}
-      ></Primitive> */}
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
       <Billboard
         position={props.position}
-        image={locationIcon}
+        image={props.icon}
         width={mouseIn ? 65 : 50}
         height={mouseIn ? 65 : 50}
         onMouseEnter={() => {
@@ -231,54 +173,52 @@ const Point = (props: point) => {
           document.body.style.cursor = "auto";
           setMouseIn(false);
         }}
-        onClick={showDrawer}
-<<<<<<< HEAD
+        onClick={showModal}
       ></Billboard>
       <Label
         position={props.textPosition}
         text={
-          props.mode === "custom" ? `监测井${props.id}` : `突涌水点${props.id}`
+          // props.mode === "custom" ? `监测井${props.id}` : `突涌水点${props.id}`
+          props.id
         }
         fillColor={!mouseIn ? Color.WHITE : Color.CORNFLOWERBLUE}
-=======
-        // scaleByDistance={new NearFarScalar(1.5e2, 2.0, 1.5e7, 0.5)}
-      ></Billboard>
-      <Label
-        position={props.textPosition}
-        text={props.mode === "custom" ? "监测井" : "气象站"}
-        fillColor={!mouseIn?Color.WHITE:Color.CORNFLOWERBLUE}
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
         outlineColor={Color.BLACK}
         outlineWidth={20}
         style={LabelStyle.FILL_AND_OUTLINE}
         font={"14pt Microsoft Yahei"}
         translucencyByDistance={new NearFarScalar(0.0e5, 1.0, 0.1e7, 0.0)}
       ></Label>
-      <Drawer
-<<<<<<< HEAD
+      {open ?<Modal
+        title={props.id}
+        width={600}
+        visible={open}
+        onOk={hideModal}
+        onCancel={hideModal}
+        okText="确认"
+        cancelText="取消"
+        centered={true}
+      > 
+       <Chart
+        xAxis={props.xAxis}
+        series={props.series}
+        title={props.title}
+      ></Chart> 
+        <span>点位信息：{props.info}</span><br/>
+        <span>备注：{props.remark}</span>
+      </Modal>: undefined}
+      {/* <Drawer
         title={props.mode === "custom" ? "监测井信息" : "突涌水点信息"}
-=======
-        title={props.mode === "custom" ? "监测井信息" : "气象站信息"}
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
         placement="right"
         onClose={onClose}
         visible={visible}
         size={"large"}
-      >
+      > 
         {props.mode === "custom" ? (
-<<<<<<< HEAD
           <CustomPoint id={props.id as string}></CustomPoint>
         ) : (
           <SitePoint id={props.id as string}></SitePoint>
-=======
-          <CustomPoint id={"XLP4ZK2"}></CustomPoint>
-        ) : (
-          <SitePoint
-            id={props.id ? props.id : "XinfengWeatherStation"}
-          ></SitePoint>
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
         )}
-      </Drawer>
+      </Drawer> */}
     </>
   );
 };

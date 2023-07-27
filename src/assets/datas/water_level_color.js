@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const waterLevelColor = [
   "#0000FF",
   "#0000FF",
@@ -37,43 +36,3 @@ const waterLevelColor = [
   "#ff0000",
 ];
 export default waterLevelColor;
-=======
-const waterLevelColor = [
-  "#0000FF",
-  "#0000FF",
-  "#0044ff",
-  "#0069ff",
-  "#008cff",
-  "#00afff",
-  "#00d3ff",
-  "#00f6ff",
-  "#00ffe4",
-  "#00ffc1",
-  "#00ff9e",
-  "#00ff7b",
-  "#00ff57",
-  "#00ff34",
-  "#0000FF",
-  "#00ff11",
-  "#11ff00",
-  "#34ff00",
-  "#57ff00",
-  "#7bff00",
-  "#ff2300",
-  "#9eff00",
-  "#c1ff00",
-  "#e4ff00",
-  "#ffd300",
-  "#ffaf00",
-  "#ff6900",
-  "#ff8c00",
-  "#fff600",
-  "#ffd300",
-  "#ffaf00",
-  "#ff8c00",
-  "#ff6900",
-  "#ff4600",
-  "#ff0000",
-];
-export default waterLevelColor;
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde

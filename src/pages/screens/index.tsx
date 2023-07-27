@@ -7,11 +7,8 @@ import { useDocumentTitle } from "../../utils/customHooks";
 import "antd/dist/antd.css";
 import { HeaderScreen } from "./header";
 import { SiderScreen } from "./sider";
-<<<<<<< HEAD
-import {InfoBox} from "./infoBox";
-=======
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
 import { useState } from "react";
+import { InfoBox } from "./infoBox";
 
 export const Screen = () => {
   useDocumentTitle("项目首页");
@@ -30,15 +27,22 @@ export const Screen = () => {
     hydrology: false,
     //隧洞及支洞
     tunnel: false,
-
+    //水系
+    riverSystem:false,
     //监测井
     monitoring: false,
     //突涌水
     gushing: false,
+    //地下水
+    undergroundWater:false,
+    //泉流量
+    spring:false,
     //区域水位
     regionalWater: false,
     //香炉山
     mountain: false,
+    mountain2: false,
+    mountain4: false,
     //香炉山六号
     mountainSix: false,
     //计算
@@ -57,11 +61,12 @@ export const Screen = () => {
             earthVisible={earthVisible}
           />
         </Layout>
-<<<<<<< HEAD
-        <InfoBox/>
-=======
->>>>>>> e351d025d9b6cb08cd80bc569f2ae03000f61cde
       </Layout>
+      <InfoBox
+      theme={theme}
+      setEarthVisible={setEarthVisible}
+      earthVisible={earthVisible}
+      />
     </Container>
   );
 };

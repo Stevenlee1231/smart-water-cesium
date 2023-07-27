@@ -15,6 +15,8 @@ import Honghe from "./Honghe";
 import Yuxi from "./Yuxi";
 import "./Stratum.scss";
 import { CameraFlyTo } from "resium";
+import Yuxi1 from "./Yuxi1";
+import Yuxi2 from "./Yuxi2";
 const { TabPane } = Tabs;
 const stratum_visible_init = {
   dali: true,
@@ -87,8 +89,10 @@ const Shuiwen = () => {
             }
           ></CameraFlyTo>
           <Dali></Dali>
-          <Yuxi></Yuxi>
-          <Honghe></Honghe>
+          {/* <Yuxi></Yuxi> */}
+          {/* <Honghe></Honghe> */}
+          <Yuxi1></Yuxi1>
+          <Yuxi2></Yuxi2>
           {/* <Polygon
             data={dali_area}
             material={dali ? Color.DEEPPINK : Color.ROYALBLUE}
