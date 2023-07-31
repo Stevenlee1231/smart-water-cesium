@@ -35,15 +35,13 @@ const tunnelsText = tunnel.geometries.map((obj) => {
   );
 });
 
-const Meteorology = ({ visible }: CardProps) => {
-  const [visible1, setVisible1] = useState(visible);
-  const showDrawer = () => {
-    setVisible1(true);
-  };
-
-  const onClose = () => {
-    setVisible1(false);
-  };
+interface meteorology {
+  visible: boolean;
+  showDrawer: any;
+  onClose: any;
+}
+const Meteorology = (props: meteorology) => {
+  const { visible, onClose } = props;
   return (
     <>
       <div
@@ -51,14 +49,13 @@ const Meteorology = ({ visible }: CardProps) => {
           position: "absolute",
           top: "100px",
           right: "25px",
-          visibility: visible ? "visible" : "hidden",
         }}
       >
         <Drawer
           title="滇中引水工程简介"
           placement="right"
           onClose={onClose}
-          visible={visible1}
+          visible={visible}
           size={"large"}
         > <Tabs>
           <TabPane tab="项目简介" key="1">

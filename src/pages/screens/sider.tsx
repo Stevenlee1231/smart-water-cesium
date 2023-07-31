@@ -111,7 +111,7 @@ export const SiderScreen = ({
             />
           </Menu.Item> */}
           <SubMenu key="sub2" icon={<GlobalOutlined />} title="区域信息">
-            {/* <Menu.Item key="riverSystem">
+            <Menu.Item key="riverSystem">
               水系
               <Switch
                 size="small"
@@ -119,7 +119,7 @@ export const SiderScreen = ({
                 onClick={handleSwitch("riverSystem")}
                 checked={earthVisible["riverSystem"]}
               />
-            </Menu.Item> */}
+            </Menu.Item>
             <Menu.Item key="engineering">
               区域地质
               <Switch

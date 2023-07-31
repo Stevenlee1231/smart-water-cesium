@@ -18,10 +18,8 @@ const json = riverSystems.features;
 for (let i = 0; i < json.length; i++) {
   let array = json[i].geometry.coordinates;
   let temp = []
-  for (let j = 0; j < array.length; j++){
-    for (let k = 0; k < array[j].length; k++){
-      temp.push(Cartesian3.fromDegrees(array[j][0][0], array[j][0][1], 0))
-    }
+  for (let j = 0; j < array[0].length; j++){
+    temp.push(Cartesian3.fromDegrees(array[0][j][0], array[0][j][1], 0))
   }
   riverArray.push(temp)
 }
@@ -97,7 +95,7 @@ const RiverSystem = ({ visible, earthInstance }: CardProps) => {
                     })
               }
               positions={value}
-              width={2}
+              width={1}
               // mouseEnter={handleZhuMouseEnter}
               // mouseLeave={handleZhuMouseLeave}
             ></Line>

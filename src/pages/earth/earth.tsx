@@ -83,9 +83,21 @@ export const EarthScreen = (props: any) => {
           ></CameraFlyTo>
         )}
         {/*水文气象 */}
-        {earthVisible["meteorology"] && (
-          <Meteorology visible={earthVisible["meteorology"]}></Meteorology>
-        )}
+        {
+          <Meteorology 
+          visible={earthVisible["meteorology"]}
+          showDrawer={() => {
+            setEarthVisible((prev: any) => {
+              return { ...prev, meteorology: true };
+            });
+          }}
+          onClose={() => {
+            setEarthVisible((prev: any) => {
+              return { ...prev, meteorology: false };
+            });
+          }}
+          ></Meteorology>
+        }
         {/*区域地质*/}
         {earthVisible["stratum"] && <Stratum></Stratum>}
         {/*工程地质*/}

@@ -63,24 +63,14 @@ const MountainCard2 = (props: mountainCard) => {
     ...mountain_visible_init,
     model_area: true,
   });
-const click1 = (e:any) => {
-  index = 1;
-  setModelVis((pre) => {
-    return { ...pre, model: true };
-  });
-}
-const click2 = (e:any) => {
-  index = 2;
-  setModelVis((pre) => {
-    return { ...pre, model: true };
-  });
-}
-const click3 = (e:any) => {
-  index = 3;
-  setModelVis((pre) => {
-    return { ...pre, model: true };
-  });
-}
+  const click = (i:number) => {
+    return (event:any) => {
+      index = i
+      setModelVis((pre) => {
+      return { ...pre, model: true };
+    });
+    }
+  }
   // const handleRadio = (e: any) => {
   //   key = e.target.value;
   //   setMountainVisible((prev) => {
@@ -118,10 +108,10 @@ const click3 = (e:any) => {
           </TabPane>
           <TabPane tab="模拟水位" key="2">
             <Button style={{height:30}} 
-            onClick={click1}
+            onClick={click(1)}
             >工况一</Button>
-            <Button style={{height:30}} onClick={click2}>工况二</Button>
-            <Button style={{height:30}} onClick={click3}>工况三</Button>
+            <Button style={{height:30}} onClick={click(2)}>工况二</Button>
+            <Button style={{height:30}} onClick={click(3)}>工况三</Button>
             {/* <Radio.Group
               options={SWL_options}
               optionType="button"
