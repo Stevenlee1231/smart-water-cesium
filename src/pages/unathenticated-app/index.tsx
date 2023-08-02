@@ -1,23 +1,29 @@
 import { useState } from "react";
-import { LoginScreen } from "./login";
-import { RegisterScreen } from "./register";
-import { Button, Card, Carousel, Divider, Form, Typography } from "antd";
+import { Button, Card, Carousel, Divider, Form, Typography, Input } from "antd";
 import styled from "@emotion/styled";
 import { useDocumentTitle } from "../../utils/customHooks";
-import { ReactComponent as SVGLogo1 } from "../../assets/images/山脉.svg";
-import { ReactComponent as SVGLogo2 } from "../../assets/images/帐篷，露营，旅行.svg";
-import { ReactComponent as SVGLogo3 } from "../../assets/images/水.svg";
-import { ReactComponent as SVGLogo4 } from "../../assets/images/水浪.svg";
-import { ReactComponent as SVGLogo5 } from "../../assets/images/雪山.svg";
-import a from "../../assets/images/a.svg";
-import b from "../../assets/images/b.svg";
-import c from "../../assets/images/c.svg";
-import d from "../../assets/images/d.svg";
 import e from "../../assets/images/Untitled-design-14-1080x600.jpg"
-export const UnauthenticatedApp = () => {
+import {
+  UserOutlined,
+  EyeTwoTone,
+  EyeInvisibleOutlined,
+} from "@ant-design/icons";
+export const UnauthenticatedApp = ({saveToken} : any) => {
   useDocumentTitle("请登录或注册");
-  const [isRegister, setIsRegister] = useState(false);
-  const [error, setError] = useState<Error | null>(null);
+  const [account, setAccount] = useState<string | undefined>();
+  const [password, setPassword] = useState<string | undefined>();
+  // const {state} = useLocation();
+  // const returnURL = state?.returnURL || '/'
+  const handleSubmit = (e:any) => {
+    if (account === 'admin' && password === 'admin'){
+      sessionStorage.setItem('login','loginIn')
+      saveToken(account)
+    }
+    else{
+      alert('密码错误')
+      return false;
+    }
+  };
   return (
     <Container>
       <div
@@ -29,6 +35,7 @@ export const UnauthenticatedApp = () => {
           color: "#1890ff",
           zIndex: 100,
           fontSize: "36px",
+          width:"700px"
         }}
         className="title"
       >
@@ -45,13 +52,48 @@ export const UnauthenticatedApp = () => {
         </Carousel>
       </ShadowCardLeft> */}
       <ShadowCardRight>
-        <Title>{isRegister ? "请注册" : "请登录"}</Title>
-        {error ? (
-          <Typography.Text type={"danger"}>{error.message}</Typography.Text>
-        ) : (
-          ""
-        )}
-        {isRegister ? <RegisterScreen /> : <LoginScreen />}
+        <Title>{"请登录"}</Title>
+        <Form onFinish={handleSubmit}>
+      <Form.Item
+        name={"username"}
+        rules={[{ required: true, message: "请输入你的用户名" }]}
+      >
+        <Input
+          type="text"
+          id={"username"}
+          placeholder="请输入你的用户名"
+          onChange={e => setAccount(e.target.value)}
+          suffix={<UserOutlined className="site-form-item-icon" />}
+        />
+      </Form.Item>
+      <Form.Item
+        name={"password"}
+        rules={[{ required: true, message: "请输入你的密码" }]}
+      >
+        <Input.Password
+          id={"password"}
+          placeholder="请输入你的密码"
+          onChange={e => setPassword(e.target.value)}
+          iconRender={(visible) =>
+            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+          }
+        />
+      </Form.Item>
+      <Form.Item style={{ paddingTop: "15px" }}>
+        <Button
+          type="primary"
+          style={{
+            marginRight: "20px",
+            width: "100%",
+            borderRadius: "1.25rem",
+          }}
+          htmlType={"submit"}
+        >
+          登陆
+        </Button>
+      </Form.Item>
+      <Form.Item></Form.Item>
+    </Form>
         <Divider />
 
         {/* <LongButton type={"link"} onClick={() => setIsRegister(!isRegister)}>
@@ -70,7 +112,7 @@ const BackGround = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  background-size:95%;
+  background-size:100%;
   background-image: url(${e});
 `;
 
@@ -92,12 +134,13 @@ const ShadowCardRight = styled(Card)`
   width: 40rem;
   min-height: 50rem;
   padding-top: 2rem;
-  border-radius: 0.3rem;
+  border-radius: 3rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0 0 10px;
   text-align: center;
   padding: 3.2rem 4rem;
   background-color: #f4f6f8;
   text-align: left;
+  
 `;
 
 const Container = styled.div`

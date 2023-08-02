@@ -5,11 +5,15 @@ import "./index.css";
 import App from "./App";
 import "antd/dist/antd.less";
 import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
+  <BrowserRouter>
   <RecoilRoot>
     <App />
-  </RecoilRoot>,
+  </RecoilRoot>
+  </BrowserRouter>
+  ,
   document.getElementById("root")
 );
 

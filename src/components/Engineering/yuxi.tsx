@@ -1,15 +1,28 @@
 import { useEffect, useState } from "react";
-import { Color } from "cesium";
-import dali_area from "../../assets/datas/hong.json";
+import { Color,Cartesian3 } from "cesium";
+import yuxiData from "../../assets/datas/engineering/yuxi.json";
 import Model from "../Model/Model";
 import Polygon from "../Polygon/Polygon";
-const Dali2_l = () => {
+let data :any[];
+data = []
+yuxiData.features.map(item => {
+    data.push(item.geometry)
+})
+let modalIndex = 0;
+const returnSrc = (index:number) =>{
+  return `http://43.142.17.108:9200/static/yuxi/`+index+`.jpg`
+}
+
+const Yuxi = () => {
   const [modelVis, setModelVis] = useState({
-    dali: false,
+    yuxi: false,
   });
   const [mouseIn, setMouseIn] = useState({
-    dali: false,
+    yuxi: false,
   });
+  const [index,setIndex] = useState({
+    index:-1
+  })
   useEffect(() => {
     const modelRes = Object.values(modelVis).filter((value) => {
       return value === true;
@@ -24,50 +37,52 @@ const Dali2_l = () => {
     }
   }, [modelVis]);
 
-  const { dali} = mouseIn;
+  const { yuxi} = mouseIn;
   return (
     <>
-      {
-        <>
+        {data &&
+        data.map((value: any, index: any) => {
+          return (
           <Polygon
-            data={dali_area}
-            material={dali ? Color.YELLOW : Color.ROYALBLUE}
-            stroke={dali ? Color.YELLOW : Color.ROYALBLUE}
+            data={value}
+            material={yuxi ? Color.YELLOW : Color.ROYALBLUE}
+            stroke={yuxi ? Color.YELLOW : Color.ROYALBLUE}
             strokeWidth={10}
             onClick={() => {
-              setMouseIn({dali:false})
+              modalIndex = index
+              setMouseIn({yuxi:false})
               setModelVis((pre) => {
-                return { ...pre, dali: true };
+                return { ...pre, yuxi: true };
               });
             }}
             mouseEnter={() => {
-              if (mouseIn.dali) return;
+              if (mouseIn.yuxi) return;
               document.body.style.cursor = "pointer";
               setMouseIn((pre) => {
-                return { ...pre, dali: true };
+                return { ...pre, yuxi: true };
               });
             }}
             mouseLeave={() => {
-              if (!mouseIn.dali) return;
+              if (!mouseIn.yuxi) return;
               document.body.style.cursor = "auto";
               setMouseIn((pre) => {
-                return { ...pre, dali: false };
+                return { ...pre, yuxi: false };
               });
             }}
           ></Polygon>
-          <Model
-            src={"http://103.118.40.123:9999/yun/dali2_6.jpg"}
-            visible={modelVis.dali}
+          )
+        })}
+          {modelVis.yuxi ?<Model
+            src={returnSrc(modalIndex + 1)}
+            visible={modelVis.yuxi}
             onClose={(e) => {
               e.stopPropagation();
               setModelVis((pre) => {
-                return { ...pre, dali: false };
+                return { ...pre, yuxi: false };
               });
             }}
-          ></Model>
-        </>
-      }
+          ></Model> : undefined}
     </>
-  );
-};
-export default Dali2_l;
+          )}
+
+export default Yuxi;

@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
 import { Color,Cartesian3 } from "cesium";
-import dali_area from "../../assets/datas/engineering/dali2.json";
+import chuxiongData from "../../assets/datas/engineering/chuxiong.json";
 import Model from "../Model/Model";
 import Polygon from "../Polygon/Polygon";
+let data :any[];
+data = []
+chuxiongData.features.map(item => {
+    data.push(item.geometry)
+})
 let modalIndex = 0;
 const returnSrc = (index:number) =>{
-  console.log(index)
-  return `http://43.142.17.108:9200/static/dali2/%E6%BB%87%E4%B8%AD%E5%88%9D%E6%AD%A5%E8%AE%BE%E8%AE%A1%E5%B9%B3%E9%9D%A2%E5%9B%BE%E7%AC%AC`+index+`%E5%B9%85.jpg`
+  return `http://43.142.17.108:9200/static/chuxiong/1-${index}楚雄段5000平面图.jpg`
 }
-const Dali2 = () => {
+
+const Chuxiong = () => {
   const [modelVis, setModelVis] = useState({
-    dali: false,
+    chuxiong: false,
   });
   const [mouseIn, setMouseIn] = useState({
-    dali: false,
+    chuxiong: false,
   });
   const [index,setIndex] = useState({
     index:-1
@@ -32,52 +37,52 @@ const Dali2 = () => {
     }
   }, [modelVis]);
 
-  const { dali} = mouseIn;
+  const { chuxiong} = mouseIn;
   return (
     <>
-        {dali_area &&
-        dali_area.map((value: any, index: any) => {
+        {data &&
+        data.map((value: any, index: any) => {
           return (
           <Polygon
             data={value}
-            material={dali ? Color.YELLOW : Color.ROYALBLUE}
-            stroke={dali ? Color.YELLOW : Color.ROYALBLUE}
+            material={chuxiong ? Color.YELLOW : Color.ROYALBLUE}
+            stroke={chuxiong ? Color.YELLOW : Color.ROYALBLUE}
             strokeWidth={10}
             onClick={() => {
               modalIndex = index
-              setMouseIn({dali:false})
+              setMouseIn({chuxiong:false})
               setModelVis((pre) => {
-                return { ...pre, dali: true };
+                return { ...pre, chuxiong: true };
               });
             }}
             mouseEnter={() => {
-              if (mouseIn.dali) return;
+              if (mouseIn.chuxiong) return;
               document.body.style.cursor = "pointer";
               setMouseIn((pre) => {
-                return { ...pre, dali: true };
+                return { ...pre, chuxiong: true };
               });
             }}
             mouseLeave={() => {
-              if (!mouseIn.dali) return;
+              if (!mouseIn.chuxiong) return;
               document.body.style.cursor = "auto";
               setMouseIn((pre) => {
-                return { ...pre, dali: false };
+                return { ...pre, chuxiong: false };
               });
             }}
           ></Polygon>
           )
         })}
-          {modelVis.dali ?<Model
+          {modelVis.chuxiong ?<Model
             src={returnSrc(modalIndex + 1)}
-            visible={modelVis.dali}
+            visible={modelVis.chuxiong}
             onClose={(e) => {
               e.stopPropagation();
               setModelVis((pre) => {
-                return { ...pre, dali: false };
+                return { ...pre, chuxiong: false };
               });
             }}
           ></Model> : undefined}
     </>
           )}
 
-export default Dali2;
+export default Chuxiong;

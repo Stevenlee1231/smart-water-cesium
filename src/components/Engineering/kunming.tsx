@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
 import { Color,Cartesian3 } from "cesium";
-import dali_area from "../../assets/datas/engineering/dali2.json";
+import kunmingData from "../../assets/datas/engineering/kunming.json";
 import Model from "../Model/Model";
 import Polygon from "../Polygon/Polygon";
+let data :any[];
+data = []
+kunmingData.features.map(item => {
+    data.push(item.geometry)
+})
 let modalIndex = 0;
 const returnSrc = (index:number) =>{
-  console.log(index)
-  return `http://43.142.17.108:9200/static/dali2/%E6%BB%87%E4%B8%AD%E5%88%9D%E6%AD%A5%E8%AE%BE%E8%AE%A1%E5%B9%B3%E9%9D%A2%E5%9B%BE%E7%AC%AC`+index+`%E5%B9%85.jpg`
+  return `http://43.142.17.108:9200/static/kunming/1-${index}%E6%98%86%E6%98%8E%E6%AE%B51%EF%BC%9A5000%E5%B7%A5%E7%A8%8B%E5%9C%B0%E8%B4%A8%E5%9B%BE.jpg`
 }
-const Dali2 = () => {
+
+const Kunming = () => {
   const [modelVis, setModelVis] = useState({
-    dali: false,
+    kunming: false,
   });
   const [mouseIn, setMouseIn] = useState({
-    dali: false,
+    kunming: false,
   });
   const [index,setIndex] = useState({
     index:-1
@@ -32,52 +37,52 @@ const Dali2 = () => {
     }
   }, [modelVis]);
 
-  const { dali} = mouseIn;
+  const { kunming} = mouseIn;
   return (
     <>
-        {dali_area &&
-        dali_area.map((value: any, index: any) => {
+        {data &&
+        data.map((value: any, index: any) => {
           return (
           <Polygon
             data={value}
-            material={dali ? Color.YELLOW : Color.ROYALBLUE}
-            stroke={dali ? Color.YELLOW : Color.ROYALBLUE}
+            material={kunming ? Color.YELLOW : Color.ROYALBLUE}
+            stroke={kunming ? Color.YELLOW : Color.ROYALBLUE}
             strokeWidth={10}
             onClick={() => {
               modalIndex = index
-              setMouseIn({dali:false})
+              setMouseIn({kunming:false})
               setModelVis((pre) => {
-                return { ...pre, dali: true };
+                return { ...pre, kunming: true };
               });
             }}
             mouseEnter={() => {
-              if (mouseIn.dali) return;
+              if (mouseIn.kunming) return;
               document.body.style.cursor = "pointer";
               setMouseIn((pre) => {
-                return { ...pre, dali: true };
+                return { ...pre, kunming: true };
               });
             }}
             mouseLeave={() => {
-              if (!mouseIn.dali) return;
+              if (!mouseIn.kunming) return;
               document.body.style.cursor = "auto";
               setMouseIn((pre) => {
-                return { ...pre, dali: false };
+                return { ...pre, kunming: false };
               });
             }}
           ></Polygon>
           )
         })}
-          {modelVis.dali ?<Model
+          {modelVis.kunming ?<Model
             src={returnSrc(modalIndex + 1)}
-            visible={modelVis.dali}
+            visible={modelVis.kunming}
             onClose={(e) => {
               e.stopPropagation();
               setModelVis((pre) => {
-                return { ...pre, dali: false };
+                return { ...pre, kunming: false };
               });
             }}
           ></Model> : undefined}
     </>
           )}
 
-export default Dali2;
+export default Kunming;

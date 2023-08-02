@@ -10,7 +10,7 @@ import { SiderScreen } from "./sider";
 import { useState } from "react";
 import { InfoBox } from "./infoBox";
 
-export const Screen = () => {
+export const Screen = ({saveToken} : any) => {
   useDocumentTitle("项目首页");
   const [theme, setTheme] = useRecoilState<SiderTheme | string>(theme_store);
 

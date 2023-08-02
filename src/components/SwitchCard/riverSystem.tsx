@@ -23,7 +23,6 @@ for (let i = 0; i < json.length; i++) {
   }
   riverArray.push(temp)
 }
-console.log(riverArray)
 // const preZhuxianData = zhuxian.geometries.map((v) => {
 //   return v.coordinates.reduce((pre, cur) => {
 //     return pre.concat(cur);

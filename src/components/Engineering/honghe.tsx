@@ -1,15 +1,28 @@
 import { useEffect, useState } from "react";
-import { Color } from "cesium";
-import dali_area from "../../assets/datas/Chuxiong_1.json";
+import { Color,Cartesian3 } from "cesium";
+import hongheData from "../../assets/datas/engineering/honghe.json";
 import Model from "../Model/Model";
 import Polygon from "../Polygon/Polygon";
-const Chuxiong_1 = () => {
+let data :any[];
+data = []
+hongheData.features.map(item => {
+    data.push(item.geometry)
+})
+let modalIndex = 0;
+const returnSrc = (index:number) =>{
+  return `http://43.142.17.108:9200/static/honghe/04-${index}红河段带平面图.jpg`
+}
+
+const Honghe = () => {
   const [modelVis, setModelVis] = useState({
-    dali: false,
+    honghe: false,
   });
   const [mouseIn, setMouseIn] = useState({
-    dali: false,
+    honghe: false,
   });
+  const [index,setIndex] = useState({
+    index:-1
+  })
   useEffect(() => {
     const modelRes = Object.values(modelVis).filter((value) => {
       return value === true;
@@ -24,50 +37,52 @@ const Chuxiong_1 = () => {
     }
   }, [modelVis]);
 
-  const { dali} = mouseIn;
+  const { honghe} = mouseIn;
   return (
     <>
-      {
-        <>
+        {data &&
+        data.map((value: any, index: any) => {
+          return (
           <Polygon
-            data={dali_area}
-            material={dali ? Color.YELLOW : Color.ROYALBLUE}
-            stroke={dali ? Color.YELLOW : Color.ROYALBLUE}
+            data={value}
+            material={honghe ? Color.YELLOW : Color.ROYALBLUE}
+            stroke={honghe ? Color.YELLOW : Color.ROYALBLUE}
             strokeWidth={10}
             onClick={() => {
-              setMouseIn({dali:false})
+              modalIndex = index
+              setMouseIn({honghe:false})
               setModelVis((pre) => {
-                return { ...pre, dali: true };
+                return { ...pre, honghe: true };
               });
             }}
             mouseEnter={() => {
-              if (mouseIn.dali) return;
+              if (mouseIn.honghe) return;
               document.body.style.cursor = "pointer";
               setMouseIn((pre) => {
-                return { ...pre, dali: true };
+                return { ...pre, honghe: true };
               });
             }}
             mouseLeave={() => {
-              if (!mouseIn.dali) return;
+              if (!mouseIn.honghe) return;
               document.body.style.cursor = "auto";
               setMouseIn((pre) => {
-                return { ...pre, dali: false };
+                return { ...pre, honghe: false };
               });
             }}
           ></Polygon>
-          <Model
-            src={"/api/yun/Chuxiong_1.jpg"}
-            visible={modelVis.dali}
+          )
+        })}
+          {modelVis.honghe ?<Model
+            src={returnSrc(modalIndex + 1)}
+            visible={modelVis.honghe}
             onClose={(e) => {
               e.stopPropagation();
               setModelVis((pre) => {
-                return { ...pre, dali: false };
+                return { ...pre, honghe: false };
               });
             }}
-          ></Model>
-        </>
-      }
+          ></Model> : undefined}
     </>
-  );
-};
-export default Chuxiong_1;
+          )}
+
+export default Honghe;

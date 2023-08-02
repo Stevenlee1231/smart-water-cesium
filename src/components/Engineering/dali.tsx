@@ -1,15 +1,23 @@
 import { useEffect, useState } from "react";
-import { Color } from "cesium";
-import dali_area from "../../assets/datas/dali2_m.json";
+import { Color,Cartesian3 } from "cesium";
+import dali_area from "../../assets/datas/engineering/dali.json";
 import Model from "../Model/Model";
 import Polygon from "../Polygon/Polygon";
-const Dali2_m = () => {
+let modalIndex = 0;
+const returnSrc = (index:number) =>{
+  console.log(index)
+  return `http://43.142.17.108:9200/static/dali2/%E6%BB%87%E4%B8%AD%E5%88%9D%E6%AD%A5%E8%AE%BE%E8%AE%A1%E5%B9%B3%E9%9D%A2%E5%9B%BE%E7%AC%AC`+index+`%E5%B9%85.jpg`
+}
+const Dali = () => {
   const [modelVis, setModelVis] = useState({
     dali: false,
   });
   const [mouseIn, setMouseIn] = useState({
     dali: false,
   });
+  const [index,setIndex] = useState({
+    index:-1
+  })
   useEffect(() => {
     const modelRes = Object.values(modelVis).filter((value) => {
       return value === true;
@@ -27,14 +35,17 @@ const Dali2_m = () => {
   const { dali} = mouseIn;
   return (
     <>
-      {
-        <>
+        {dali_area &&
+        dali_area.geometries.map((value: any, index: any) => {
+          console.log(value)
+          return (
           <Polygon
-            data={dali_area}
+            data={value}
             material={dali ? Color.YELLOW : Color.ROYALBLUE}
             stroke={dali ? Color.YELLOW : Color.ROYALBLUE}
             strokeWidth={10}
             onClick={() => {
+              modalIndex = index
               setMouseIn({dali:false})
               setModelVis((pre) => {
                 return { ...pre, dali: true };
@@ -55,8 +66,10 @@ const Dali2_m = () => {
               });
             }}
           ></Polygon>
-          <Model
-            src={"/api/yun/Dali2_4.jpg"}
+          )
+        })}
+          {modelVis.dali ?<Model
+            src={returnSrc(modalIndex + 1)}
             visible={modelVis.dali}
             onClose={(e) => {
               e.stopPropagation();
@@ -64,10 +77,8 @@ const Dali2_m = () => {
                 return { ...pre, dali: false };
               });
             }}
-          ></Model>
-        </>
-      }
+          ></Model> : undefined}
     </>
-  );
-};
-export default Dali2_m;
+          )}
+
+export default Dali;

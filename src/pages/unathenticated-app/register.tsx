@@ -10,7 +10,7 @@ export const RegisterScreen = () => {
     <Form>
       <Form.Item
         name={"username"}
-        rules={[{ required: true, message: "Please your username" }]}
+        rules={[{ required: true, message: "请输入你的用户名" }]}
       >
         <Input
           type="text"
@@ -21,7 +21,7 @@ export const RegisterScreen = () => {
       </Form.Item>
       <Form.Item
         name={"password"}
-        rules={[{ required: true, message: "Please enter your password" }]}
+        rules={[{ required: true, message: "请输入你的密码" }]}
       >
         <Input.Password
           id={"password"}
