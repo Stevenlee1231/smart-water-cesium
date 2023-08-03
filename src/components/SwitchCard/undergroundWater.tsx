@@ -14,6 +14,7 @@ import tunnel from "../../assets/datas/undergroundWater.json";
 import jingIcon from "../../assets/images/jing.png";
 import Legend from "../Legend/Legend";
 import locationIcon from "../../assets/images/location_2.png"
+import datas from "../../assets/chartData/undergroundWater/datas";
 const tunnelLabel = [
   "二标段昆明段ZK2647",
   "二标段玉溪段XQZK216",
@@ -53,14 +54,6 @@ const remark =[
   "于11月4日完成设备安装调试",
   "于11月6日完成设备安装调试"
 ]
-
-const xAxis = 
-  ["2020/12/6", "2020/12/7", "2020/12/8", "2020/12/9", "2020/12/10", "2020/12/11", "2020/12/12", "2020/12/13", "2020/12/14", "2020/12/15"]
-
-const series = 
-  [["2002.15", "2001.99", "2002.18", "2002.35", "2001.82", "2002.02", "2001.81", "2002.02", "2001.87", "2001.8"], ["1900", "1899.99", "1899.99", "1899.99", "1899.97", "1899.97", "1899.96", "1899.96", "1899.95", "1899.95"], ["2078.69", "2078.65", "2078.67", "2078.86", "2078.12", "2078.25", "2078.48", "2077.87", "2077.59", "2077.44"], ["1902.98", "1902.99", "1902.98", "1902.95", "1902.93", "1902.92", "1902.91", "1902.88", "1902.91", "1902.91"],["1956.55", "1956.48", "1956.39", "1956.29", "1956.19", "1956.08", "1955.98", "1955.88", "1955.8", "1955.71"], ["1912.54", "1912.37", "1912.34", "1912.32", "1912.21", "1912.13", "1912.08", "1911.95", "1911.9", "1911.84"]
-  ]
-
 const tunnels = tunnel.geometries.map((obj) => {
   return Cartesian3.fromDegrees(obj.coordinates[0], obj.coordinates[1], 0);
 });
@@ -105,10 +98,10 @@ const UndergroundWater = ({ visible, earthInstance }: CardProps) => {
                       geometry={circleGeometry}
                       mode="undergroundWater"
                       textPosition={tunnelsText[index]}
-                      id={tunnelLabel[index]}
-                      remark={remark[index]}
-                      xAxis={xAxis}
-                      series={series[index]}
+                      id={datas.name[index]}
+                      remark={datas.remark[index]}
+                      xAxis={datas.time}
+                      series={datas.yAxis[index]}
                       title={tunnelLabel[index]+'水位图'}
                     />
                   </LabelCollection>

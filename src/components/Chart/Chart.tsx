@@ -66,7 +66,15 @@ echarts.use([
 ]);
 
 const Chart = (props: chart) => {
-  const {xAxis, title, series } = props;
+  const {xAxis, title, series} = props;
+  const realXAxis:any[] = [];
+  const realSeries:any[] = [];
+  xAxis.forEach(function(item, index) {
+    if (series[index] !== 'null'){
+      realXAxis.push(item);
+      realSeries.push(series[index]);
+    }
+  })
   const option: ECOption = {
     // ...
     title: {
@@ -81,16 +89,35 @@ const Chart = (props: chart) => {
     grid: {
     },
     xAxis: {
-      data: xAxis,
+      data: realXAxis,
     },
     yAxis: {
     },
     toolbox: {
     },
+    dataZoom: [
+      {
+        show: true,
+        realtime: true,
+        start: 0,
+        end: 100,
+        xAxisIndex: [0, 1],
+      },
+      {
+        type: "slider",
+        height:10,
+        bottom:35,
+        realtime: true,
+        start: 30,
+        end: 70,
+        xAxisIndex: [0, 1],
+        handleSize:'60%'
+      },
+    ],
     series: {
       name: title,
-      type: "line",
-      data: series,
+      type: "bar",
+      data: realSeries,
     },
   };
 

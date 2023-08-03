@@ -52,7 +52,7 @@ export const UnauthenticatedApp = ({saveToken} : any) => {
         </Carousel>
       </ShadowCardLeft> */}
       <ShadowCardRight>
-        <Title>{"请登录"}</Title>
+        <Title style={{left:"50px"}}>{"请登录"}</Title>
         <Form onFinish={handleSubmit}>
       <Form.Item
         name={"username"}

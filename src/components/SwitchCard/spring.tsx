@@ -14,6 +14,7 @@ import tunnel from "../../assets/datas/spring.json";
 import jingIcon from "../../assets/images/jing.png";
 import Legend from "../Legend/Legend";
 import locationIcon from "../../assets/images/location_3.png"
+import datas from "../../assets/chartData/spring/datas";
 const tunnelLabel = [
   "二标段昆明段泉 65",
   "二标段昆明段泉 50",
@@ -73,6 +74,7 @@ const Spring = ({ visible, earthInstance }: CardProps) => {
               }),
               id: index,
             });
+            console.log(datas.name)
             return (
               <>
                 <BillboardCollection>
@@ -85,12 +87,12 @@ const Spring = ({ visible, earthInstance }: CardProps) => {
                       geometry={circleGeometry}
                       mode="spring"
                       textPosition={tunnelsText[index]}
-                      id={tunnelLabel[index]}
-                      info={pointInfo[index]}
-                      remark={remark[index]}
-                      xAxis={xAxis}
-                      series={series[index]}
-                      title={tunnelLabel[index]+'流量图'}
+                      id={datas.name[index]}
+                      info={datas.pointInfo[index]}
+                      remark={datas.remark[index]}
+                      xAxis={datas.time}
+                      series={datas.data[index]}
+                      title={datas.name[index]+'流量图'}
                     />
                   </LabelCollection>
                 </BillboardCollection>

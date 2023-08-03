@@ -1,5 +1,6 @@
 import { CardProps } from "./tunnel";
 import Point from "../Point/Point";
+import datas from "../../assets/chartData/gushing/datas";
 import {
   Cartesian3,
   CircleGeometry,
@@ -68,10 +69,10 @@ const Gushing = ({ visible, earthInstance }: CardProps) => {
                       geometry={circleGeometry}
                       mode="gushing"
                       textPosition={tunnelsText[index]}
-                      id={tunnelLabel[index]}
-                      xAxis={xAxis}
-                      title={tunnelLabel[index]+'突涌水量'}
-                      series={series[index]}
+                      id={datas.name[index]}
+                      xAxis={datas.time}
+                      title={datas.name[index]+'突涌水量'}
+                      series={datas.data[index]}
                     />
                   </LabelCollection>
                 </BillboardCollection>

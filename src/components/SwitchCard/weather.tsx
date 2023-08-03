@@ -21,10 +21,14 @@ import {
   TransformComponent,
   ToolboxComponent,
   VisualMapComponent,
+  LegendComponent,
+  DataZoomComponent
 } from "echarts/components";
 import { LabelLayout, UniversalTransition } from "echarts/features";
 import { CanvasRenderer } from "echarts/renderers";
 import { useEffect } from "react";
+import datas from "../../assets/chartData/weather/datas"
+import { LegendComponentOption } from "echarts";
 interface chart {
   title: string;
   // width: number;
@@ -48,55 +52,11 @@ type ECOption = echarts.ComposeOption<
   | DatasetComponentOption
 >;
 
-const time = ['2021.09.29', '2021.09.30', '2021.10.01', '2021.10.02', '2021.10.03', '2021.10.04', '2021.10.05', '2021.10.06', '2021.10.07', '2021.10.08']
-const evaporation1 = [
-    "2.2",
-    "2.0",
-    "2",
-    "1.7",
-    "2.4",
-    "2.3",
-    "2.5",
-    "1.7",
-    "1.8",
-    "1.8"
-  ]
-const rainfull1 = [
-    "2.69",
-    "0.46",
-    "0",
-    "0",
-    "0.09",
-    "0",
-    "0",
-    "0",
-    "0.07",
-    "1.64"
-  ]
-const evaporation2 = [
-    "2.2",
-    "1.9",
-    "2.8",
-    "3.1",
-    "2.3",
-    "5.7",
-    "4.9",
-    "2.1",
-    "2.6",
-    "2.0"
-  ]
-const rainfull2 = [
-    "2.69",
-    "0.46",
-    "0.2",
-    "0",
-    "0",
-    "0",
-    "0",
-    "0",
-    "0.8",
-    "0"
-  ]
+const time = datas.time
+const evaporation1 = datas.xaxis[0]
+const rainfull1 = datas.xaxis[1]
+const evaporation2 = datas.xaxis[2]
+const rainfull2 = datas.xaxis[3]
 // 注册必须的组件
 echarts.use([
   TitleComponent,
@@ -111,6 +71,8 @@ echarts.use([
   LineChart,
   ToolboxComponent,
   VisualMapComponent,
+  LegendComponent,
+  DataZoomComponent
 ]);
 
 const Weather = () => {
@@ -123,7 +85,13 @@ const Weather = () => {
     tooltip: {
     },
     legend:{
-        show:true,
+      boxShadow:'rgb(128, 128, 128)',
+      orient: 'vertical',
+      left: 100,
+      top: 30,
+      bottom: 20,
+      textStyle:{fontSize : 10},
+      show:true,
         data:["蔡家村隧洞降雨与蒸发自动监测站日蒸发","昆呈隧洞标石柱气象自动监测点日蒸发"]
     },
     grid: {
@@ -135,14 +103,33 @@ const Weather = () => {
     },
     toolbox: {
     },
+    dataZoom: [
+      {
+        show: true,
+        realtime: true,
+        start: 0,
+        end: 100,
+        xAxisIndex: [0, 1],
+      },
+      {
+        type: "slider",
+        height:10,
+        bottom:35,
+        realtime: true,
+        start: 30,
+        end: 70,
+        xAxisIndex: [0, 1],
+        handleSize:'60%'
+      },
+    ],
     series: [{
       name: "蔡家村隧洞降雨与蒸发自动监测站日蒸发",
-      type: "line",
+      type: "bar",
       data: evaporation1,
     },
       {
         name: "昆呈隧洞标石柱气象自动监测点日蒸发",
-        type: "line",
+        type: "bar",
         data: evaporation2,
       },
     ]
@@ -161,12 +148,31 @@ const Weather = () => {
         left: 100,
         top: 30,
         bottom: 20,
-        textStyle:{fontSize : 5},
+        textStyle:{fontSize : 10},
         show:true,
-        data:["蔡家村隧洞降雨与蒸发自动监测站日蒸发","蔡家村隧洞降雨与蒸发自动监测站日降雨","昆呈隧洞标石柱气象自动监测点日蒸发","昆呈隧洞标石柱气象自动监测点日降雨"]
+        data:["蔡家村隧洞降雨与蒸发自动监测站日降雨","昆呈隧洞标石柱气象自动监测点日降雨"]
     },
     grid: {
     },
+    dataZoom: [
+      {
+        show: true,
+        realtime: true,
+        start: 0,
+        end: 100,
+        xAxisIndex: [0, 1],
+      },
+      {
+        type: "slider",
+        height:10,
+        bottom:35,
+        realtime: true,
+        start: 30,
+        end: 70,
+        xAxisIndex: [0, 1],
+        handleSize:'60%'
+      },
+    ],
     xAxis: {
         data: time,
     },
@@ -177,12 +183,12 @@ const Weather = () => {
     series: [
     {
         name: "蔡家村隧洞降雨与蒸发自动监测站日降雨",
-        type: "line",
+        type: "bar",
         data: rainfull1,
       },
       {
         name: "昆呈隧洞标石柱气象自动监测点日降雨",
-        type: "line",
+        type: "bar",
         data: rainfull2,
       },
     ]
@@ -198,6 +204,7 @@ const Weather = () => {
     chart1 = echarts.init(document.getElementById("chart-container1") as HTMLElement)
     chart2 = echarts.init(document.getElementById("chart-container2") as HTMLElement)
     chart1.setOption(option1);
+    console.log(option1)
     chart2.setOption(option2);
     // return () => {
     //   chart.clear();
