@@ -52,7 +52,7 @@ interface mountainCard {
   mode: string;
 }
 const returnSrc = (index:number) =>{
-  return `http://43.142.17.108:9200/static/xianglushan/5/`+index+`.png`
+  return `http://43.142.99.61:9200/static/xianglushan/5/`+index+`.png`
 }
 
 let index:any;

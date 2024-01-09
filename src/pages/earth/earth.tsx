@@ -23,6 +23,7 @@ import UndergroundWater from "../../components/SwitchCard/undergroundWater";
 import RiverSystem from "../../components/SwitchCard/riverSystem";
 import Spring from "../../components/SwitchCard/spring";
 import Engineering from "../../components/Engineering/Engineering";
+import Route from "../../components/SwitchCard/route"
 Ion.defaultAccessToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2OTU2ZDE3Yi04ZDliLTRjZDAtYWYyOC01ZTk1OWFjOGNiZTUiLCJpZCI6NDQ3NjgsImlhdCI6MTYyNzk2Mjk1MX0.FrqhJD70CQLH9QsnePyuU0gmevojlEmGgF8swsUQue4";
 
@@ -111,8 +112,10 @@ export const EarthScreen = (props: any) => {
         <UndergroundWater  earthInstance={earthRef}  visible={earthVisible["undergroundWater"]} />
         {/* 泉流量 */}
         <Spring  earthInstance={earthRef}  visible={earthVisible["spring"]} />
-        {/* 隧道及支洞 */}
+        {/* 隧道 */}
         {earthVisible["tunnel"] && <Tunnel earthInstance={earthRef} />}
+        {/* 线路 */}
+        {earthVisible["route"] && <Route earthInstance={earthRef} />}
         {/* 水系 */}
         {earthVisible["riverSystem"] && <RiverSystem  earthInstance={earthRef}  />} 
         {/* 区域水位 */}

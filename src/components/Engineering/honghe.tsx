@@ -10,7 +10,7 @@ hongheData.features.map(item => {
 })
 let modalIndex = 0;
 const returnSrc = (index:number) =>{
-  return `http://43.142.17.108:9200/static/honghe/04-${index}红河段带平面图.jpg`
+  return `http://43.142.99.61:9200/static/honghe/04-${index}红河段带平面图.jpg`
 }
 
 const Honghe = () => {

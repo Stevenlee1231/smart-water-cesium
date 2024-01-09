@@ -10,7 +10,7 @@ kunmingData.features.map(item => {
 })
 let modalIndex = 0;
 const returnSrc = (index:number) =>{
-  return `http://43.142.17.108:9200/static/kunming/1-${index}%E6%98%86%E6%98%8E%E6%AE%B51%EF%BC%9A5000%E5%B7%A5%E7%A8%8B%E5%9C%B0%E8%B4%A8%E5%9B%BE.jpg`
+  return `http://43.142.99.61:9200/static/kunming/1-${index}%E6%98%86%E6%98%8E%E6%AE%B51%EF%BC%9A5000%E5%B7%A5%E7%A8%8B%E5%9C%B0%E8%B4%A8%E5%9B%BE.jpg`
 }
 
 const Kunming = () => {

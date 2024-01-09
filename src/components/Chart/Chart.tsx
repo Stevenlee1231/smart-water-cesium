@@ -36,6 +36,8 @@ interface chart {
   //声明提示框数据series
   series: string[];
   //声明Y轴
+  //声明曲线类型
+  lineType:"bar" | "line";
   // yAxis: {} | [];
 }
 
@@ -66,7 +68,7 @@ echarts.use([
 ]);
 
 const Chart = (props: chart) => {
-  const {xAxis, title, series} = props;
+  const {xAxis, title, series, lineType} = props;
   const realXAxis:any[] = [];
   const realSeries:any[] = [];
   xAxis.forEach(function(item, index) {
@@ -116,7 +118,7 @@ const Chart = (props: chart) => {
     ],
     series: {
       name: title,
-      type: "bar",
+      type: lineType,
       data: realSeries,
     },
   };

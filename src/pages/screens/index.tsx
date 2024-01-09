@@ -20,13 +20,16 @@ export const Screen = ({saveToken} : any) => {
   //控制地图上显示的东西  并不使用router控制
   const [earthVisible, setEarthVisible] = useState({
     meteorology:false,
+
     three: false,
     //地层信息
     stratum: false,
     //水文地质信息
     hydrology: false,
-    //隧洞及支洞
+    //隧洞信息
     tunnel: false,
+    //线路信息
+    route:false,
     //水系
     riverSystem:false,
     //监测井

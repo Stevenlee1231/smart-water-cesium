@@ -5,8 +5,7 @@ import Model from "../Model/Model";
 import Polygon from "../Polygon/Polygon";
 let modalIndex = 0;
 const returnSrc = (index:number) =>{
-  console.log(index)
-  return `http://43.142.17.108:9200/static/dali2/%E6%BB%87%E4%B8%AD%E5%88%9D%E6%AD%A5%E8%AE%BE%E8%AE%A1%E5%B9%B3%E9%9D%A2%E5%9B%BE%E7%AC%AC`+index+`%E5%B9%85.jpg`
+  return `http://43.142.99.61:9200/static/dali2/%E6%BB%87%E4%B8%AD%E5%88%9D%E6%AD%A5%E8%AE%BE%E8%AE%A1%E5%B9%B3%E9%9D%A2%E5%9B%BE%E7%AC%AC`+index+`%E5%B9%85.jpg`
 }
 const Dali = () => {
   const [modelVis, setModelVis] = useState({
@@ -37,7 +36,6 @@ const Dali = () => {
     <>
         {dali_area &&
         dali_area.geometries.map((value: any, index: any) => {
-          console.log(value)
           return (
           <Polygon
             data={value}

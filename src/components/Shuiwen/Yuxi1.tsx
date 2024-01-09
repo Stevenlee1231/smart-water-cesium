@@ -56,7 +56,7 @@ const Yuxi1 = () => {
             }}
           ></Polygon>
           <Model
-            src={"http://43.142.17.108:9200/static/shuiwen/yuxi1.jpg"}
+            src={"http://43.142.99.61:9200/static/shuiwen/yuxi1.jpg"}
             visible={modelVis.yuxi}
             onClose={(e) => {
               e.stopPropagation();

@@ -102,7 +102,8 @@ const UndergroundWater = ({ visible, earthInstance }: CardProps) => {
                       remark={datas.remark[index]}
                       xAxis={datas.time}
                       series={datas.yAxis[index]}
-                      title={tunnelLabel[index]+'水位图'}
+                      title={datas.name[index]+'水位图'}
+                      lineType="line"
                     />
                   </LabelCollection>
                 </BillboardCollection>

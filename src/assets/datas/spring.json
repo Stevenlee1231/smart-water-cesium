@@ -1,4 +1,557 @@
 {"type":"GeometryCollection", "geometries": [
+        {
+            "type": "Point",
+            "coordinates": [
+                99.93198333,
+                26.85966111
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                99.92711111,
+                26.84800278
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                99.96843333,
+                26.83867778
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                99.96672222,
+                26.80961667
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.0375583,
+                26.648625
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.01415,
+                26.61321944
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.087925,
+                26.46645278
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.1540278,
+                26.54356944
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.1448417,
+                26.5687
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.1708278,
+                26.49610833
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.136575,
+                26.510525
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.1657444,
+                26.45465833
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.0733333,
+                26.4495
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.059075,
+                26.47702778
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.0425,
+                26.53998889
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.200425,
+                26.18166667
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.1566056,
+                26.15258889
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.1655417,
+                26.18921944
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.1741694,
+                26.23808056
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.0809,
+                26.40946667
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.0300667,
+                26.58267778
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.0275528,
+                26.57662222
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                99.96030278,
+                26.53416667
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                99.96068056,
+                26.52490278
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                99.96001111,
+                26.52034722
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                99.95958333,
+                26.5195
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.2260972,
+                25.90357778
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                99.98753611,
+                26.40709722
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.0283194,
+                26.61315278
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.1664056,
+                26.16368889
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.2329306,
+                25.90093333
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.2316944,
+                25.89545
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.2400528,
+                25.88729444
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.2544861,
+                25.8642
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.2527611,
+                25.86087778
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.236875,
+                25.847125
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.2431083,
+                25.84913056
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.2539,
+                25.8636
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.2568028,
+                25.85081667
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.2784806,
+                25.85238611
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.2740056,
+                25.69165556
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.2957056,
+                25.80459167
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.2957056,
+                25.80459167
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.3145944,
+                25.78348611
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.3450472,
+                25.75571389
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.5021556,
+                25.68631944
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.4950083,
+                25.59789722
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.4936167,
+                25.59709722
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.5023917,
+                25.56076111
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.5022806,
+                25.56035278
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.5143389,
+                25.55849167
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.5105167,
+                25.58156111
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.5071861,
+                25.57335278
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.5137333,
+                25.55581667
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                100.5152722,
+                25.54545
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.0368139,
+                25.38825278
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.0662778,
+                25.39464167
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.1493917,
+                25.32284722
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.2443444,
+                25.28301389
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.2508556,
+                25.25085556
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.2926778,
+                25.25858889
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.4107056,
+                25.28294444
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.4344389,
+                25.26955
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.6549472,
+                25.23790278
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.6760833,
+                25.24110556
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.7086778,
+                25.24393611
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.7338,
+                25.25297778
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.7752667,
+                25.255825
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.8340694,
+                25.27710278
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.7703472,
+                25.25513611
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.9003806,
+                25.30109167
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.9226,
+                25.30525278
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                101.9714694,
+                25.34969722
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                102.0025361,
+                25.33554444
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                102.0175028,
+                25.34956111
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                102.0498889,
+                25.36485278
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                102.1134639,
+                25.35471944
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                102.2006333,
+                25.35148889
+            ]
+        },
+        {
+            "type": "Point",
+            "coordinates": [
+                102.2042167,
+                25.34728889
+            ]
+        },
     {"type":"Point","coordinates":[102.735291666667, 24.671197222222]},
     {"type":"Point","coordinates":[102.864386111111, 24.873688888889]},
     {"type":"Point","coordinates":[102.855877777778, 24.900430555556]},

@@ -12,7 +12,7 @@ interface line {
 }
 type resiumMouseEvent = (movement: CesiumMovementEvent, target: any) => void;
 const Line = (props: line) => {
-  const { positions, show, material, width, id, mouseEnter, mouseLeave } = props;
+  const { positions, show, material, width, id, mouseEnter, mouseLeave} = props;
 
   return (
     <PolylineCollection>
@@ -20,7 +20,7 @@ const Line = (props: line) => {
         id={id}
         show={show}
         width={width}
-        material={material}
+        material={material}        
         positions={positions}
         onMouseEnter={mouseEnter as resiumMouseEvent}
         onMouseLeave={mouseLeave as resiumMouseEvent}

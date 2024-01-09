@@ -39,6 +39,7 @@ export const initEarthVisible = {
   count: false,
   engineering:false,
   riverSystem:false,
+  route:false
 };
 const switchStyle = {
   // float: "right",
@@ -92,12 +93,21 @@ export const SiderScreen = ({
             />
             </Menu.Item>
             <Menu.Item key="tunnel">
-              隧洞线路  
+              隧洞信息  
               <Switch
                 size="small"
                 style={switchStyle as any}
                 onClick={handleSwitch("tunnel")}
                 checked={earthVisible["tunnel"]}
+              />
+            </Menu.Item>
+            <Menu.Item key="route">
+              线路信息  
+              <Switch
+                size="small"
+                style={switchStyle as any}
+                onClick={handleSwitch("route")}
+                checked={earthVisible["route"]}
               />
             </Menu.Item>
           </SubMenu>

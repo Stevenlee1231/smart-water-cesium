@@ -10,7 +10,7 @@ export interface CardProps {
   earthInstance?: any;
   visible?: boolean;
 }
-type branchTextState = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+type branchTextState = number;
 type tunnelTextState = 0 | 1;
 // const preZhuxianData = zhuxian.geometries.map((v) => {
 //   return v.coordinates.reduce((pre, cur) => {
@@ -26,25 +26,178 @@ type tunnelTextState = 0 | 1;
 const lineArr = suidongData.geometries[0].coordinates.reduce((pre, cur) => {
   return pre.concat(cur);
 }, []);
-// console.log(zhuxianData);
 const branchLabel = [
-  "红河段-DPZ4#支洞",
-  "红河段-DPZ3#支洞",
-  "红河段-DPZ2#支洞",
-  "红河段-DPZ1#支洞",
-  "红河段-DPT1#支洞",
-  "红河段-LS3#支洞",
-  "红河段-LS2#支洞",
-  "红河段-LS1#支洞",
-  "红河段-LW1#支洞",
+  "香炉山隧洞1#支洞",
+  "香炉山隧洞1-1#支洞",
+  "香炉山隧洞2#支洞",
+  "香炉山隧洞3#支洞",
+  "香炉山隧洞3-1#支洞",
+  "香炉山隧洞4#支洞",
+  "香炉山隧洞5#支洞",
+  "香炉山隧洞7#支洞",
+  "香炉山隧洞8#支洞",
+  "板凳山隧洞1#支洞",
+  "海东隧洞0#支洞",
+  "海东隧洞1#支洞",
+  "海东隧洞2#支洞",
+  "海东隧洞3#支洞",
+  "海东隧洞4#支洞",
+  "海东隧洞5#支洞",
+  "狮子山隧洞1#支洞",
+  "狮子山隧洞2#支洞",
+  "狮子山隧洞3#支洞",
+  "狮子山隧洞4#支洞",
+  "狮子山隧洞5#支洞",
+  "磨盘山隧洞1#支洞",
+  "磨盘山隧洞2#支洞",
+  "老青山隧洞1#支洞",
+  "老青山隧洞2#支洞",
+  "昆呈隧洞1#支洞",
+  "昆呈隧洞2#支洞",
+  "昆呈隧洞3#支洞",
+  "昆呈隧洞4#支洞",
+  "昆呈隧洞5#支洞",
+  "昆呈隧洞6#支洞",
+  "昆呈隧洞7#支洞",
+  "昆呈隧洞8#支洞",
+  "昆呈隧洞9#支洞",
+  "昆呈隧洞10#支洞",
+  "昆呈隧洞11#支洞",
+  "昆呈隧洞12#支洞",
+  "昆呈隧洞13#支洞",
+  "昆呈隧洞14#支洞",
+  "昆呈隧洞15#支洞",
+  "昆呈隧洞16#支洞",
+  "松林隧洞1#支洞",
+  "松林隧洞2#支洞",
+  "蔡家村隧洞1#支洞",
+  "蔡家村隧洞2#支洞",
+  "蔡家村隧洞3#支洞",
+  "蔡家村隧洞4#支洞",
+  "蔡家村隧洞5#支洞",
+  "蔡家村隧洞6#支洞",
+  "龙庆隧洞1#支洞",
+  "龙庆隧洞2#支洞",
+  "龙泉隧洞1#支洞",
+  "龙泉隧洞2#支洞",
+  "万家隧洞1#支洞",
+  "万家隧洞2#支洞",
+  "万家隧洞3#支洞",
+  "万家隧洞4#支洞",
+  "万家隧洞5#支洞",
+  "九道河隧洞1#支洞",
+  "九道河隧洞2#支洞",
+  "伍庄村隧洞1#支洞",
+  "伍庄村隧洞2#支洞",
+  "伍庄村隧洞3#支洞",
+  "凤凰山隧洞1#支洞",
+  "凤凰山隧洞2#支洞",
+  "凤凰山隧洞3#支洞",
+  "凤凰山隧洞4#支洞",
+  "凤凰山隧洞5#支洞",
+  "凤凰山隧洞6#支洞",
+  "凤凰山隧洞7#支洞",
+  "凤屯隧洞1#支洞",
+  "凤屯隧洞2#支洞",
+  "大转弯隧洞1#支洞",
+  "大转弯隧洞2#支洞",
+  "大转弯隧洞3#支洞",
+  "大转弯隧洞5#支洞",
+  "大转弯隧洞6#支洞",
+  "大转弯隧洞7#支洞",
+  "柳家村隧洞1#支洞",
+  "柳家村隧洞2#支洞",
+  "柳家村隧洞3#支洞",
+  "龙潭隧洞1#支洞",
+  "龙潭隧洞2#支洞",
+  "龙潭隧洞3#支洞",
+  "小扑隧洞1#支洞",
+  "小扑隧洞2#支洞",
+  "小扑隧洞3#支洞",
+  "小扑隧洞4#支洞",
+  "小扑隧洞5#支洞",
+  "小扑隧洞6#支洞",
+  "小扑隧洞7#支洞",
+  "小扑隧洞8#支洞",
+  "扯那苴隧洞1#支洞",
+  "螺峰山隧洞1#支洞",
+  "螺峰山隧洞2#支洞",
+  "螺峰山隧洞3#支洞",
+  "螺峰山隧洞4#支洞",
+  "DPT1#支洞",
+  "DPZ1#支洞",
+  "DPZ2#支洞",
+  "DPZ3#支洞",
+  "DPZ4#支洞",
+  "JMC1#支洞",
+  "JMC2#支洞",
+  "LS1#支洞",
+  "LS2#支洞",
+  "LS3#支洞",
+  "LW1#支洞",
+  "XLN1#支洞",
+  "XLN2#支洞",
+  "XLN3#支洞",
+  "XLN4#支洞",
 ];
 const tunnelLabel =[
-  "楚雄段",
-  "大理一段",
-  "大理二段",
-  "红河段",
-  "昆明段",
-  "玉溪段",
+  "香炉山隧洞",
+  "积福村隧洞",
+  "衍庆村隧洞",
+  "芹河隧洞",
+  "北衙隧洞",
+  "上果园隧洞",
+  "下河坝隧洞",
+  "玉石厂隧洞",
+  "老马槽隧洞",
+  "长育村隧洞",
+  "海东隧洞",
+  "狮子山隧洞",
+  "洗窝帚山隧洞",
+  "品甸海隧洞",
+  "磨盘山隧洞",
+  "老青山隧洞",
+  "板凳山隧洞",
+  "万家隧洞",
+  "柳家村隧洞",
+  "凤屯隧洞",
+  "伍家村隧洞",
+  "大转弯隧洞",
+  "九道河隧洞",
+  "鲁支河隧洞",
+  "龙潭隧洞",
+  "蔡家村隧洞",
+  "松林隧洞",
+  "盛家塘隧洞",
+  "龙庆隧洞",
+  "龙泉隧洞",
+  "昆呈隧洞",
+  "小扑隧洞",
+  "阿斗村隧洞",
+  "白马山隧洞",
+  "黄草坝隧洞",
+  "扯那苴隧洞",
+  "大塘子隧洞",
+  "老尖山隧洞",
+  "螺峰山隧洞",
+  "鸡米冲隧洞",
+  "乌兄隧洞",
+  "小路南隧洞",
+  "龙尾隧洞",
+  "羊街隧洞",
+  "龙树隧洞",
+  "柴里冲1号隧洞",
+  "柴里冲2号隧洞",
+  "龙树山隧洞",
+  "阿子冲1号隧洞",
+  "阿子冲2号隧洞",
+  "坝埂脚隧洞",
+  "大路能山隧洞",
+  "地田坡隧洞",
+  "大坡子隧洞",
+  "大山隧洞",
+  "乍甸隧洞",
+  "小燕塘隧洞"
 ]
 const branchHoles = branchHole.geometries.map((obj) => {
   return obj.coordinates.map((value) => {
@@ -56,7 +209,6 @@ const zhuxianData = zhuxian.geometries.map((obj) => {
     return Cartesian3.fromDegrees(value[0], value[1], 0);
   });
 });
-console.log(zhuxianData)
 // function computeCircle(radius: number) {
 //   const positions = [];
 //   for (let i = 0; i < 360; i++) {
@@ -83,7 +235,6 @@ zhuxian.geometries.map((value) => {
   });
   tunnelLabelPositions.push(temp);
 });
-console.log(zhuxianData)
 const Tunnel = ({ visible, earthInstance }: CardProps) => {
   // useEffect(() => {
   //   if (earthInstance.current && earthInstance.current.cesiumElement) {
@@ -103,30 +254,19 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
   //     };
   //   }
   // }, [visible]);
-  const [textVisible1, setTextVisible1] = useState({
-    0: false,
-    1: false,
-    2: false,
-    3: false,
-    4: false,
-    5: false,
-    6: false,
-    7: false,
-    8: false,
-  });
-  const [textVisible2, setTextVisible2] = useState({
-    0: false,
-    1: false,
-    2: false,
-    3: false,
-    4: false,
-    5: false,
-    6: false,
-    7: false,
-    8: false,
-  });
+  function generateObject(n:number) {
+    let obj = {};
+    for (let i = 0; i <= n; i++) {
+      obj[i] = false;
+    }
+    return obj;
+  }
+  const [textVisible1, setTextVisible1] = useState(generateObject(58));
+  const [textVisible2, setTextVisible2] = useState(generateObject(112));
   const handleMouseEnter1 = (e: any, target: any) => { 
     if (textVisible1[target.id as tunnelTextState]) return;
+
+    
     let body = document.querySelector("body");
     //@ts-ignore
     body.style.cursor = "pointer";
@@ -171,13 +311,14 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
                 textVisible1[index as tunnelTextState]
                   ? Material.fromType("Color", {
                       color: Color.YELLOW,
+                      alpha:0.5
                     })
                   : Material.fromType("Color", {
                       color: Color.RED,
                     })
               }
               positions={value}
-              width={6}
+              width={5}
               // mouseEnter={handleZhuMouseEnter}
               // mouseLeave={handleZhuMouseLeave}
               mouseEnter={handleMouseEnter1}
@@ -201,7 +342,7 @@ const Tunnel = ({ visible, earthInstance }: CardProps) => {
                     })
               }
               positions={value}
-              width={6}
+              width={5}
               mouseEnter={handleMouseEnter2}
               mouseLeave={handleMouseLeave2}
             ></Line>

@@ -6,7 +6,6 @@ interface loadtif {
 }
 function Loadtif(props: loadtif) {
   const { url, visible } = props;
-  console.log(url);
   return (
     <>
       <ImageryLayer

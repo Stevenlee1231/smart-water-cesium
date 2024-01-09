@@ -66,7 +66,6 @@ const rivers = zhuxian.geometries.map((obj) => {
     return Cartesian3.fromDegrees(value[0], value[1], 0);
   });
 });
-console.log(rivers)
 // let riverPositions : Array<any> = [];
 // riverSystems.features.map((value: { coordinates: any[][]; }) => {
 //     let temp: Array<any> = [];

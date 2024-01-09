@@ -1,5 +1,5 @@
 import { Primitive, Billboard, Label } from "resium";
-import { Color, GeometryInstance, LabelStyle, NearFarScalar } from "cesium";
+import { Color, GeometryInstance, LabelStyle, NearFarScalar, Camera, CameraEventType, DistanceDisplayCondition} from "cesium";
 import { useEffect, useState } from "react";
 import { Drawer, Modal, Tabs } from "antd";
 import customImg from "../../assets/images/jing.png";
@@ -24,6 +24,7 @@ interface point {
   xAxis: string[];
   series: string[];
   icon:string;
+  lineType:"bar" | "line";
 }
 const { TabPane } = Tabs;
 const message = {
@@ -34,7 +35,6 @@ const message = {
   "XLP3-1ZK3": "监测井编号2067333",
   "XLP4-ZK2": "监测井编号2067332，为四号支洞2#钻孔",
 };
-
 const CustomPoint = ({ id }: { id: any }) => {
   const { series, xAxis } = useGetData("allwaterlevels", id, true);
   return (
@@ -161,8 +161,8 @@ const Point = (props: point) => {
       <Billboard
         position={props.position}
         image={props.icon}
-        width={mouseIn ? 65 : 50}
-        height={mouseIn ? 65 : 50}
+        width={mouseIn ? 45 : 40}
+        height={mouseIn ? 45 : 40}
         onMouseEnter={() => {
           if (mouseIn) return;
           document.body.style.cursor = "pointer";
@@ -183,10 +183,11 @@ const Point = (props: point) => {
         }
         fillColor={!mouseIn ? Color.WHITE : Color.CORNFLOWERBLUE}
         outlineColor={Color.BLACK}
-        outlineWidth={20}
+        outlineWidth={15}
         style={LabelStyle.FILL_AND_OUTLINE}
-        font={"14pt Microsoft Yahei"}
+        font={"10pt Microsoft Yahei"}
         translucencyByDistance={new NearFarScalar(0.0e5, 1.0, 0.1e7, 0.0)}
+        distanceDisplayCondition={new DistanceDisplayCondition(0.0e3,100.0e3)}
       ></Label>
       {open ?<Modal
         title={props.id}
@@ -202,6 +203,7 @@ const Point = (props: point) => {
         xAxis={props.xAxis}
         series={props.series}
         title={props.title}
+        lineType={props.lineType}
       ></Chart> 
         <span>点位信息：{props.info}</span><br/>
         <span>备注：{props.remark}</span>
